@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+
+<script language = "javascript">
+<!--
+function onSubmit() {
+    var fm      = document.frm;
+    var url   = '2013.html?name='+fm.name.value+'&idNumber='+fm.idNumber.value+'&tel1='+fm.tel1.value+'&tel2='+fm.tel2.value+'&tel3='+fm.tel3.value;
+    location.href= url;
+}
+//-->
+</script>
+
+<body>
+<form name='frm'>
+    <div data-role="page" id="page">
+        <div data-role="header" >
+            <h1>2012화면</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" >
+                <li data-role="list-divider">개인정보 입력</li>
+                <li><a href="sub2.html" data-transition="slide">이전 페이지</a></li>
+            </ul>
+        </div>
+        <div data-role="content">
+            <table border="0">
+                <tr>
+                    <td>성명</td>
+                    <td colspan="5"><input type="text" name="name" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td>ID 넘버</td>
+                    <td colspan="5"><input type="text" name="idNumber" maxlength="13"></td>
+                </tr>
+                <tr>
+                    <td>휴대폰 번호</td>
+                    <td><input type="text" maxlength="3" name="tel1" size="5"></td>
+                    <td>-</td>
+                    <td><input type="text" maxlength="4" name="tel2" size="5"></td>
+                    <td>-</td>
+                    <td><input type="text" maxlength="4" name="tel3" size="5"></td>
+                </tr>
+            </table>
+            <h2> 안내문구 </h2>
+        </div>
+        <div data-role="footer" >
+            <a href="index.html" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >취소</a>
+            <input type="button" value="확인" onclick="javascript:onSubmit();">
+        </div>
+    </div>
+</form>
+</body>

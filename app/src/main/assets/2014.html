@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+
+<script language='javascript'>
+<!--
+var Request = function()
+{
+    this.getParameter = function( name )
+    {
+        var rtnval = "";
+        var nowAddress = unescape(location.href);
+        var parameters = (nowAddress.slice(nowAddress.indexOf("?")+1,nowAddress.length)).split("&");
+
+        for(var i = 0 ; i < parameters.length ; i++)
+        {
+            var varName = parameters[i].split("=")[0];
+            if(varName.toUpperCase() == name.toUpperCase())
+            {
+                rtnval = parameters[i].split("=")[1];
+                break;
+            }
+        }
+        return rtnval;
+    }
+}
+
+function fncInit()
+{
+    var fm      = document.frm;
+    var request = new Request();
+    fm.value1.value   = request.getParameter('name');
+    fm.value2.value   = request.getParameter('idNumber');
+    fm.value3.value   = request.getParameter('tel1');
+    fm.value4.value   = request.getParameter('tel2');
+    fm.value5.value   = request.getParameter('tel3');
+}
+
+//-->
+
+</script>
+<body leftmargin='0' topmargin='0' onload='javascript:fncInit();'>
+<form name='frm'>
+    <div data-role="page" id="page">
+        <div data-role="header" >
+            <h1>2014화면</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" >
+                <li data-role="list-divider">신용정보 입력</li>
+                <li><a href="2013.html" data-transition="slide">이전 페이지</a></li>
+            </ul>
+        </div>
+        <div data-role="content">
+            <h2>고객정보</h2>
+            <table border="0">
+                <tr>
+                    <td>성명</td>
+                    <td colspan="5"><input type="text" maxlength="50" name="value1"></td>
+                </tr>
+                <tr>
+                    <td>ID 넘버</td>
+                    <td colspan="5"><input type="text" maxlength="13" name="value2"></td>
+                </tr>
+                <tr>
+                    <td>휴대폰 번호</td>
+                    <td><input type="text" maxlength="3" size="5" name="value3"></td>
+                    <td>-</td>
+                    <td><input type="text" maxlength="4" size="5" name="value4"></td>
+                    <td>-</td>
+                    <td><input type="text" maxlength="4" size="5" name="value5"></td>
+                </tr>
+            </table>
+            <h2>신용정보</h2>
+            <table border="0">
+                <tr>
+                    <td>직장명</td>
+                    <td colspan="2"><input type="text" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td>연소득</td>
+                    <td colspan="2"><input type="text" maxlength="13"></td>
+                </tr>
+                <tr>
+                    <td>연체여부</td>
+                    <td><input type="radio" name="delay"></td>
+                    <td><input type="radio" name="delay" checked="checked"></td>
+                </tr>
+                <tr>
+                    <td>연체금액</td>
+                    <td colspan="2"><input type="text" maxlength="13"></td>
+                </tr>
+            </table>
+        </div>
+        <div data-role="footer" >
+            <a href="2013.html" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >취소</a>
+            <a href="2015.html" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >확인</a>
+        </div>
+    </div>
+</form>
+</body>
