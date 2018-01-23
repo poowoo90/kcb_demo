@@ -1,26 +1,4 @@
 <html>
-
-<script language = "javascript">
-/*
-function send() {
-    var result1 = "전송";
-    var result2 = "성공";
-
-    location.href="sub2.html?" + result1 + ":" + result2
-}
-*/
-
-function fncSubmit()
-{
-    var fm      = document.frm;
-    fm.action   = 'sub2.html?al='+fm.value1.value+'&a2='+fm.value2.value+'&a3='+fm.value3.value;
-    fm.submit();
-}
-
-
-</script>
-
-
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -29,9 +7,18 @@ function fncSubmit()
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 </head>
+<script language = "javascript">
+<!--
+function onSubmit() {
+    var fm      = document.frm;
+    var url   = 'sub2.html?a1='+fm.a1.value+'&a2='+fm.a2.value+'&a3='+fm.a3.value+'&a4='+fm.a4.value;
+    location.href= url;
+}
+//-->
+</script>
 
 <body>
-<form name="frm">
+<form name='frm'>
 <div data-role="page" id="page">
     <div data-role="header" >
         <h1>서브1 페이지</h1>
@@ -50,18 +37,20 @@ function fncSubmit()
     <div data-role="footer" >
         <h4>Footer</h4>
     </div>
-
     <div>
-        <a href="#" onclick="javascript:fncSubmit()" data-role="button" data-transition="slide">이동</a>
-    </div>
+        <input type="button" value="클릭" onclick="javascript:onSubmit();">
 
-    <input type="text" name="value1" value="1">
-    <input type="text" name="value2" value="2">
-    <input type="text" name="value3" value="3">
+        <input type="text" name="a1" value='A'>
+        <input type="text" name="a2" value='B'>
+        <input type="text" name="a3" value='C'>
+        <input type="text" name="a4" value='D'>
+
+    </div>
 </div>
 </form>
 </body>
 
+</html>
 
 
 

@@ -1,18 +1,15 @@
 <html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
 
-<script language = "javascript">
-/*
-var temp = location.href.split("?");
-
-var data=temp[1].split(":");
-
-var result1 = data[0];
-
-var result2 = data[1];
-
-document.writｅ(result1 + " " + result2);
-*/
-
+<script language='javascript'>
+<!--
 var Request = function()
 {
     this.getParameter = function( name )
@@ -37,25 +34,19 @@ var Request = function()
 function fncInit()
 {
     var fm      = document.frm;
-
     var request = new Request();
     fm.value1.value   = request.getParameter('a1');
     fm.value2.value   = request.getParameter('a2');
-    fm.value3.value = request.getParameter('a3');
+    fm.value3.value   = request.getParameter('a3');
+    fm.value4.value   = request.getParameter('a4');
 }
+
+//-->
 
 </script>
 
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-</head>
-
-
+<body leftmargin='0' topmargin='0' onload='javascript:fncInit();'>
+<form name='frm'>
 <div data-role="page" id="page">
     <div data-role="header" >
         <h1>서브2 페이지</h1>
@@ -78,4 +69,7 @@ function fncInit()
     <input type="text" name="value1">
     <input type="text" name="value2">
     <input type="text" name="value3">
+    <input type="text" name="value4">
 </div>
+</form>
+</body>
