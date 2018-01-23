@@ -1,5 +1,51 @@
 <html>
 
+<script language = "javascript">
+/*
+var temp = location.href.split("?");
+
+var data=temp[1].split(":");
+
+var result1 = data[0];
+
+var result2 = data[1];
+
+document.writｅ(result1 + " " + result2);
+*/
+
+var Request = function()
+{
+    this.getParameter = function( name )
+    {
+        var rtnval = "";
+        var nowAddress = unescape(location.href);
+        var parameters = (nowAddress.slice(nowAddress.indexOf("?")+1,nowAddress.length)).split("&");
+
+        for(var i = 0 ; i < parameters.length ; i++)
+        {
+            var varName = parameters[i].split("=")[0];
+            if(varName.toUpperCase() == name.toUpperCase())
+            {
+                rtnval = parameters[i].split("=")[1];
+                break;
+            }
+        }
+        return rtnval;
+    }
+}
+
+function fncInit()
+{
+    var fm      = document.frm;
+
+    var request = new Request();
+    fm.value1.value   = request.getParameter('a1');
+    fm.value2.value   = request.getParameter('a2');
+    fm.value3.value = request.getParameter('a3');
+}
+
+</script>
+
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -28,4 +74,8 @@
     <div data-role="footer" >
         <h4>Footer</h4>
     </div>
+
+    <input type="text" name="value1">
+    <input type="text" name="value2">
+    <input type="text" name="value3">
 </div>
