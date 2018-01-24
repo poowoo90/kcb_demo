@@ -1,4 +1,17 @@
 <html>
+
+<script language = "javascript">
+
+function onSubmit() {
+    var fm      = document.frm;
+    var url   = 'sub2.html?a1='+fm.a1.value+'&a2='+fm.a2.value+'&a3='+fm.a3.value+'&a4='+fm.a4.value;
+    location.href= url;
+}
+
+
+
+</script>
+
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -7,46 +20,37 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 </head>
-<script language = "javascript">
-<!--
-function onSubmit() {
-    var fm      = document.frm;
-    var url   = 'sub2.html?a1='+fm.a1.value+'&a2='+fm.a2.value+'&a3='+fm.a3.value+'&a4='+fm.a4.value;
-    location.href= url;
-}
-//-->
-</script>
 
 <body>
 <form name='frm'>
-<div data-role="page" id="page">
-    <div data-role="header" >
-        <h1>서브1 페이지</h1>
-    </div>
-    <div data-role="content">
-        <ul data-role="listview" >
-            <li data-role="list-divider"> 내부 도메인</li>
-            <li><a href="sub2.html" data-transition="slide">내부 페이지</a></li>
-        </ul>
-    </div>
-    <div data-role="content">
-        <h1>페이지 링크 연습</h1>
-        <p>다양한 종류의 링크 연결 </p>
-        <a href="index.html" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >돌아가기</a>
-    </div>
-    <div data-role="footer" >
-        <h4>Footer</h4>
-    </div>
-    <div>
-        <input type="button" value="클릭" onclick="javascript:onSubmit();">
+    <div data-role="page" id="page">
+        <div data-role="header" >
+            <h1>서브1 페이지</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" >
+                <li data-role="list-divider"> 내부 도메인</li>
+                <li><a href="sub2.html" data-transition="slide">내부 페이지</a></li>
+            </ul>
+        </div>
+        <div data-role="content">
+            <h1>페이지 링크 연습</h1>
+            <p>다양한 종류의 링크 연결 </p>
+            <a href="#" onclick="window.history.back();" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >돌아가기</a>
+        </div>
+        <div data-role="footer" >
+            <h4>Footer</h4>
+        </div>
+        <div>
+            <input type="button" value="클릭" onclick="onSubmit();">
 
-        <input type="text" name="a1" value='A'>
-        <input type="text" name="a2" value='B'>
-        <input type="text" name="a3" value='C'>
-        <input type="text" name="a4" value='D'>
+            <input type="text" name="a1" value='A'>
+            <input type="text" name="a2" value='B'>
+            <input type="text" name="a3" value='C'>
+            <input type="text" name="a4" value='D'>
 
+        </div>
     </div>
-</div>
 </form>
 </body>
 
