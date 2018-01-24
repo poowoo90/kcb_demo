@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+
+
+<div data-role="page" id="page">
+    <div data-role="header" >
+        <h1>대출</h1>
+    </div>
+       
+        <div style="float: left; width: 70%;">
+            고객정보 입력
+        </div>
+        <div style=" float: left; width: 30%;">
+            번호(1,2,3,4,5)
+        </div>
+    
+    <div data-role="content">
+       성명 <input type="text" placeholder="최대 50자 입력" name="2023name">
+    </div>
+     <div data-role="content">
+       ID넘버 <input type="text" placeholder="아이디넘버 13자리 입력" name="2023idnum">
+    </div>
+    <div data-role="content">
+       휴대폰번호 
+        <select name="2023phone">
+          <option value="010">010</option>
+          <option value="011">011</option>
+          <option value="016">016</option>
+          <option value="070">070</option>
+        </select>-<input type="tel">-<input type="tel">
+    </div>
+    <div data-role="content">
+    <h4>안내
+    <p>(주의)대출신청은 본인에 한해서만 가능합니다</p>
+    </h4>
+    </div>
+    
+    
+    <div  style="float: left; width: 50%;">
+        
+            <a href="sub.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="a" >취 소</a>
+    </div>
+    <div  style="float: left; width: 50%;">    
+            <a href="2024.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="b" >확 인</a>
+        
+    </div>
+</div>
