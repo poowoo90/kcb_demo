@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
 </head>
 
 <script language='javascript'>
@@ -100,8 +101,8 @@ function fncInit()
             </table>
         </div>
         <div data-role="footer" >
-            <a href="2013.html" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >취소</a>
-            <a href="2015.html" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >확인</a>
+            <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="pushCancel();">취소</a>
+            <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >확인</a>
         </div>
     </div>
 </form>
