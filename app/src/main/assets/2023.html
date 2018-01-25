@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
+    <script language = "javascript">
+
+</script>
 </head>
 
 
@@ -23,19 +27,19 @@
         </div>
     
     <div data-role="content">
-       성명 <input type="text" placeholder="최대 50자 입력" name="2023name">
+       성명 <input type="text" placeholder="최대 50자 입력" name="name">
     </div>
      <div data-role="content">
-       ID넘버 <input type="text" placeholder="아이디넘버 13자리 입력" name="2023idnum">
+       ID넘버 <input type="text" placeholder="아이디넘버 13자리 입력" name="idNum">
     </div>
     <div data-role="content">
        휴대폰번호 
-        <select name="2023phone">
+        <select name="phone1">
           <option value="010">010</option>
           <option value="011">011</option>
           <option value="016">016</option>
           <option value="070">070</option>
-        </select>-<input type="tel">-<input type="tel">
+        </select>-<input type="tel" id="phone2"name="phone2">-<input type="telphone3">
     </div>
     <div data-role="content">
     <h4>안내
@@ -45,11 +49,11 @@
     
     
     <div  style="float: left; width: 50%;">
-        
-            <a href="sub.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="a" >취 소</a>
+
+        <input type="button" value="취 소" onclick="pushCancel();"/>
     </div>
-    <div  style="float: left; width: 50%;">    
-            <a href="2024.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="b" >확 인</a>
-        
+    <div  style="float: left; width: 50%;">
+
+        <input type="button" value="확 인" onclick="param2023()"/>
     </div>
 </div>

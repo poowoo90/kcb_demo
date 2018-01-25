@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     WebView web; //웹뷰 선언
-
+    String url1;
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -56,27 +56,12 @@ public class MainActivity extends AppCompatActivity {
         web.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                Uri requested = Uri.parse(url);
-                String scheme = requested.getScheme();
-
-                if(scheme != null) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(browserIntent);
-
-                    return true; // true를 리턴하면  webview는 해당 URL을 랜더하지 않는다.
-                } else {
-
-                    //Log.d("WebView", "else");
-                    view.loadUrl(url);
-                    Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
-
                     return false;
-                }
             }
 
         });
         web.loadUrl("file:///android_asset/index.html");
+
         layout.addView(web);
         setContentView(layout);
 
@@ -215,6 +200,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             Log.d("[JeongjinKim]", "onCancelPressed: end ");
+        }
+
+        @JavascriptInterface
+        public void onSubmit2022() {
+            web.post(new Runnable() {
+                @Override
+                public void run() {
+                    web.loadUrl("file:///android_asset/2023.html");
+                }
+            });
         }
     }
 /*

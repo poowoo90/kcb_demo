@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
+    <script language = "javascript">
+
+
+</script>
 </head>
 
-
+<body leftmargin='0' topmargin='0' onload='fnValue();'>
 <div data-role="page" id="page">
     <div data-role="header" >
         <h1>대출</h1>
@@ -23,7 +28,7 @@
         </div>
     
     <div data-role="content">
-       한도금액(만원) <input type="text" value="5,000" name="2024limit" readonly>원
+       한도금액(만원) <input type="text" id="phonephone" name="phonephone">원
     </div>
      <div data-role="content">
        신청금액(만원) <input type="text" value="50~5,000" name="2024apply" readonly>원
@@ -42,8 +47,8 @@
     </div>
     
     <div  style="float: left; width: 50%;">
-        
-            <a href="sub.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="a" >취 소</a>
+
+        <input type="button" value="취 소" onclick="pushCancel();"/>
     </div>
     <div  style="float: left; width: 50%;">    
             <a href="2025.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="b" >확 인</a>
