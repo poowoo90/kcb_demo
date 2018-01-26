@@ -10,13 +10,10 @@
     <script src="common.js"></script>
 </head>
 <script>
-    window.android.sendMessage();
-    function receive(arg) {
 
-        $("#value1").val(arg);
+    var args = window.android.sendMessage();
+    $("#value1").val(args);
 
-        alert(arg);
-    }
 </script>
 
 
