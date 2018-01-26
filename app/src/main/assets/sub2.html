@@ -9,6 +9,15 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
 </head>
+<script>
+    window.android.sendMessage();
+    function receive(arg) {
+
+        $("#value1").val(arg);
+
+        alert(arg);
+    }
+</script>
 
 
 <body leftmargin='0' topmargin='0' onload='javascript:fncInit();'>

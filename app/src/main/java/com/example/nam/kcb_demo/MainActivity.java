@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         layout.addView(web);
         setContentView(layout);
 
+
     }
 
     /* 휴대폰의 이전 키를 눌렀을 때, 웹뷰에서 뒤로갈 수 있으면 뒤로 가고, 뒤로가지 못하면 앱을 끄는 부분
@@ -220,29 +221,20 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(mContext, receive, Toast.LENGTH_SHORT).show();
         }
 
+
         @JavascriptInterface
-        public void push()  {
-            /*
-            Log.d("startpush~~!!!!!!!!", receive);
-
-
-            web.post(new Runnable() {
+        public void movePage() {
+            Log.d("start~~!!!!!!!!", receive);
+            handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    sendData();
+
+                    Log.d("startpush~~!!!!!!!!", receive);
+                    web.loadUrl("file:///android_asset/sub2.html");
+                    //web.loadUrl("javascript:receive('" + receive + "')");
+                    Log.d("endpush~~!!!!!!!!", receive);
                 }
             });
-
-
-
-
-            Log.d("endpush~~!!!!!!!!!!", receive);
-            */
-
-        }
-
-        public String sendData() {
-            return receive;
         }
 
         @JavascriptInterface
@@ -251,7 +243,9 @@ public class MainActivity extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+
                     Log.d("startpush~~!!!!!!!!", receive);
+                    //web.loadUrl("file:///android_asset/sub2.html");
                     web.loadUrl("javascript:receive('" + receive + "')");
                     Log.d("endpush~~!!!!!!!!", receive);
                 }
