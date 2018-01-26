@@ -1,16 +1,5 @@
 <html>
 
-<script language = "javascript">
-
-function onSubmit() {
-    var fm      = document.frm;
-    var url   = 'sub2.html?a1='+fm.a1.value+'&a2='+fm.a2.value+'&a3='+fm.a3.value+'&a4='+fm.a4.value;
-    location.href= url;
-}
-
-
-
-</script>
 
 <head>
     <meta charset="utf-8">
@@ -19,6 +8,7 @@ function onSubmit() {
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
 </head>
 
 <body>
@@ -42,9 +32,10 @@ function onSubmit() {
             <h4>Footer</h4>
         </div>
         <div>
-            <input type="button" value="클릭" onclick="onSubmit();">
+            <!--<input type="button" value="클릭" onclick="onSubmit();">-->
+            <a href="sub2.html" data-role="button" onclick="onSubmit();"> 클릭 </a>
 
-            <input type="text" name="a1" value='A'>
+            <input type="text" name="a1" value='A' id ="a1">
             <input type="text" name="a2" value='B'>
             <input type="text" name="a3" value='C'>
             <input type="text" name="a4" value='D'>

@@ -1,36 +1,4 @@
 <html>
-<script language = "javascript">
-var Request = function()
-{
-this.getParameter = function( name )
-{
-var rtnval = "";
-var nowAddress = unescape(location.href);
-var parameters = (nowAddress.slice(nowAddress.indexOf("?")+1,nowAddress.length)).split("&");
-
-for(var i = 0 ; i < parameters.length ; i++)
-{
-var varName = parameters[i].split("=")[0];
-if(varName.toUpperCase() == name.toUpperCase())
-{
-rtnval = parameters[i].split("=")[1];
-break;
-}
-}
-return rtnval;
-}
-}
-
-function fncInit()
-{
-var fm      = document.frm;
-var request = new Request();
-fm.value1.value   = request.getParameter('a1');
-fm.value2.value   = request.getParameter('a2');
-fm.value3.value   = request.getParameter('a3');
-fm.value4.value   = request.getParameter('a4');
-}
-</script>
 
 <head>
     <meta charset="utf-8">
@@ -39,8 +7,8 @@ fm.value4.value   = request.getParameter('a4');
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
 </head>
-
 
 
 <body leftmargin='0' topmargin='0' onload='javascript:fncInit();'>
@@ -64,7 +32,7 @@ fm.value4.value   = request.getParameter('a4');
             <h4>Footer</h4>
         </div>
 
-        <input type="text" name="value1">
+        <input type="text" id="value1">
         <input type="text" name="value2">
         <input type="text" name="value3">
         <input type="text" name="value4">
