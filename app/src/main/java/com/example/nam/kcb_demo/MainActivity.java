@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         webSet.setSupportMultipleWindows                (true) ; // 여러개의 윈도우를 사용할 수 있도록 설정
         webSet.setSaveFormData                          (false); // 폼의 입력값를 저장하지 않는다
         webSet.setSavePassword                          (false); // 암호를 저장하지 않는다.
-        web.setWebContentsDebuggingEnabled(true);
+        web.setWebContentsDebuggingEnabled(true); //API 레벨 19부터 이용 가능.
         webSet.setLayoutAlgorithm                       (WebSettings.LayoutAlgorithm.SINGLE_COLUMN); // 컨텐츠 사이즈 맞추기
 
         web.addJavascriptInterface(new WebAppInterface(this), "android");
