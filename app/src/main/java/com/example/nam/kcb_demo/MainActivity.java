@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         webSet.setSupportMultipleWindows                (true) ; // 여러개의 윈도우를 사용할 수 있도록 설정
         webSet.setSaveFormData                          (false); // 폼의 입력값를 저장하지 않는다
         webSet.setSavePassword                          (false); // 암호를 저장하지 않는다.
+        web.setWebContentsDebuggingEnabled(true);
         webSet.setLayoutAlgorithm                       (WebSettings.LayoutAlgorithm.SINGLE_COLUMN); // 컨텐츠 사이즈 맞추기
 
         web.addJavascriptInterface(new WebAppInterface(this), "android");
@@ -208,7 +209,10 @@ public class MainActivity extends AppCompatActivity {
             web.post(new Runnable() {
                 @Override
                 public void run() {
-                    onBackPressed();
+                    WebBackForwardList list = web.copyBackForwardList(); // 누적된 history 를 저장할 변수
+                    Log.d("PJH", "list.getCurrentIndex = [" + list.getCurrentIndex() + "]");
+                    web.goBackOrForward(-(list.getCurrentIndex()) + 1);
+//                    onBackPressed();
                 }
             });
             Log.d("[JeongjinKim]", "onCancelPressed: end ");
