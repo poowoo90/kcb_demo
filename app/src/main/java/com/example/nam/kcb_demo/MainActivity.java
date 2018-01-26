@@ -6,13 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Xml;
 import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebBackForwardList;
@@ -23,16 +21,9 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.URLEncoder;
-
 
 public class MainActivity extends AppCompatActivity {
     WebView web; //웹뷰 선언
-    String receive = "";
-    private final Handler handler = new Handler();
 
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -61,14 +52,27 @@ public class MainActivity extends AppCompatActivity {
 
         web.addJavascriptInterface(new WebAppInterface(this), "android");
 
-
         web.setWebChromeClient(new WebChromeClient());
         web.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-                    return false;
+                Uri requested = Uri.parse(url);
+                String scheme = requested.getScheme();
 
+                if(scheme != null) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(browserIntent);
+
+                    return true; // true를 리턴하면  webview는 해당 URL을 랜더하지 않는다.
+                } else {
+
+                    //Log.d("WebView", "else");
+                    view.loadUrl(url);
+                    Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
+
+                    return false;
+                }
             }
 
         });
@@ -212,54 +216,10 @@ public class MainActivity extends AppCompatActivity {
             });
             Log.d("[JeongjinKim]", "onCancelPressed: end ");
         }
-
-        @JavascriptInterface
-        public void receive(String arg) {
-            receive = arg;
-            String url = "file:///android_asset/index.html";
-            Toast.makeText(mContext, receive, Toast.LENGTH_SHORT).show();
-        }
-
-        @JavascriptInterface
-        public void push()  {
-            /*
-            Log.d("startpush~~!!!!!!!!", receive);
-
-
-            web.post(new Runnable() {
-                @Override
-                public void run() {
-                    sendData();
-                }
-            });
-
-
-
-
-            Log.d("endpush~~!!!!!!!!!!", receive);
-            */
-
-        }
-
-        public String sendData() {
-            return receive;
-        }
-
-        @JavascriptInterface
-        public void sendMessage() {
-            Log.d("start~~!!!!!!!!", receive);
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Log.d("startpush~~!!!!!!!!", receive);
-                    web.loadUrl("javascript:receive('" + receive + "')");
-                    Log.d("endpush~~!!!!!!!!", receive);
-                }
-            });
-        }
-
-
     }
-
+/*
+    public class MyWebViewClient extends WebViewClient {
+    }
+*/
 
 }

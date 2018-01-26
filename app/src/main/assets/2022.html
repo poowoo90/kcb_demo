@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
+
 </head>
 
 
@@ -74,11 +76,9 @@
     
     
     <div  style="float: left; width: 50%;">
-        
-            <a href="sub.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="a" >취 소</a>
+           <input type="button" value="취 소" onclick="pushCancel();"/>
     </div>
-    <div  style="float: left; width: 50%;">    
-            <a href="2023.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="b" >확 인</a>
-        
+    <div  style="float: left; width: 50%;">
+        <input type="button" value="확 인" onclick="location.href='2023.html'"/>
     </div>
 </div>
