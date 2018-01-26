@@ -21,11 +21,13 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
     WebView web; //웹뷰 선언
-    String receive = "";
+    JSONObject jsonData;
     private final Handler handler = new Handler();
 
     @SuppressLint("WrongConstant")
@@ -51,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
         webSet.setSupportMultipleWindows                (true) ; // 여러개의 윈도우를 사용할 수 있도록 설정
         webSet.setSaveFormData                          (false); // 폼의 입력값를 저장하지 않는다
         webSet.setSavePassword                          (false); // 암호를 저장하지 않는다.
-        web.setWebContentsDebuggingEnabled(true); //API 레벨 19부터 이용 가능.
         webSet.setLayoutAlgorithm                       (WebSettings.LayoutAlgorithm.SINGLE_COLUMN); // 컨텐츠 사이즈 맞추기
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            web.setWebContentsDebuggingEnabled(true); 				//API 레벨 19부터 이용 가능.
+        }
         web.addJavascriptInterface(new WebAppInterface(this), "android");
 
 
@@ -112,12 +116,16 @@ public class MainActivity extends AppCompatActivity {
         Context mContext;
 
 
-        /** Instantiate the interface and set the context */
+        /**
+         * Instantiate the interface and set the context
+         */
         WebAppInterface(Context c) {
             mContext = c;
         }
 
-        /** Show a toast from the web page */
+        /**
+         * Show a toast from the web page
+         */
         /* 비활성화 메뉴 toast 보여주기 */
         @JavascriptInterface
         public void showToast(String toast) {
@@ -131,41 +139,42 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     WebBackForwardList list = web.copyBackForwardList(); // 누적된 history 를 저장할 변수
-                    Log.d("PJH", "list.getCurrentIndex = [" + list.getCurrentIndex() + "]");
                     web.goBackOrForward(-(list.getCurrentIndex()) + 1);
-//                    onBackPressed();
                 }
             });
             Log.d("[JeongjinKim]", "onCancelPressed: end ");
         }
 
         @JavascriptInterface
-        public void receive(String arg) {
-            receive = arg;
-            String url = "file:///android_asset/index.html";
-        }
-
-
-        @JavascriptInterface
-        public void movePage() {
+        public void movePage(final String url, final String json) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    web.loadUrl("file:///android_asset/sub2.html"); // url로 페이지 이동
+
+                    Log.d("MainActivity", "url = " + url);
+                    if (json != null) {
+                        try {
+                            jsonData = new JSONObject(json);
+                            Log.d("MainActivity", "movePage -> jObject = " + jsonData.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        ;
+                    }
+                    web.loadUrl("file:///android_asset/" + url); // url로 페이지 이동
                 }
             });
         }
 
         @JavascriptInterface
-        public void sendMessage() {
+        public void getJsonData() {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    web.loadUrl("javascript:receive('" + receive + "')"); // 해당 url의 자바스크립트 함수 호출
+                    Log.d("MainActivity", "getJsonData -> jObject = " + jsonData.toString());
+                    web.loadUrl("javascript:onCreate('" + jsonData.toString() + "')"); // 해당 url의 자바스크립트 함수 호출
                 }
             });
         }
     }
-
-
 }
