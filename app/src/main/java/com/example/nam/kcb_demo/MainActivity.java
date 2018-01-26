@@ -12,8 +12,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Xml;
-import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
@@ -23,10 +21,6 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.URLEncoder;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -80,66 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* 휴대폰의 이전 키를 눌렀을 때, 웹뷰에서 뒤로갈 수 있으면 뒤로 가고, 뒤로가지 못하면 앱을 끄는 부분
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    if (web.canGoBack()) {
-                        web.goBack();
-                    } else {
-                        finish();
-                    }
-                    return true;
-            }
-
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-    */
-
-    /* 휴대폰의 이전 키를 눌렀을 때, 웹뷰에서 뒤로갈 수 있으면 뒤로 가고, 뒤로가지 못하면 앱을 끄는 부분
-    @Override
-    public void onBackPressed() {
-        WebBackForwardList list = web.copyBackForwardList(); // 누적된 history를 저장할 변수
-
-        if(list.getCurrentIndex() <= 0 && !web.canGoBack()) { // 처음 들어온 페이지이거나, history가 없는 경우
-            super.onBackPressed();
-        }else { // history가 있는 경우
-            web.goBackOrForward(-(list.getCurrentIndex())); // 현재 페이지로 부터 histoty 수 만큼 뒷 페이지로 이동
-            web.clearHistory(); // history 삭제
-        }
-    }
-
-     여기까지 */
-
-    /*
-    @Override
-    public void onBackPressed()
-    {
-        if(web.canGoBack()){
-            web.goBack();
-        }else{
-            new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Exit!")
-                    .setMessage("앱을 종료하시겠습니까?")
-                    .setPositiveButton("예", new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-
-                    })
-                    .setNegativeButton("아니오", null)
-                    .show();
-        }
-    }
-    */
-
-
     @Override
     public void onBackPressed() {
         WebBackForwardList list = web.copyBackForwardList(); // 누적된 history 를 저장할 변수
@@ -172,22 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-/*
-    private class WebViewClientClass extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            //Log.d("check URL",url);
 
-
-            Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
-
-            view.loadUrl(url);
-            return true;
-        }
-    }
-*/
-
-    /* 비활성화 메뉴 toast 보여주기 */
+    /* 안드로이드와 html간의 데이터 주고 받기 */
     public class WebAppInterface {
         Context mContext;
 
@@ -198,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         /** Show a toast from the web page */
+        /* 비활성화 메뉴 toast 보여주기 */
         @JavascriptInterface
         public void showToast(String toast) {
             Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
@@ -222,41 +143,28 @@ public class MainActivity extends AppCompatActivity {
         public void receive(String arg) {
             receive = arg;
             String url = "file:///android_asset/index.html";
-            Toast.makeText(mContext, receive, Toast.LENGTH_SHORT).show();
         }
 
 
         @JavascriptInterface
         public void movePage() {
-            Log.d("start~~!!!!!!!!", receive);
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-
-                    Log.d("startpush~~!!!!!!!!", receive);
-                    web.loadUrl("file:///android_asset/sub2.html");
-                    //web.loadUrl("javascript:receive('" + receive + "')");
-                    Log.d("endpush~~!!!!!!!!", receive);
+                    web.loadUrl("file:///android_asset/sub2.html"); // url로 페이지 이동
                 }
             });
         }
 
         @JavascriptInterface
         public void sendMessage() {
-            Log.d("start~~!!!!!!!!", receive);
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-
-                    Log.d("startpush~~!!!!!!!!", receive);
-                    //web.loadUrl("file:///android_asset/sub2.html");
-                    web.loadUrl("javascript:receive('" + receive + "')");
-                    Log.d("endpush~~!!!!!!!!", receive);
+                    web.loadUrl("javascript:receive('" + receive + "')"); // 해당 url의 자바스크립트 함수 호출
                 }
             });
         }
-
-
     }
 
 
