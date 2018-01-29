@@ -10,7 +10,32 @@
     <script src="common.js"></script>
 </head>
 
-<body leftmargin='0' topmargin='0' onload='javascript:fncInit();'>
+<script language = "javascript">
+
+    common_getJsonData();
+
+    /**
+     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+     alert("2013.html = " + JSON.stringify(jsonData));
+     */
+    function onCreate(json) {
+        var jsonData = JSON.parse(json);
+        var userData = common_getUserData(jsonData.name);
+
+        document.getElementById('usrName').value = jsonData.name;
+        document.getElementById('tel1').value = userData.phone.substr(0,3);
+        document.getElementById('tel2').value = userData.phone.substr(3,4);
+        document.getElementById('tel3').value = userData.phone.substr(7,4);
+        document.getElementById('officeNm').value = userData.officeNm;
+        document.getElementById('annualIncome').value = userData.annualIncome;
+        document.getElementById('arrearsYN').value = userData.arrearsYN;
+        document.getElementById('arrearsAmt').value = userData.arrearsAmt;
+    }
+
+
+</script>
+
+<body leftmargin='0' topmargin='0'>
 <form name='frm'>
     <div data-role="page" id="page">
         <div data-role="header" >
@@ -22,46 +47,48 @@
                 <li><a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="window.history.back();" ></a></li>
             </ul>
         </div>
-        <div data-role="content">
+        <p data-role="content">
             <h2>고객정보</h2>
             <table border="0">
                 <tr>
                     <td>성명</td>
-                    <td colspan="5"><input type="text" maxlength="50" name="value1"></td>
-                </tr>
-                <tr>
-                    <td>ID 넘버</td>
-                    <td colspan="5"><input type="text" maxlength="13" name="value2"></td>
+                    <td colspan="5"><input type="text" maxlength="50" name="usrName" id="usrName"></td>
                 </tr>
                 <tr>
                     <td>휴대폰 번호</td>
-                    <td><input type="text" maxlength="3" size="5" name="value3"></td>
+                    <td><input type="text" maxlength="3" size="5" name="tel1" id="tel1"></td>
                     <td>-</td>
-                    <td><input type="text" maxlength="4" size="5" name="value4"></td>
+                    <td><input type="text" maxlength="4" size="5" name="tel2" id="tel2"></td>
                     <td>-</td>
-                    <td><input type="text" maxlength="4" size="5" name="value5"></td>
+                    <td><input type="text" maxlength="4" size="5" name="tel3" id="tel3"></td>
                 </tr>
             </table>
-            <h2>신용정보</h2>
+            <h2>신용(Credit Bureau) 정보</h2>
             <table border="0">
                 <tr>
                     <td>직장명</td>
-                    <td colspan="2"><input type="text" maxlength="50"></td>
+                    <td><input type="text" name="officeNm" id="officeNm" maxlength="50"></td>
                 </tr>
                 <tr>
                     <td>연소득</td>
-                    <td colspan="2"><input type="text" maxlength="13"></td>
+                    <td><input type="text" name="annualIncome" id="annualIncome" maxlength="13"></td>
                 </tr>
                 <tr>
                     <td>연체여부</td>
-                    <td><input type="radio" name="delay"></td>
-                    <td><input type="radio" name="delay" checked="checked"></td>
+                    <td><input type="text" name="arrearsYN" id="arrearsYN"></td>
                 </tr>
                 <tr>
                     <td>연체금액</td>
-                    <td colspan="2"><input type="text" maxlength="13"></td>
+                    <td><input type="text" name="arrearsAmt" id="arrearsAmt" maxlength="13"></td>
                 </tr>
             </table>
+            <h1>신한 드림대출 불가</h1>
+            <p><h2>Blah Blah Blah</h2></p>
+            <input type="button" value="확인" onclick="common_cancel();"/>
+
+            <p><h1>통신정보 대출</h1></p>
+            <p><h2>Blah Blah Blah</h2></p>
+            <input type="button" value="바로가기" onclick="common_movePage('2021.html');"/>
         </div>
         <div data-role="footer" >
             <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="pushCancel();">취소</a>

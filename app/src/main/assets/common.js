@@ -161,7 +161,24 @@ function common_getJsonData() {
     window.android.getJsonData();
 }
 
-
+function common_getUserData(name) {
+    name = name.toUpperCase();
+    if(name == 'SUZAN') {
+        return SUZAN;
+    } else if(name == 'AMIE') {
+        return AMIE;
+    } else if(name == 'TOM') {
+        return TOM;
+    } else if(name == 'BRIAN') {
+        return BRIAN;
+    } else if(name == 'JADE') {
+        return JADE;
+    } else if(name == 'JOHN') {
+        return JOHN;
+    } else {
+        return CAL;
+    }
+}
 //----------------------------------------------------------------------------------------------------------------------------------------//
 // Native Call Back 함수
 //----------------------------------------------------------------------------------------------------------------------------------------//
