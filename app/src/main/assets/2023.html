@@ -8,52 +8,106 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
+
+
     <script language = "javascript">
 
+    common_getJsonData();
+
+    /**
+     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+     */
+    function onCreate(json) {
+        var jsonData = JSON.parse(json);
+        var userData = common_getUserData(jsonData.name);
+
+        document.getElementById('UsrName').value = jsonData.name;
+        document.getElementById('tel1').value = userData.phone.substr(0,3);
+        document.getElementById('tel2').value = userData.phone.substr(3,4);
+        document.getElementById('tel3').value = userData.phone.substr(7,4);
+        document.getElementById('officeNm').value = userData.officeNm;  //직장명
+        document.getElementById('loanAccount').value = userData.loanAccount; //입금계좌
+        document.getElementById('annualIncome').value = userData.annualIncome; //연소득
+        document.getElementById('CBAmt').value = userData.CBAmt; //신용정보평가 금액
+        document.getElementById('NBAmt').value = userData.NBAmt; //통신정보평가 금액
+        document.getElementById('contractRate').value = userData.contractRate; //약정금리
+        document.getElementById('CBRate').value = userData.CBRate; //신용정보평가 금리
+        document.getElementById('NBRate').value = userData.NBRate; //통신정보평가 금리
+        document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
+        document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
+
+
+    }
+
+    function nextPage() {
+       var UsrName = document.querySelector('#UsrName').value;
+       var UsrReqPay = document.querySelector('#UsrReqPay').value;
+        var JsonData =
+        {
+            "name" : UsrName,
+            "reqPay" : UsrReqPay,
+        };
+        common_movePage('2024.html', JsonData);
+    }
+
+
 </script>
+
 </head>
 
-
+<body leftmargin='0' topmargin='0' onload='onCreate();'>
 <div data-role="page" id="page">
     <div data-role="header" >
         <h1>대출</h1>
     </div>
-       
-        <div style="float: left; width: 70%;">
-            고객정보 입력
-        </div>
-        <div style=" float: left; width: 30%;">
-            번호(1,2,3,4,5)
-        </div>
-    
-    <div data-role="content">
-       성명 <input type="text" placeholder="최대 50자 입력" name="name">
+
+    <div style="float: left; width: 70%;">
+        대출 정보입력
     </div>
-     <div data-role="content">
-       ID넘버 <input type="text" placeholder="아이디넘버 13자리 입력" name="idNum">
+    <div style=" float: left; width: 30%;">
+        번호(1,2,3,4,5)
+    </div>
+
+    <div data-role="content">
+        고객정보
     </div>
     <div data-role="content">
-       휴대폰번호 
-        <select name="phone1">
-          <option value="010">010</option>
-          <option value="011">011</option>
-          <option value="016">016</option>
-          <option value="070">070</option>
-        </select>-<input type="tel" id="phone2"name="phone2">-<input type="telphone3">
+        성명       <input type="text" id="UsrName" name="UsrName">원
+        휴대폰번호 <input type="text" id="tel1" name="tel1" readonly>원
+        <input type="text" id="tel2" name="tel2" readonly>원
+        <input type="text" id="tel3" name="tel3" readonly>원
     </div>
     <div data-role="content">
-    <h4>안내
-    <p>(주의)대출신청은 본인에 한해서만 가능합니다</p>
-    </h4>
+        신용(Credit Bureau) 정보
     </div>
-    
-    
+    <div data-role="content">
+        직장명   <input type="text" id="officeNm"  name="officeNm"  readonly>원
+        연소득   <input type="text" id="annualIncome" name="annualIncome" readonly>원
+        연체여부 <input type="text" id="arrearsYN" name="arrearsYN" readonly>원
+        연체금액 <input type="text" id="arrearsAmt" name="arrearsAmt" readonly>원
+    </div>
+    <div data-role="content">
+        대출정보
+    </div>
+    <div data-role="content">
+        한도금액(만원) <input type="text" id="UsrPay1"  name="UsrPay1"  readonly>원
+        신용정보평가금액   <input type="text" id="CBAmt" name="CBAmt" readonly>원
+        통신정보평가금액 <input type="text" id="NBAmt" name="NBAmt" readonly>원
+        약정금리     <input type="text" id="contractRate" name="contractRate" readonly>원
+        신용정보평가금리 <input type="text" id="CBRate" name="CBRate" readonly>원
+        통신정보평가금리 <input type="text" id="NBRate" name="NBRate" readonly>원
+    </div>
+    <div data-role="content">
+        신청금액(만원) <input type="text" id="UsrReqPay"  name="UsrReqPay"  >
+        입금계좌       <input type="text" id="loanAccount"  name="loanAccount"  >
+    </div>
+
     <div  style="float: left; width: 50%;">
 
-        <input type="button" value="취 소" onclick="pushCancel();"/>
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="pushCancel();">취소</a>
     </div>
     <div  style="float: left; width: 50%;">
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
 
-        <input type="button" value="확 인" onclick="param2023()"/>
     </div>
 </div>

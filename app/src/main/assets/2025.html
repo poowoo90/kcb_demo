@@ -8,6 +8,27 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
+    <script language = "javascript">
+
+    common_getJsonData();
+
+    /**
+     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+     */
+    function onCreate(json) {
+        var jsonData = JSON.parse(json);
+        document.getElementById('UsrReqPay').value = jsonData.reqPay;
+        document.getElementById('contractRate').value = jsonData.contractRate;
+        document.getElementById('loanAccount').value = jsonData.loanAccount;
+        document.getElementById('loanPeriod').value = jsonData.loanPeriod;
+    }
+
+
+   function nextPage() {
+        common_movePage('index.html');
+    }
+
+</script>
 </head>
 
 
@@ -15,79 +36,31 @@
     <div data-role="header" >
         <h1>대출</h1>
     </div>
-       
-        <div style="float: left; width: 70%;">
-            대출 선조회
-        </div>
-        <div style=" float: left; width: 30%;">
-            번호(1,2,3,4,5)
-        </div>
-    
-    <div data-role="content">
-        <p>고객정보</p>
-         <table style="width: 100%;">
-              <tr>
-                <td>성명</td>
-                <td>Larry Page</td>
-              </tr>
-              <tr>
-                <td>ID넘버</td>
-                <td>891111-1234556</td>
-              </tr>
-             <tr>
-                <td>휴대폰번호</td>
-                 <td>01032679911</td>
-             </tr>
-        </table>
-    </div>
-     
-     <div data-role="content">
-        <p>대출 신청정보</p>
-         <table style="width: 100%;">
-              <tr>
-                <td><h4>대출한도금액</h4></td>
-                <td>5000만원</td>
-              </tr>
-              <tr>
-                <td>기본금액</td>
-                <td>4000만원</td>
-              </tr>
-             <tr>
-                <td>추가금액</td>
-                 <td>1000만원</td>
-             </tr>
-             <tr>
-                <td style="column-span: 2">(통신료 성실납부고객)</td>
-             </tr>
-             <tr>
-                <td><h4>대출신청금액</h4></td>
-                <td>3000만원</td>
-              </tr>
-              <tr>
-                <td><h4>약점금리</h4></td>
-                <td>3.0%</td>
-              </tr>
-             <tr>
-                <td>기본금리</td>
-                 <td>4.0%</td>
-             </tr>
-             <tr>
-                <td>추가금리</td>
-                 <td>1.0%</td>
-             </tr>
-             
-             <tr>
-                <td style="column-span: 2">(통신료 성실납부고객)</td>
-             </tr>
-        </table>
-    </div>
-    
-    <div  style="float: left; width: 50%;">
 
-        <input type="button" value="취 소" onclick="pushCancel();"/>
+    <div style="float: left; width: 70%;">
+        대출 실행결과
     </div>
-    <div  style="float: left; width: 50%;">    
-            <a href="2026.html" data-role="button" data-transition="slide" data-direction="reverse"  data-theme="b" >대출실행</a>
-        
+    <div style=" float: left; width: 30%;">
+        번호(1,2,3,4,5)
     </div>
-</div>
+
+    <div data-role="content">
+        약정금액  <input type="text" id="UsrReqPay"  name="UsrReqPay"  readonly>원
+        약정금리  <input type="text" id="contractRate" name="contractRate" readonly>원
+        입금계좌  <input type="text" id="loanAccount" name="loanAccount" readonly>원
+        대출기간  <input type="text" id="loanPeriod" name="loanPeriod" readonly>원
+    </div>
+    <div data-role="content" style="align-content: center">
+        <h1>신한 Telco 드림대출 완료</h1>
+        <p>
+            고객님의 통신정보를 이용한<br>신한 Telco 드림대출 거래가<br>정상적으로 이루어졌습니다.
+        </p>
+    </div>
+
+
+
+    <div  style="float: left; width: 50%;">
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
+
+    </div>
+
