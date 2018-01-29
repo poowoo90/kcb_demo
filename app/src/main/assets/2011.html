@@ -1,18 +1,71 @@
 <html>
+
 <head>
-    <title>페이지 링크</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
+    <script language = "javascript"></script>
 </head>
 
-<body>
-<!--<a href="#" onclick="window.history.back();" data-role="button" data-transition="slide"> <input type="image" src="" width="30px" height="30px"></a> -->
-<!--<input type="button" onclick="window.history.back();" data-icon="delete">-->
-<a href="#" data-role="button" data-icon="delete" data-iconpos="left" data-inline="true"  onclick="window.history.back();" ></a>
+<script language = "javascript">
+    function nextPage() {
+        var UsrName = document.querySelector('#UsrName').value;
+        var phone = document.querySelector('#tel1').value + document.querySelector('#tel2').value + document.querySelector('#tel3').value;;
 
-<input type="button" value ="대출신청(한도 및 금리 조회)" onclick="location.href='2012.html';">
-<a href="2012.html" data-role="button" data-transition="slide">대출신청(한도 및 금리 조회)</a>
+        var JsonData =
+        {
+            "name" : UsrName,
+            "phone" : phone,
+        };
+
+        alert(JSON.stringify(JsonData));
+
+        common_movePage('2012.html', JsonData);
+    }
+</script>
+
+<body>
+<form name='frm'>
+    <div data-role="page" id="page">
+        <div data-role="header" >
+            <h1>2011화면</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" >
+                <li data-role="list-divider">개인정보 입력</li>
+                <li><a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="window.history.back();" ></a></li>
+            </ul>
+        </div>
+        <div data-role="content">
+            <table border="0">
+                <tr>
+                    <td>성명</td>
+                    <td colspan="5"><input type="text" placeholder="최대 50자 입력" name="name" id="UsrName" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td>휴대폰 번호</td>
+                    <td><select name="tel1" id="tel1">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                        <option value="070">070</option>
+                    </select></td>
+                    <td>-</td>
+                    <td><input type="text" maxlength="4" name="tel2" id="tel2" size="5"></td>
+                    <td>-</td>
+                    <td><input type="text" maxlength="4" name="tel3" id="tel3" size="5"></td>
+                </tr>
+            </table>
+        </div>
+        <div data-role="footer" >
+            <input type="button" value="취소" onclick="common_cancel();"/>
+            <input type="button" value="확인" onclick="nextPage();">
+        </div>
+    </div>
+</form>
 </body>
 </html>

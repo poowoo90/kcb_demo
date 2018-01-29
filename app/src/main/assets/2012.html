@@ -8,49 +8,61 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
-    <script language = "javascript"></script>
 </head>
 
-
-
-<body>
+<body leftmargin='0' topmargin='0' onload='javascript:fncInit();'>
 <form name='frm'>
     <div data-role="page" id="page">
         <div data-role="header" >
-            <h1>2012화면</h1>
+            <h1>2012 화면</h1>
         </div>
         <div data-role="content">
             <ul data-role="listview" >
-                <li data-role="list-divider">개인정보 입력</li>
-                <li><a href="sub2.html" data-transition="slide">이전 페이지</a></li>
+                <li data-role="list-divider"> 개인신용정보조회 동의</li>
+                <li><a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="window.history.back();" ></a></li>
             </ul>
         </div>
         <div data-role="content">
             <table border="0">
                 <tr>
-                    <td>성명</td>
-                    <td colspan="5"><input type="text" id="name" maxlength="50"></td>
+                    <td>써니뱅크 이용약관</td>
+                    <td><input type="button" value="보기" disabled="disabled" /></td>
                 </tr>
                 <tr>
-                    <td>ID 넘버</td>
-                    <td colspan="5"><input type="text" id="idNumber" maxlength="13"></td>
+                    <td colspan="2"> 위 약관 내용에 동의하십니까?</td>
                 </tr>
                 <tr>
-                    <td>휴대폰 번호</td>
-                    <td><input type="text" maxlength="3" id="tel1" size="5"></td>
-                    <td>-</td>
-                    <td><input type="text" maxlength="4" id="tel2" size="5"></td>
-                    <td>-</td>
-                    <td><input type="text" maxlength="4" id="tel3" size="5"></td>
+                    <td><input type="radio" name="sunny_agree"></td>
+                    <td><input type="radio" name="sunny_agree" checked="checked"></td>
+                </tr>
+                <tr>
+                    <td>개인신용정보조회 동의서</td>
+                    <td><input type="button" value="보기" disabled="disabled" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 위 내용에 동의하십니까?</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="credit_agree"></td>
+                    <td><input type="radio" name="credit_agree" checked="checked"></td>
+                </tr>
+                <tr>
+                    <td>고객권리 안내문</td>
+                    <td><input type="button" value="보기" disabled="disabled" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 위 약관 내용에 동의하십니까?</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="info"></td>
+                    <td><input type="radio" name="info" checked="checked"></td>
                 </tr>
             </table>
-            <h2> 안내문구 </h2>
         </div>
         <div data-role="footer" >
-            <input type="button" value="취소" onclick="pushCancel();"/>
-            <input type="button" value="확인" onclick="to2013();">
+            <input type="button" value="취소" onclick="common_cancel();"/>
+            <input type="button" value="확인" onclick="common_movePage('2013.html');">
         </div>
     </div>
 </form>
 </body>
-</html>
