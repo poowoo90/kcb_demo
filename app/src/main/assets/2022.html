@@ -8,77 +8,83 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
-
 </head>
 
+<script language = "javascript">
 
+    function nextPage() {
+        var sunny_agree  = document.getElementsByName('sunny_agree' );
+        var credit_agree = document.getElementsByName('credit_agree');
+        var info_agree   = document.getElementsByName('info_agree'  );
+        if(sunny_agree[0].checked == true || credit_agree[0].checked == true || info_agree[0].checked == true) {
+            alert("약관에 동의해주시기 바랍니다.");
+            return false;
+        }
+        common_movePage('2023.html');
+
+    }
+
+
+
+</script>
+
+<body leftmargin='0' topmargin='0' onload='onCreate();>
+<form name='frm'>
 <div data-role="page" id="page">
     <div data-role="header" >
-        <h1>대출</h1>
+        <h1>2022 화면</h1>
     </div>
-       
-        <div style="float: left; width: 70%;">
-            통신정보조회
-        </div>
-        <div style=" float: left; width: 30%;">
-            번호(1,2,3,4,5)
-        </div>
-    
     <div data-role="content">
-        <table style="width: 100%;">
-              <tr>
-                <td>Sunny Bank 이용약관 및 <br>대출상품서비스 이용약관</td>
-                <td><a href="http://m.www.naver.com">보기</a></td>
-              </tr>
-              <tr>
-                <td colspan="2">위 약관 내용에 동의하십니까?</td>
-              </tr>
-              <tr>
-                  <td> 
-                        <ul><input type="radio" name="2022disagree1" value="동의안함" ></ul>
-                        <ul style="padding-left:100px;">동의안함</ul>
-                  </td>
-                  <td>  <ul><input type="radio" name="2022agree1" value="동의함" checked></ul>
-                        <ul style="padding-left:100px;">동의함</ul>
-              </tr>
-             <tr>
-                <td>통신정보 조회 동의서</td>
-                <td><a href="http://m.facebook.com">보기</a></td>
-              </tr>
-              <tr>
-                <td colspan="2">위 약관 내용에 동의하십니까?</td>
-              </tr>
-              <tr>
-                  <td> 
-                        <ul><input type="radio" name="2022disagree2" value="동의안함" ></ul>
-                        <ul style="padding-left:100px;">동의안함</ul>
-                  </td>
-                  <td>  <ul><input type="radio" name="2022agree2" value="동의함" checked></ul>
-                        <ul style="padding-left:100px;">동의함</ul>
-              </tr>
+        <ul data-role="listview" >
+            <li data-role="list-divider"> 개인신용정보조회 동의</li>
+            <li><a href="#" data-transition="slide" onclick ="common_goBack();">이전 페이지</a></li>
+        </ul>
+    </div>
+    <div data-role="content">
+        <table border="0">
             <tr>
-                <td>통신정보 수집, 이용, 제공 동의서</td>
-                <td><a href="http://m.www.daum.net">보기</a></td>
-              </tr>
-              <tr>
-                <td colspan="2">위 약관 내용에 동의하십니까?</td>
-              </tr>
-              <tr>
-                  <td> 
-                        <ul><input type="radio" name="2022disagree3" value="동의안함" ></ul>
-                        <ul style="padding-left:100px;">동의안함</ul>
-                  </td>
-                  <td>  <ul><input type="radio" name="2022agree3" value="동의함" checked></ul>
-                        <ul style="padding-left:100px;">동의함</ul>
-              </tr>
+                <td>써니뱅크 이용약관</td>
+                <td><input type="button" value="보기" disabled="disabled" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"> 위 약관 내용에 동의하십니까?</td>
+            </tr>
+            <td><input type="radio" name="sunny_agree" value ="N"> </td>
+            <td><input type="radio" name="sunny_agree" value ="Y" checked="checked"> </td>
+            </tr>
+            <tr>
+                <td>개인신용정보조회 동의서</td>
+                <td><input type="button" value="보기" disabled="disabled" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"> 위 내용에 동의하십니까?</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="credit_agree" value ="N"></td>
+                <td><input type="radio" name="credit_agree" value ="Y" checked="checked"></td>
+            </tr>
+            <tr>
+                <td>고객권리 안내문</td>
+                <td><input type="button" value="보기" disabled="disabled" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"> 위 약관 내용에 동의하십니까?</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="info_agree" value ="N"></td>
+                <td><input type="radio" name="info_agree" value ="Y" checked="checked"></td>
+            </tr>
         </table>
+        <input type="hidden" name="value1">
+        <input type="hidden" name="value2">
+        <input type="hidden" name="value3">
+        <input type="hidden" name="value4">
+        <input type="hidden" name="value5">
     </div>
-    
-    
-    <div  style="float: left; width: 50%;">
-           <input type="button" value="취 소" onclick="pushCancel();"/>
-    </div>
-    <div  style="float: left; width: 50%;">
-        <input type="button" value="확 인" onclick="location.href='2023.html'"/>
+    <div data-role="footer" >
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_Cancel();">취소</a>
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
     </div>
 </div>
+</form>
+</body>

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
                 <tr>
                     <td><a href="#" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><input type="image" width="90px" height="100px" src="file:///android_res/drawable/logo.jpg"> </a> <br><center> <h5>해외송금</h5> </center></td>
                     <td><a href="#" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><input type="image" width="90px" height="100px" src="file:///android_res/drawable/logo.jpg"> </a> <br><center> <h5>환전</h5> </center></td>
-                    <td><a href="2001.html" /><input type="image" width="90px" height="100px"  src="file:///android_res/drawable/logo.jpg"> </a> <br> <center> <h5>대출</h5> </center></td>
+                    <td><a onclick="common_movePage('2001.html');"/><input type="image" width="90px" height="100px"  src="file:///android_res/drawable/logo.jpg"> </a> <br> <center> <h5>대출</h5> </center></td>
                     <td><a href="#" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><input type="image" width="90px" height="100px" src="file:///android_res/drawable/logo.jpg"> </a> <br><center> <h5>마이카</h5> </center></td>
                 </tr>
             </table>
@@ -44,7 +45,7 @@
             <input type="button" value ="광고" onclick=""  />
         </div>
 
-        <input type="button" value ="뒤로가기" onclick="window.history.back();" />
+        <input type="button" value ="뒤로가기" onclick="common_goBack();" />
     </div>
 </form>
 </body>

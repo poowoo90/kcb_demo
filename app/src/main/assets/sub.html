@@ -20,19 +20,29 @@
         <div data-role="content">
             <ul data-role="listview" >
                 <li data-role="list-divider"> 내부 도메인</li>
-                <li><a href="sub2.html" data-transition="slide">내부 페이지</a></li>
+
+                <!-- 테스트용
+                <li><a href="#" data-transition="slide" onclick = "onSubmit('file:///android_asset/sub2.html');">내부 페이지</a></li>
+                <li><input type="button" value = "내부페이지" onclick = "onSubmit('file:///android_asset/sub2.html');" ></li>
+                -->
+                <li><input type="button" value = "내부페이지" onclick = "common_movePage('1001.html')" ></li>
+
             </ul>
         </div>
         <div data-role="content">
             <h1>페이지 링크 연습</h1>
             <p>다양한 종류의 링크 연결 </p>
+            <!-- 테스트용
             <a href="#" onclick="window.history.back();" data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" >돌아가기</a>
+            <input type="button" value = "돌아가기"  onclick="pushCancel('N');" >
+            -->
+            <input type="button" value = "돌아가기"  onclick="common_cancel('N');" >
         </div>
         <div data-role="footer" >
             <h4>Footer</h4>
         </div>
         <div>
-            <input type="button" value="클릭" onclick="onSubmit();">
+            <!--<input type="button" value="클릭" onclick="onSubmit();">-->
             <!--<a href="sub2.html" data-role="button" onclick="onSubmit();"> 클릭 </a>-->
 
             <input type="text" name="a1" value='A' id ="a1">

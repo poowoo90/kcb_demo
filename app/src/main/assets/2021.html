@@ -1,30 +1,87 @@
-<<<<<<< HEAD
-﻿<html>
-=======
 <html>
->>>>>>> origin/master
+
 <head>
-    <title>페이지 링크</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-<<<<<<< HEAD
-=======
     <script src="common.js"></script>
->>>>>>> origin/master
+
 </head>
+<script language = "javascript">
+    function nextPage() {
 
-<body>
-<!--<a href="#" onclick="window.history.back();" data-role="button" data-transition="slide"> <input type="image" src="" width="30px" height="30px"></a> -->
-<!--<input type="button" onclick="window.history.back();" data-icon="delete">-->
-<a href="#" data-role="button" data-icon="delete" data-iconpos="left" data-inline="true"  onclick="window.history.back();" ></a>
+        var UsrName = document.querySelector('#UsrName').value;
 
-<!--<input type="button" value ="대출신청(한도 및 금리 조회)" onclick="location.href='2012.html';">-->
-<<<<<<< HEAD
-<a href="2012.html" data-role="button" data-transition="slide">대출신청(한도 및 금리 조회)</a>
-=======
-<a href="2022.html" data-role="button" data-transition="slide">대출신청(한도 및 금리 조회)</a>
->>>>>>> origin/master
-</body>
-</html>
+        //var idNum = document.querySelector('#idNum').value;
+
+        var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
+
+        if(UsrName == "") {
+            alert("이름을 입력하세요.");
+            return false;
+         } else if( document.getElementById('phone2').value == "") {
+            alert("전화번호를 입력하세요.");
+            return false;
+         } else if ( document.getElementById('phone3').value == "") {
+            alert("전화번호를 입력하세요.");
+            return false;
+         }
+
+        var JsonData =
+        {
+            "name" : UsrName,
+            //"idNum" : idNum,
+            "phone" : phone,
+        };
+
+        common_movePage('2022.html', JsonData);
+    }
+</script>
+
+<div data-role="page" id="page">
+    <div data-role="header" >
+        <h1>대출</h1>
+    </div>
+
+    <div style="float: left; width: 70%;">
+        고객정보 입력
+    </div>
+    <div style=" float: left; width: 30%;">
+        번호(1,2,3,4,5)
+    </div>
+
+    <div data-role="content">
+        성명 <input type="email" placeholder="최대 50자 입력" name="name" id="UsrName" maxlength="50">
+    </div>
+    <!--<div data-role="content">
+        ID넘버 <input type="text" placeholder="아이디넘버 13자리 입력" name="idNum" id="idNum">
+    </div>-->
+    <div data-role="content">
+        휴대폰번호
+        <select name="phone1" id="phone1">
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="016">016</option>
+            <option value="070">070</option>
+        </select>
+        <input type="tel" name="phone2" id="phone2" maxlength="4">
+        <input type="tel" name="phone3" id="phone3" maxlength="4">
+    </div>
+    <div data-role="content">
+        <h4>안내
+            <p>(주의)대출신청은 본인에 한해서만 가능합니다</p>
+        </h4>
+    </div>
+
+
+    <div  style="float: left; width: 50%;">
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_Cancel();">취소</a>
+    </div>
+    <div  style="float: left; width: 50%;">
+
+        <input type="button" value="확 인" onclick="nextPage();"/>
+    </div>
+</div>

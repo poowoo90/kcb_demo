@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script src="common.js"></script>
 </head>
 
 
@@ -18,10 +19,12 @@
         <h1>페이지 링크 연습</h1>
         <p>다양한 종류의 링크 연결 </p>
         <div >
-            <a href="#" onclick="window.history.go(-3);"  data-role="button"  data-transition="slide" data-direction="reverse" data-theme="b" >취소</a>
+            <!--<a href="#" onclick="window.history.go(-3);"  data-role="button"  data-transition="slide" data-direction="reverse" data-theme="b" >취소</a>-->
+            <input type="button" value = "취소"  onclick="pushCancel('Y');" >
         </div>
         <div >
-            <a href="index.html"  data-role="button"  data-transition="slide" data-direction="reverse" data-theme="b" >확인</a>
+            <!--<a href="index.html"  data-role="button"  data-transition="slide" data-direction="reverse" data-theme="b" >확인</a>-->
+            <input type="button" value = "확인" onclick = "movePage('file:///android_asset/index.html');" >
         </div>
     </div>
     <div data-role="footer" >
