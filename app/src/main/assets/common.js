@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------------------------------------------------------------------//
 /**
 대출계좌          : loanAccount
-약정금액          : loanLimitAmt
+약정금액          : conAmt
 신용정보평가 금액 : CBAmt
 통신정보평가 금액 : NBAmt
 약정금리          : contractRate
@@ -122,38 +122,23 @@ var CAL  = {
 			"arrearsAmt":0
 			};
 
-/* 비활성화 메뉴 토스트메세지 보이기 */
+//----------------------------------------------------------------------------------------------------------------------------------------//
+// 공통함수
+//----------------------------------------------------------------------------------------------------------------------------------------//
 
-function showAndroidToast(toast) {
-			android.showToast(toast);
-}
 
-/* 취소 버튼에 대한 처리 */
-function common_Cancel() {
-    android.onCancelPressed();
-}
-
-/* 뒤로가기 버튼에 대한 처리 */
+/**
+ * 뒤로가기
+**/
 function common_goBack() {
     window.history.back();
 }
 
-/* 안드로이드에서 데이터 값 받아오기 */
-function common_getJsonData() {
-    window.android.getJsonData();
-}
 
-/* 페이지 이동, 데이터 보내기 */
-function common_movePage(url, jsonData) {
-    if(jsonData != null) {
-    var name = jsonData.name;
-        window.android.movePage(url, JSON.stringify(jsonData));
-    } else {
-        window.android.movePage(url, null);
-    }
-}
 
-/* 해당하는 사용자 정보 보내기 */
+/**
+ * 해당하는 사용자 정보 보내기
+**/
 function common_getUserData(name) {
     //alert("name : " + name);
     name = name.toUpperCase();
@@ -174,28 +159,54 @@ function common_getUserData(name) {
     }
 }
 
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+// Native Call 함수
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+/**
+ * WebBackForwardList 의 index가 1인 곳으로 이동
+**/
+function common_cancel() {
+    android.onCancelPressed();
+}
+
+
+function common_movePage(url, jsonData) {
+
+    if(jsonData != null) {
+        window.android.movePage(url, JSON.stringify(jsonData));
+    } else {
+        window.android.movePage(url, null);
+    }
+}
+
+function common_setJsonDataInit() {
+    window.android.setJsonDataInit();
+}
+
+
+function common_getJsonData() {
+    window.android.getJsonData();
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+// Native Call Back 함수
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------//
 // TEST 용 함수들
 //----------------------------------------------------------------------------------------------------------------------------------------//
 
-/*
-
-function pushCancel(arg) {
-    //alert(arg);
-    android.onCancelPressed(arg);
+function showAndroidToast(toast) {
+    window.android.showToast(toast);
 }
 
-function onSubmit(url) {
+function Test_onSubmit() {
     var result_value = $("#a1").val();
     android.receive(result_value);
-
-    window.android.movePage(url);
+    window.android.movePage();
 }
-
-
-function movePage(url) {
-    window.android.movePage(url);
-}
-
-*/
 

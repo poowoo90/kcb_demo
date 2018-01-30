@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsResult;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
+    final Context myApp = this;
     WebView web;            //웹뷰 선언
     JSONObject jsonData; // 자바스크립트에서 값을 받을 json 변수 선언
 
@@ -61,15 +63,34 @@ public class MainActivity extends AppCompatActivity {
         web.addJavascriptInterface(new WebAppInterface(this), "android"); // 자바스크립트 인터페이스 (이름을 android 로 설정)
 
 
-        web.setWebChromeClient(new WebChromeClient());
+        web.setWebChromeClient(new WebChromeClient() { // 자바스크립트 경고창 사용
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, final android.webkit.JsResult result)
+            {
+                new AlertDialog.Builder(myApp)
+                        .setTitle("알림") // AlertDialog
+                        .setMessage(message)
+                        .setPositiveButton(android.R.string.ok,
+                                new AlertDialog.OnClickListener()
+                                {
+                                    public void onClick(DialogInterface dialog, int which)
+                                    {
+                                        result.confirm();
+                                    }
+                                })
+                        .setCancelable(false)
+                        .create()
+                        .show();
+
+                return true;
+            };
+        });
+
         web.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
                 return false;
-
             }
-
         });
 
         web.loadUrl("file:///android_asset/1001.html"); // 처음 로드할 페이지
@@ -86,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         //int listSize = list.getSize(); // list의 크기
         //web.goBackOrForward(-(list.getCurrentIndex())); // 현재 페이지로 부터 history 수 만큼 뒷 페이지로 이동
 
-        Log.d("[JeongjinKim]", "onBackPressed: During");
         if (list.getCurrentIndex() <= 0 && !web.canGoBack()) { // 처음 들어온 페이지이거나, history 가 없는 경우
             //super.onBackPressed();
 
@@ -136,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
         /* 뒤로가기 */
         @JavascriptInterface
         public void onCancelPressed() {
-            Log.d("[JeongjinKim]", "onCancelPressed: start ");
             web.post(new Runnable() {
                 @Override
                 public void run() {
@@ -144,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
                     web.goBackOrForward(-(list.getCurrentIndex()) + 1);
                 }
             });
-            Log.d("[JeongjinKim]", "onCancelPressed: end ");
         }
 
         /* 페이지 이동, 자바스크립트에서 데이터받기 */
@@ -173,75 +191,29 @@ public class MainActivity extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    web.loadUrl("javascript:onCreate('" + jsonData.toString() + "')"); // 해당 url의 자바스크립트 함수 호출
+                    String args = null;
+                    if(jsonData != null) args = jsonData.toString();
+                    web.loadUrl("javascript:onCreate('" + args + "')"); // 해당 url의 자바스크립트 함수 호출
                 }
             });
         }
+
+
+        /* 자바스크립트 함수로 데이터 전송 */
+        @JavascriptInterface
+        public void setJsonDataInit() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    jsonData = null;
+                }
+            });
+        }
+
 
         //----------------------------------------------------------------------------------------------------------------------------------------//
         // TEST 용 함수들
         //----------------------------------------------------------------------------------------------------------------------------------------//
 
-        /*
-
-        /* 뒤로가기
-        @JavascriptInterface
-        public void onCancelPressed(final String args) {
-            Log.d("[JeongjinKim]", "onCancelPressed: start ");
-            web.post(new Runnable() {
-                @Override
-                public void run() {
-                    WebBackForwardList list = web.copyBackForwardList(); // 누적된 history 를 저장할 변수
-                    Log.d("NGW", "args = [ " + args + " ]");
-                    if(args.equals("Y")){
-                        web.goBackOrForward(-(list.getCurrentIndex()) + 1);
-                    }else if(args.equals("N")) {
-                        if (web.canGoBack()) {
-                            web.goBack();
-                        }
-                    }
-                    web.clearHistory(); // history 삭제
-                }
-            });
-            Log.d("[JeongjinKim]", "onCancelPressed: end ");
-        }
-
-
-        /* 자바스크립트에서 전송된 데이터 받기
-        @JavascriptInterface
-        public void receive(String arg) {
-            receive = arg;      // 자바스크립트에서 받은 데이터
-            //String url = "file:///android_asset/index.html";
-        }
-
-
-        /* 페이지 이동
-        @JavascriptInterface
-        public void movePage(final String receiveUrl) {
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    //web.loadUrl("file:///android_asset/sub2.html"); // url로 페이지 이동
-                    web.loadUrl(receiveUrl); // url로 페이지 이동
-                }
-            });
-        }
-
-        /* 자바스크립트 함수로 데이터 전송
-        @JavascriptInterface
-        public void sendMessage() {
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    web.loadUrl("javascript:receive('" + receive + "')"); // 해당 url의 자바스크립트 함수 호출
-                }
-            });
-        }
-
-         */
-
-
     }
-
-
 }

@@ -8,9 +8,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
-</head>
-
-<script language = "javascript">
+    <script language = "javascript">
 
     function nextPage() {
         var sunny_agree  = document.getElementsByName('sunny_agree' );
@@ -21,14 +19,13 @@
             return false;
         }
         common_movePage('2023.html');
-
     }
+    </script>
+</head>
 
 
 
-</script>
-
-<body leftmargin='0' topmargin='0' onload='onCreate();>
+<body leftmargin='0' topmargin='0'>
 <form name='frm'>
 <div data-role="page" id="page">
     <div data-role="header" >
@@ -37,7 +34,7 @@
     <div data-role="content">
         <ul data-role="listview" >
             <li data-role="list-divider"> 개인신용정보조회 동의</li>
-            <li><a href="#" data-transition="slide" onclick ="common_goBack();">이전 페이지</a></li>
+            <li><a data-transition="slide" onclick ="common_goBack();">이전 페이지</a></li>
         </ul>
     </div>
     <div data-role="content">
@@ -82,9 +79,10 @@
         <input type="hidden" name="value5">
     </div>
     <div data-role="footer" >
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_Cancel();">취소</a>
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_cancel();">취소</a>
         <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
     </div>
 </div>
 </form>
 </body>
+</html>

@@ -8,21 +8,30 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
-    <script language = "javascript"></script>
-</head>
+    <script language = "javascript">
 
-<script language = "javascript">
+    $(document).ready(function() {
+        onInit();
+    });
+
+    function onInit() {
+     	document.getElementById('UsrName').value = "";
+     	document.getElementById('phone2').value = "";
+     	document.getElementById('phone3').value = "";
+     	$("#phone1").val("010").trigger("change");
+    }
+
     function nextPage() {
         var UsrName = document.querySelector('#UsrName').value;
-        var phone = document.querySelector('#tel1').value + document.querySelector('#tel2').value + document.querySelector('#tel3').value;;
+        var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;;
 
         if(UsrName == "") {
             alert("이름을 입력하세요.");
             return false;
-         } else if( document.getElementById('tel2').value == "") {
+         } else if( document.getElementById('phone2').value == "") {
             alert("전화번호를 입력하세요.");
             return false;
-         } else if ( document.getElementById('tel3').value == "") {
+         } else if ( document.getElementById('phone3').value == "") {
             alert("전화번호를 입력하세요.");
             return false;
          }
@@ -30,14 +39,12 @@
         var JsonData =
         {
             "name" : UsrName,
-            "phone" : phone,
+            "phone" : phone
         };
-
-        //alert(JSON.stringify(JsonData));
-
         common_movePage('2012.html', JsonData);
     }
-</script>
+    </script>
+</head>
 
 <body>
 <form name='frm'>
@@ -55,25 +62,25 @@
             <table border="0">
                 <tr>
                     <td>성명</td>
-                    <td colspan="5"><input type="email" placeholder="최대 50자 입력" name="name" id="UsrName" maxlength="50"></td>
+                    <td colspan="5"><input type="email" placeholder="최대 50자 입력" name="UsrName" id="UsrName" maxlength="50"></td>
                 </tr>
                 <tr>
                     <td>휴대폰 번호</td>
-                    <td><select name="tel1" id="tel1">
+                    <td><select name="phone1" id="phone1">
                         <option value="010">010</option>
                         <option value="011">011</option>
                         <option value="016">016</option>
                         <option value="070">070</option>
                     </select></td>
                     <td>-</td>
-                    <td><input type="tel" maxlength="4" name="tel2" id="tel2" size="5"></td>
+                    <td><input type="tel" maxlength="4" name="phone2" id="phone2" size="5"></td>
                     <td>-</td>
-                    <td><input type="tel" maxlength="4" name="tel3" id="tel3" size="5"></td>
+                    <td><input type="tel" maxlength="4" name="phone3" id="phone3" size="5"></td>
                 </tr>
             </table>
         </div>
         <div data-role="footer" >
-            <input type="button" value="취소" onclick="common_Cancel();"/>
+            <input type="button" value="취소" onclick="common_cancel();"/>
             <input type="button" value="확인" onclick="nextPage();">
         </div>
     </div>

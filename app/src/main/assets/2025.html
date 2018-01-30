@@ -23,15 +23,13 @@
         document.getElementById('loanPeriod').value = jsonData.loanPeriod;
     }
 
-
    function nextPage() {
         common_movePage('2001.html');
     }
-
-</script>
+    </script>
 </head>
 
-
+<body>
 <div data-role="page" id="page">
     <div data-role="header" >
         <h1>대출</h1>
@@ -56,11 +54,9 @@
             고객님의 통신정보를 이용한<br>신한 Telco 드림대출 거래가<br>정상적으로 이루어졌습니다.
         </p>
     </div>
-
-
-
     <div  style="float: left; width: 50%;">
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
-
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="common_cancel();">확인</a>
     </div>
-
+</div>
+</body>
+</html>

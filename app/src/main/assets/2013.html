@@ -8,9 +8,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
-</head>
-
-<script language = "javascript">
+    <script language = "javascript">
 
     common_getJsonData();
 
@@ -22,9 +20,9 @@
         var userData = common_getUserData(jsonData.name);
 
         document.getElementById('usrName').value = jsonData.name;
-        document.getElementById('tel1').value = userData.phone.substr(0,3);
-        document.getElementById('tel2').value = userData.phone.substr(3,4);
-        document.getElementById('tel3').value = userData.phone.substr(7,4);
+        document.getElementById('phone1').value = userData.phone.substr(0,3);
+        document.getElementById('phone2').value = userData.phone.substr(3,4);
+        document.getElementById('phone3').value = userData.phone.substr(7,4);
         document.getElementById('officeNm').value = userData.officeNm;
         document.getElementById('annualIncome').value = userData.annualIncome;
         document.getElementById('arrearsYN').value = userData.arrearsYN;
@@ -32,7 +30,20 @@
     }
 
 
-</script>
+    function nextPage() {
+
+        var usrName = document.getElementById('usrName').value;
+
+        var JsonData =
+        {
+            "name" : usrName,
+            "backPage" : '2013.html',
+        };
+        common_movePage('2021.html', JsonData);
+    }
+
+    </script>
+</head>
 
 <body leftmargin='0' topmargin='0'>
 <form name='frm'>
@@ -55,11 +66,11 @@
             </tr>
             <tr>
                 <td>휴대폰 번호</td>
-                <td><input type="text" maxlength="3" size="5" name="tel1" id="tel1" disabled></td>
+                <td><input type="text" maxlength="3" size="5" name="phone1" id="phone1" disabled></td>
                 <td>-</td>
-                <td><input type="text" maxlength="4" size="5" name="tel2" id="tel2" disabled></td>
+                <td><input type="text" maxlength="4" size="5" name="phone2" id="phone2" disabled></td>
                 <td>-</td>
-                <td><input type="text" maxlength="4" size="5" name="tel3" id="tel3" disabled></td>
+                <td><input type="text" maxlength="4" size="5" name="phone3" id="phone3" disabled></td>
             </tr>
         </table>
         <h2>신용(Credit Bureau) 정보</h2>
@@ -83,11 +94,11 @@
         </table>
         <h1>신한 드림대출 불가</h1>
         <p><h2>Blah Blah Blah</h2></p>
-        <input type="button" value="확인" onclick="common_Cancel();"/>
+        <input type="button" value="확인" onclick="common_cancel();"/>
 
         <p><h1>통신정보 대출</h1></p>
         <p><h2>Blah Blah Blah</h2></p>
-        <input type="button" value="바로가기" onclick="common_movePage('2021.html');"/>
+        <input type="button" value="바로가기" onclick="nextPage();"/>
         </div>
     </div>
 </form>

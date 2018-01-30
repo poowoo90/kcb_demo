@@ -1,7 +1,4 @@
 <html>
-
-
-
 <head>
     <title>페이지 링크</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
@@ -9,54 +6,44 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
-</head>
+    <script language = "javascript">
 
+    $(document).ready(function() {
+        common_setJsonDataInit();
+    });
+
+    </script>
+</head>
 <body>
 <div data-role="page" id="page">
-
     <div>
-        <!--<input type="button" onclick="window.history.back();" data-icon="arrow-l">-->
-        <a href="#" data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="common_goBack();" ></a>
+        <a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="common_goBack();" ></a>
         <center><h1> 대출 </h1></center>
-
     </div>
-
     <center>
         <table>
             <tr>
                 <td><a onclick="common_movePage('2011.html');" data-role="button" data-transition="slide">CB 정보대출</a></td>
                 <td><a onclick="common_movePage('2021.html');" data-role="button" data-transition="slide">통신정보 대출</a></td>
-                <!--<td><input type ="button" onclick="location.href='2011.html';" value ="신한드림대출" ></td>
-                <td><input type ="button" onclick="" value ="신한Telco드림대출" ></td>-->
             </tr>
             <tr>
-                <td><a href="#" data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">마이카대출</a></td>
-                <td><a href="#" data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">새희망홀씨 대출</a></td>
-                <!--<td><input type ="button" onclick="" value ="마이카대출" ></td>
-                <td><input type ="button" onclick="" value ="새희망홀씨 대출" ></td>-->
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">마이카대출</a></td>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">새희망홀씨 대출</a></td>
             </tr>
             <tr>
-                <td><a href="#" data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">신한포켓론</a></td>
-                <td><a href="#" data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">직장인 대출</a></td>
-                <!--<td><input type ="button" onclick="" value ="신한포켓론" ></td>
-                <td><input type ="button" onclick="" value ="직장인 대출" ></td>-->
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">신한포켓론</a></td>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">직장인 대출</a></td>
             </tr>
             <tr>
-                <td><a href="#" data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">부동산대출</a></td>
-                <td><a href="#" data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">사잇돌 중금리 대출</a></td>
-                <!--<td><input type ="button" onclick="" value ="부동산대출" ></td>
-                <td><input type ="button" onclick="" value ="사잇돌 중금리 대출" ></td>-->
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">부동산대출</a></td>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">사잇돌 중금리 대출</a></td>
             </tr>
             <tr>
-                <td><a href="#" data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">대출전용 이체서비스</a></td>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">대출전용 이체서비스</a></td>
                 <td>Comming Soon</td>
-                <!--<td><input type ="button" onclick="" value ="대출전용 이체서비스" ></td>
-                <td>Comming Soon</td>-->
             </tr>
         </table>
     </center>
-
     <center><input type="button" value="회원혜택 안내" onclick=""></center>
-
 </div>
 </body>

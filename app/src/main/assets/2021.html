@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿<html>
-=======
 <html>
-
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -11,15 +7,39 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
+    <script language = "javascript">
 
-</head>
-<script language = "javascript">
+    $(document).ready(function() {
+        common_getJsonData();
+    });
+
+    /**
+     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+     */
+    function onCreate(json) {
+        var jsonData = JSON.parse(json);
+        if (jsonData != null && jsonData.backPage != null && jsonData.backPage == '2013.html') {
+            //CB대출통해서 진입
+            var userData = common_getUserData(jsonData.name);
+            document.getElementById('UsrName').value = jsonData.name;
+            document.getElementById('phone1').value = userData.phone.substr(0,3);
+            document.getElementById('phone2').value = userData.phone.substr(3,4);
+            document.getElementById('phone3').value = userData.phone.substr(7,4);
+        } else {
+            //최초진입
+            onInit();
+        }
+    }
+
+    function onInit() {
+     	document.getElementById('UsrName').value = "";
+     	document.getElementById('phone2').value = "";
+     	document.getElementById('phone3').value = "";
+     	$("#phone1").val("010").trigger("change");
+    }
+
     function nextPage() {
-
         var UsrName = document.querySelector('#UsrName').value;
-
-        //var idNum = document.querySelector('#idNum').value;
-
         var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
 
         if(UsrName == "") {
@@ -36,13 +56,14 @@
         var JsonData =
         {
             "name" : UsrName,
-            //"idNum" : idNum,
-            "phone" : phone,
+            "phone" : phone
         };
 
         common_movePage('2022.html', JsonData);
     }
-</script>
+    </script>
+</head>
+
 
 <div data-role="page" id="page">
     <div data-role="header" >
@@ -57,7 +78,7 @@
     </div>
 
     <div data-role="content">
-        성명 <input type="email" placeholder="최대 50자 입력" name="name" id="UsrName" maxlength="50">
+        성명 <input type="email" placeholder="최대 50자 입력" name="UsrName" id="UsrName" maxlength="50">
     </div>
     <!--<div data-role="content">
         ID넘버 <input type="text" placeholder="아이디넘버 13자리 입력" name="idNum" id="idNum">
@@ -81,10 +102,11 @@
 
 
     <div  style="float: left; width: 50%;">
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_Cancel();">취소</a>
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_cancel();">취소</a>
     </div>
     <div  style="float: left; width: 50%;">
 
         <input type="button" value="확 인" onclick="nextPage();"/>
     </div>
 </div>
+</html>
