@@ -23,4 +23,7 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="SplashTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@drawable/splash_image</item>
+    </style>
 </resources>
