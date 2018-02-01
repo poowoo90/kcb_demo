@@ -135,7 +135,6 @@ function common_goBack() {
 }
 
 
-
 /**
  * 해당하는 사용자 정보 보내기
 **/
@@ -159,6 +158,14 @@ function common_getUserData(name) {
     }
 }
 
+function common_delay(gap) {
+    var then, now;
+    then = new Date().getTime();
+    now = then;
+    while ((now - then) < gap) {
+        now = new Date().getTime();  // 현재시간을 읽어 함수를 불러들인 시간과의 차를 이용하여 처리
+    }
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
 // Native Call 함수
@@ -177,7 +184,9 @@ function common_movePage(url, jsonData) {
     common_startLoding();
 
     if(url == '2013.html' || url == '2023.html' || url == '2024.html' || url == '2025.html' ) {
-        delay(2000);
+        common_delay(2000);
+    } else {
+        common_delay(500);
     }
 
     if(jsonData != null) {
@@ -225,12 +234,3 @@ function Test_onSubmit() {
     android.receive(result_value);
     window.android.movePage();
 }
-
-function delay(gap) {
-        var then, now;
-        then = new Date().getTime();
-        now = then;
-        while ((now - then) < gap) {
-            now = new Date().getTime();  // 현재시간을 읽어 함수를 불러들인 시간과의 차를 이용하여 처리
-        }
-    }
