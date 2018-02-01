@@ -174,6 +174,12 @@ function common_cancel() {
 
 function common_movePage(url, jsonData) {
 
+    common_startLoding();
+
+    if(url == '2013.html' || url == '2023.html' || url == '2024.html' || url == '2025.html' ) {
+        delay(2000);
+    }
+
     if(jsonData != null) {
         window.android.movePage(url, JSON.stringify(jsonData));
     } else {
@@ -189,6 +195,16 @@ function common_setJsonDataInit() {
 function common_getJsonData() {
     window.android.getJsonData();
 }
+
+
+function common_stopLoding() {
+    window.android.stopLoding();
+}
+
+function common_startLoding() {
+    window.android.startLoding();
+}
+
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
@@ -210,3 +226,11 @@ function Test_onSubmit() {
     window.android.movePage();
 }
 
+function delay(gap) {
+        var then, now;
+        then = new Date().getTime();
+        now = then;
+        while ((now - then) < gap) {
+            now = new Date().getTime();  // 현재시간을 읽어 함수를 불러들인 시간과의 차를 이용하여 처리
+        }
+    }

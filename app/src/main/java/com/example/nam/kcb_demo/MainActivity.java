@@ -3,6 +3,7 @@ package com.example.nam.kcb_demo;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
@@ -10,24 +11,28 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.webkit.JavascriptInterface;
-import android.webkit.JsResult;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
+
 public class MainActivity extends AppCompatActivity {
     final Context myApp = this;
     WebView web;            //웹뷰 선언
     JSONObject jsonData; // 자바스크립트에서 값을 받을 json 변수 선언
+    public MyProgressDialog progressDialog;
+
 
     /* 테스트용 변수 */
     // String receive = "";   // 자바스크립트에서 값을 받을 변수 선언
@@ -46,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
         // setOrientation(LinearLayout.VERTICAL)   : 수직
         // setOrientation(1) : 세로정렬, setOrientation(0) : 가로정렬
 
-        web = new WebView(this);                        // 웹뷰 생성
-        WebSettings webSet = web.getSettings();                   // 웹뷰 설정
+        web = new WebView(this);                      // 웹뷰 생성
+        layout.addView(web);
 
+        // 웹뷰 세팅
+        WebSettings webSet = web.getSettings();                   // 웹뷰 설정
         webSet.setJavaScriptEnabled                     (true) ; // 자바스크립트 허용
         webSet.setUseWideViewPort                       (true) ; // 웹뷰에 맞게 출력하기
         webSet.setBuiltInZoomControls                   (false); // 안드로이드 내장 줌 컨트롤 사용 X
@@ -94,13 +101,31 @@ public class MainActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
             }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                //onLodingStart();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+                onLodingStop();
+
+//                Log.d("MainActivity", "url =" + url);
+//
+//                if("file:///android_asset/2001.html".equals(url)) {
+//                    web.loadUrl("javascript:delay()"); // 해당 url의 자바스크립트 함수 호출
+//                } else {
+//
+//                }
+            }
+
         });
-
         web.loadUrl("file:///android_asset/1001.html"); // 처음 로드할 페이지
-        layout.addView(web);
         setContentView(layout);
-
-
     }
 
     /* 물리 백버튼키 처리 */
@@ -137,6 +162,16 @@ public class MainActivity extends AppCompatActivity {
             web.clearHistory(); // history 삭제
 
         }
+    }
+
+    public void onLodingStart() {
+
+        progressDialog = MyProgressDialog.show(myApp,"","",true,true,null);
+        //progressDialog.setIcon
+    }
+
+    public void onLodingStop() {
+        if(progressDialog != null ) progressDialog.dismiss();
     }
 
     /* 안드로이드와 자바스크립트간의 데이터 주고 받기 */
@@ -213,10 +248,30 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        @JavascriptInterface
+        public void stopLoding() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    onLodingStop();
+                }
+            });
+        }
+
+        /* 자바스크립트 함수로 데이터 전송 */
+        @JavascriptInterface
+        public void startLoding() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    onLodingStart();
+                }
+            });
+        }
+
 
         //----------------------------------------------------------------------------------------------------------------------------------------//
         // TEST 용 함수들
         //----------------------------------------------------------------------------------------------------------------------------------------//
-
     }
 }
