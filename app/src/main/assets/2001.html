@@ -6,91 +6,44 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
+    <script language = "javascript">
 
-    <script>
+    $(document).ready(function() {
+        common_setJsonDataInit();
+    });
 
-    document.addEventListener("touchstart", this.onStart.bind(this), false);
-    document.addEventListener("touchend", this.onEnd.bind(this), false);
-
-    function onStart(e) {
-        var idNum = e.target.getAttribute('id');
-        $('#' + idNum).css({'background-size': '70px 80px'});
-    }
-
-    function onEnd(e) {
-        var idNum = e.target.getAttribute('id');
-        $('#' + idNum).css({'background-size': '90px 100px'});
-    }
-
-
-</script>
-    <style>
-    html {
-        -webkit-touch-callout:none;
-        -webkit-user-select:none;
-        -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-    }
-
-    body {
-        margin:0px;
-    }
-
-    div {
-        padding:20px;
-    }
-
-    .selected{
-         background:red;
-    }
-    a.button {
-        display:block;
-        width:90px;
-        height:100px;
-        background:url("file:///android_res/drawable/logo.jpg") no-repeat;
-        background-size:90px 100px;
-        font-family:sans-serif;
-        font-size:12px;
-        color:#FFFFFF;
-        text-shadow:-1px -1px 0px rgba(0, 0, 0, 0.3);
-        line-height:28px;
-        text-align:center;
-        margin:0 auto;
-    }
-</style>
+    </script>
 </head>
 <body>
-<form>
-    <div data-role="page" id="page">
-        <div>
-            <center><h1> SUNNY BANK </h1></center>
-        </div>
-        <center>
-            <table>
-                <tr>
-                    <td><a class="button" id="ha" name="ha"></a></td>
-                    <td><a class="button" id="hi" name="hi"></a></td>
-                    <td><a class="button" id="ho" name="ho"></a></td>
-                    <td><a class="button" id="he" name="he"></a> </td>
-                </tr>
-                <tr>
-                    <td><a class="button" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" />  </td>
-                    <td><a class="button" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" />   </td>
-                    <td><a onclick="common_movePage('2001.html');"/> <br> <center> <h5>대출</h5> </center></td>
-                    <td><a class="button" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /> </td>
-                </tr>
-            </table>
-        </center>
-        <div>
-            금융의 힘으로 세상을 이롭게 ~ 100% 모바일 금융 플랫폼 써니뱅크
-        </div>
-        <div>
-            <input type="button" value ="광고" onclick=""/>
-        </div>
-        <div >
-            <input type="button" value ="광고" onclick=""  />
-        </div>
-        <input type="button" value ="뒤로가기" onclick="common_goBack();" />
+<div data-role="page" id="page">
+    <div>
+        <a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="common_goBack();" ></a>
+        <center><h1> 대출 </h1></center>
     </div>
-</form>
+    <center>
+        <table>
+            <tr>
+                <td><a onclick="common_movePage('2011.html');" data-role="button" data-transition="slide">CB 정보대출</a></td>
+                <td><a onclick="common_movePage('2021.html');" data-role="button" data-transition="slide">통신정보 대출</a></td>
+            </tr>
+            <tr>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">마이카대출</a></td>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">새희망홀씨 대출</a></td>
+            </tr>
+            <tr>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">신한포켓론</a></td>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">직장인 대출</a></td>
+            </tr>
+            <tr>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">부동산대출</a></td>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">사잇돌 중금리 대출</a></td>
+            </tr>
+            <tr>
+                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">대출전용 이체서비스</a></td>
+                <td>Comming Soon</td>
+            </tr>
+        </table>
+    </center>
+    <center><input type="button" value="회원혜택 안내" onclick=""></center>
+</div>
 </body>
-</html>
