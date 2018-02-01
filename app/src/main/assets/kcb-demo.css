@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+a.button {
+     display:block;
+     width:90px;
+     height:100px;
+     background:url("file:///android_res/drawable/logo.jpg") no-repeat;
+     background-size:90px 100px;
+     font-family:sans-serif;
+     font-size:12px;
+     color:#FFFFFF;
+     text-shadow:-1px -1px 0px rgba(0, 0, 0, 0.3);
+     line-height:28px;
+     text-align:center;
+     margin:0 auto;
+}

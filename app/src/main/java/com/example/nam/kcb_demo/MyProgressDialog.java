@@ -1,6 +1,5 @@
 package com.example.nam.kcb_demo;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -49,7 +48,7 @@ public class MyProgressDialog extends Dialog {
         TextView textView1 = new TextView(context);
         TextView textView2 = new TextView(context);
         textView1.setText("100% 모바일 금융플랫폼");
-        textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+        textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView1.setGravity(Gravity.CENTER_HORIZONTAL);
         textView1.setTextColor(context.getResources().getColor(R.color.colorAccent));
 

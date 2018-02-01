@@ -3,21 +3,28 @@
     <title>페이지 링크</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link rel="stylesheet" href="file:///android_asset/kcb-demo.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
     <script language = "javascript">
 
+    document.addEventListener("touchstart", this.onStart.bind(this), false);
+    document.addEventListener("touchend", this.onEnd.bind(this), false);
+
+    function onStart(e) {
+        var idNum = e.target.getAttribute('id');
+        $('#' + idNum).css({'background-size': '70px 80px'});
+    }
+
+    function onEnd(e) {
+        var idNum = e.target.getAttribute('id');
+        $('#' + idNum).css({'background-size': '90px 100px'});
+    }
+
     $(document).ready(function() {
-
         common_setJsonDataInit();
-
-        //delay(2000);
-
     });
-
-
-
 
     </script>
 </head>
@@ -30,7 +37,7 @@
         <center>
             <table>
                 <tr>
-                    <td><a onclick="common_stopLoding();" /><input type="image" width="90px" height="100px" src="file:///android_res/drawable/logo.jpg"> </a> <br><center> <h5>예금가입</h5> </center></td>
+                    <td><a class="button" id="ha" name="ha" /><br></a><center> <h5>예금가입</h5> </center></td>
                     <td><a onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><input type="image" width="90px" height="100px" src="file:///android_res/drawable/logo.jpg"> </a> <br><center> <h5>계좌조회</h5> </center></td>
                     <td><a onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><input type="image" width="90px" height="100px" src="file:///android_res/drawable/logo.jpg"> </a> <br><center> <h5>간편이체</h5> </center></td>
                     <td><a onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><input type="image" width="90px" height="100px" src="file:///android_res/drawable/logo.jpg"> </a> <br><center> <h5>앱출금/카드</h5> </center></td>
