@@ -9,7 +9,6 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
     <script language = "javascript">
-
     common_getJsonData();
 
     /**
@@ -32,31 +31,28 @@
 <body>
 <div data-role="page" id="page">
     <div data-role="header" >
-        <h1>대출</h1>
+        <h1>2025화면</h1>
     </div>
-
-    <div style="float: left; width: 70%;">
-        대출 실행결과
-    </div>
-    <div style=" float: left; width: 30%;">
-        번호(1,2,3,4,5)
+    <div data-role="content" style="margin-top:13%;">
+        <ul data-role="listview" >
+            <li data-role="list-divider">대출실행 결과</li>
+        </ul>
     </div>
 
     <div data-role="content">
-        약정금액  <input type="text" id="UsrReqPay"  name="UsrReqPay"  readonly>원
-        약정금리  <input type="text" id="contractRate" name="contractRate" readonly>원
-        입금계좌  <input type="text" id="loanAccount" name="loanAccount" readonly>원
-        대출기간  <input type="text" id="loanPeriod" name="loanPeriod" readonly>원
+        약정금액  <input type="text" id="UsrReqPay"  name="UsrReqPay"  readonly>
+        약정금리  <input type="text" id="contractRate" name="contractRate" readonly>
+        입금계좌  <input type="text" id="loanAccount" name="loanAccount" readonly>
+        대출기간  <input type="text" id="loanPeriod" name="loanPeriod" readonly>
     </div>
     <div data-role="content" style="align-content: center">
         <h1>신한 Telco 드림대출 완료</h1>
         <p>
-            고객님의 통신정보를 이용한<br>신한 Telco 드림대출 거래가<br>정상적으로 이루어졌습니다.
+            고객님의 통신정보를 이용한 신한 Telco 드림대출 거래가<br>정상적으로 이루어졌습니다.
         </p>
     </div>
-    <div  style="float: left; width: 50%;">
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="common_cancel();">확인</a>
+  <div data-role="footer" >
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
     </div>
-</div>
 </body>
 </html>

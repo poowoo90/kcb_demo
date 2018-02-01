@@ -9,7 +9,6 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
 
-
     <script language = "javascript">
 
     common_getJsonData();
@@ -61,18 +60,13 @@
 <body leftmargin='0' topmargin='0'>
 <div data-role="page" id="page">
     <div data-role="header" >
-        <h1>대출</h1>
+        <h1>2024화면</h1>
     </div>
-
-    <div style="float: left; width: 70%;">
-        대출 정보입력
-    </div>
-    <div style=" float: left; width: 30%;">
-        번호(1,2,3,4,5)
-    </div>
-
-    <div data-role="content">
-        고객정보
+    <div data-role="content" style="margin-top:13%;">
+        <ul data-role="listview" >
+            <li data-role="list-divider">대출신청정보 확인</li>
+            <li><a data-transition="slide" onclick ="common_goBack();">이전 페이지</a></li>
+        </ul>
     </div>
     <div data-role="content">
         성명       <input type="text" id="UsrName" name="UsrName">원
@@ -105,13 +99,9 @@
         입금계좌       <input type="number" id="loanAccount"  name="loanAccount"  readonly>
     </div>
 
-    <div  style="float: left; width: 50%;">
-
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_cancel();">취소</a>
-    </div>
-    <div  style="float: left; width: 50%;">
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
-
+    <<div data-role="footer" >
+    <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_cancel();">취소</a>
+    <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
     </div>
 </div>
 </body>

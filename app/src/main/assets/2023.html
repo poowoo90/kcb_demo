@@ -8,6 +8,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
+
     <script language = "javascript">
 
     common_getJsonData();
@@ -43,14 +44,13 @@
 
         if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay) {
             document.querySelector('#UsrReqPay').value = "";
-            alert('대출신청금액을 확인해 주세요');
+            alert('확인해 주세요');
             return false;
         }
-
         var JsonData =
         {
             "name" : UsrName,
-            "reqPay" : UsrReqPay
+            "reqPay" : UsrReqPay,
         };
         common_movePage('2024.html', JsonData);
     }
@@ -62,21 +62,16 @@
 <body leftmargin='0' topmargin='0'>
 <div data-role="page" id="page">
     <div data-role="header" >
-        <h1>대출</h1>
+        <h1>2023화면</h1>
     </div>
-
-    <div style="float: left; width: 70%;">
-        대출 정보입력
-    </div>
-    <div style=" float: left; width: 30%;">
-        번호(1,2,3,4,5)
-    </div>
-
-    <div data-role="content">
-        고객정보
+    <div data-role="content" style="margin-top:13%;">
+        <ul data-role="listview" >
+            <li data-role="list-divider">대출심사조회 및 신청</li>
+            <li><a data-transition="slide" onclick ="common_goBack();">이전 페이지</a></li>
+        </ul>
     </div>
     <div data-role="content">
-        성명       <input type="text" id="UsrName" name="UsrName">원
+        성명       <input type="text" id="UsrName" name="UsrName">
         휴대폰번호 <input type="text" id="phone1" name="phone1" readonly> -
         <input type="tel" id="phone2" name="phone2" readonly> -
         <input type="tel" id="phone3" name="phone3" readonly>
@@ -85,34 +80,30 @@
         신용(Credit Bureau) 정보
     </div>
     <div data-role="content">
-        직장명   <input type="text" id="officeNm"  name="officeNm"  readonly>원
-        연소득   <input type="number" id="annualIncome" name="annualIncome" readonly>원
-        연체여부 <input type="text" id="arrearsYN" name="arrearsYN" readonly>원
-        연체금액 <input type="number" id="arrearsAmt" name="arrearsAmt" readonly>원
+        직장명   <input type="text" id="officeNm"  name="officeNm"  readonly>
+        연소득   <input type="number" id="annualIncome" name="annualIncome" readonly>
+        연체여부 <input type="text" id="arrearsYN" name="arrearsYN" readonly>
+        연체금액 <input type="number" id="arrearsAmt" name="arrearsAmt" readonly>
     </div>
     <div data-role="content">
         대출정보
     </div>
     <div data-role="content">
-        한도금액(만원) <input type="number" id="conAmt"  name="conAmt"  readonly>원
-        신용정보평가금액   <input type="number" id="CBAmt" name="CBAmt" readonly>원
-        통신정보평가금액 <input type="number" id="NBAmt" name="NBAmt" readonly>원
-        약정금리     <input type="number" id="contractRate" name="contractRate" readonly>원
-        신용정보평가금리 <input type="number" id="CBRate" name="CBRate" readonly>원
-        통신정보평가금리 <input type="number" id="NBRate" name="NBRate" readonly>원
+        한도금액(만원) <input type="number" id="conAmt"  name="conAmt"  readonly>
+        신용정보평가금액   <input type="number" id="CBAmt" name="CBAmt" readonly>
+        통신정보평가금액 <input type="number" id="NBAmt" name="NBAmt" readonly>
+        약정금리     <input type="number" id="contractRate" name="contractRate" readonly>
+        신용정보평가금리 <input type="number" id="CBRate" name="CBRate" readonly>
+        통신정보평가금리 <input type="number" id="NBRate" name="NBRate" readonly>
     </div>
     <div data-role="content">
         신청금액(만원) <input type="number" id="UsrReqPay"  name="UsrReqPay"  >
-        입금계좌       <input type="number" id="loanAccount"  name="loanAccount"  >
+        입금계좌       <input type="number" id="loanAccount"  name="loanAccount" readonly>
     </div>
 
-    <div  style="float: left; width: 50%;">
-
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_Cancel();">취소</a>
-    </div>
-    <div  style="float: left; width: 50%;">
+    <div data-role="footer" >
+        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_cancel();">취소</a>
         <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
-
     </div>
 </div>
 </body>

@@ -4,6 +4,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1" >
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link rel="stylesheet" href="file:///android_asset/kcb-demo.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="common.js"></script>
@@ -66,17 +67,22 @@
 
 
 <div data-role="page" id="page">
-    <div data-role="header" >
-        <h1>대출</h1>
-    </div>
-
-    <div style="float: left; width: 70%;">
-        고객정보 입력
-    </div>
-    <div style=" float: left; width: 30%;">
-        번호(1,2,3,4,5)
-    </div>
-
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">조회이체</a>
+            <a href="#">예금</a>
+            <a href="#">대출</a>
+            <a href="#">외환</a>
+        </div>
+        <div id="main">
+            <span style="font-size:20px;cursor:pointer" ><img src="file:///android_res/drawable/btn_menu.png" width="28" onclick="openNav()"/> &nbsp; 2022화면</span>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" >
+                <li data-role="list-divider">고객정보 입력</li>
+                <li><a data-transition="slide" onclick ="common_goBack();">이전 페이지</a></li>
+            </ul>
+        </div>
     <div data-role="content">
         성명 <input type="email" placeholder="최대 50자 입력" name="UsrName" id="UsrName" maxlength="50" style='text-transform: uppercase;'>
     </div>
