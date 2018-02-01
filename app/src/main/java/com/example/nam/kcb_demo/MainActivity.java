@@ -10,8 +10,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Window;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
@@ -111,18 +109,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-
                 onLodingStop();
-
-//                Log.d("MainActivity", "url =" + url);
-//
-//                if("file:///android_asset/2001.html".equals(url)) {
-//                    web.loadUrl("javascript:delay()"); // 해당 url의 자바스크립트 함수 호출
-//                } else {
-//
-//                }
             }
-
         });
         web.loadUrl("file:///android_asset/1001.html"); // 처음 로드할 페이지
         setContentView(layout);
@@ -165,9 +153,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLodingStart() {
-
         progressDialog = MyProgressDialog.show(myApp,"","",true,true,null);
-        //progressDialog.setIcon
+
     }
 
     public void onLodingStop() {
