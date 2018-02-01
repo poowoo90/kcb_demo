@@ -140,7 +140,7 @@ function common_goBack() {
 **/
 function common_getUserData(name) {
     //alert("name : " + name);
-    name = name.toUpperCase();
+    //name = name.toUpperCase();
     if(name == 'SUZAN') {
         return SUZAN;
     } else if(name == 'AMIE') {
