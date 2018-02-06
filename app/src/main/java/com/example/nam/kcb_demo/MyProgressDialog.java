@@ -3,6 +3,7 @@ package com.example.nam.kcb_demo;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -51,6 +52,14 @@ public class MyProgressDialog extends Dialog {
         textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView1.setGravity(Gravity.CENTER_HORIZONTAL);
         textView1.setTextColor(context.getResources().getColor(R.color.colorAccent));
+
+        // Font 설정
+        String TYPEFACE_NAME = "NanumPen.otf";
+        Typeface typeface = null;
+        typeface = Typeface.createFromAsset(context.getAssets(), "Fonts/" + TYPEFACE_NAME);
+        textView1.setTypeface(typeface);
+
+
 
         textView2.setText("SUNNY BANK");
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 32);
