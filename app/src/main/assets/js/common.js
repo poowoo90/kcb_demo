@@ -185,6 +185,8 @@ function common_movePage(url, jsonData) {
 
     if(url == '2013.html' || url == '2023.html' || url == '2024.html' || url == '2025.html' ) {
         common_delay(2000);
+    } else if (url == '1001.html' || url == '2001.html') {
+        common_delay(500);
     } else {
         common_delay(1000);
     }

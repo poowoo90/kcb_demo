@@ -1,19 +1,15 @@
 package com.example.nam.kcb_demo;
 
+import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-/**
- * Created by JH on 2018-01-31.
- */
 
 public class MyProgressDialog extends Dialog {
 
@@ -48,24 +44,37 @@ public class MyProgressDialog extends Dialog {
 
         TextView textView1 = new TextView(context);
         TextView textView2 = new TextView(context);
-        textView1.setText("100% 모바일 금융플랫폼");
-        textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+
+        textView1.setText("100% MOBILE Banking Platform");
+        textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
         textView1.setGravity(Gravity.CENTER_HORIZONTAL);
         textView1.setTextColor(context.getResources().getColor(R.color.colorAccent));
 
-        // Font 설정
-        String TYPEFACE_NAME = "NanumPen.otf";
-        Typeface typeface = null;
-        typeface = Typeface.createFromAsset(context.getAssets(), "Fonts/" + TYPEFACE_NAME);
-        textView1.setTypeface(typeface);
-
-
-
         textView2.setText("SUNNY BANK");
-        textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 32);
+        textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         textView2.setTextColor(context.getResources().getColor(R.color.colorAccent));
         textView2.setGravity(Gravity.CENTER_HORIZONTAL);
         textView2.setTypeface(textView2.getTypeface(), Typeface.BOLD);
+
+        // Font 설정
+        String NotoSansCJKkr_Bold       = "NotoSansCJKkr_Bold.otf";
+        String NotoSansCJKkr_Medum      = "NotoSansCJKkr_Medium.otf";
+        String NotoSansCJKkr_Regular    = "NotoSansCJKkr_Regular.otf";
+        String Montserrat               = "Montserrat_SemiBold_0.ttf";
+
+        Typeface typeNotoSansCJKkr_Bold     = null;
+        Typeface typeNotoSansCJKkr_Medum    = null;
+        Typeface typeNotoSansCJKkr_Regular  = null;
+        Typeface typeMontserrat       = null;
+
+
+        typeNotoSansCJKkr_Bold      = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Bold);
+        typeNotoSansCJKkr_Medum     = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Medum);
+        typeNotoSansCJKkr_Regular   = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Regular);
+        typeMontserrat              = Typeface.createFromAsset(context.getAssets(), "fonts/" + Montserrat);
+
+        textView1.setTypeface(typeNotoSansCJKkr_Medum);
+        textView2.setTypeface(typeNotoSansCJKkr_Bold);
 
         linearLayout.addView(textView1);
         linearLayout.addView(textView2);
