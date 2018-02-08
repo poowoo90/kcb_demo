@@ -381,6 +381,9 @@ button[disabled] {
 	padding-left: 5px;
 	border: 1px solid #69b6df;
 	border-radius: 8px;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
 	background: #ddf3fe;
 	box-sizing: border-box;
 	color: #212121;
