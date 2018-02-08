@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
             public boolean onJsAlert(WebView view, String url, String message, final android.webkit.JsResult result)
             {
                 new AlertDialog.Builder(myApp)
-                        .setTitle("Warning") // AlertDialog
-                        .setIcon(R.drawable.warning_icon) //warning icon add
+//                        .setTitle("Warning") // AlertDialog
+//                        .setIcon(R.drawable.warning_icon) //warning icon add
                         .setMessage(message)
                         .setPositiveButton("OK",
                                 new AlertDialog.OnClickListener()
