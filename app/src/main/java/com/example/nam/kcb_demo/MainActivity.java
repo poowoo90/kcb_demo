@@ -10,6 +10,10 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
@@ -43,19 +47,15 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        LinearLayout layout = new LinearLayout(this);  // 레이아웃 설정
-        layout.setOrientation(1);                                // setOrientation(LinearLayout.HORIZONTAL) : 수평
-        // setOrientation(LinearLayout.VERTICAL)   : 수직
-        // setOrientation(1) : 세로정렬, setOrientation(0) : 가로정렬
+        setContentView(R.layout.activity_main);
 
-        web = new WebView(this);                      // 웹뷰 생성
-        layout.addView(web);
+        WebView web = (WebView) findViewById(R.id.webview); //웹뷰 선언
 
         // 웹뷰 세팅
         WebSettings webSet = web.getSettings();                   // 웹뷰 설정
         webSet.setJavaScriptEnabled                     (true) ; // 자바스크립트 허용
+        webSet.setLoadWithOverviewMode(true);
         webSet.setUseWideViewPort                       (true) ; // 웹뷰에 맞게 출력하기
         webSet.setBuiltInZoomControls                   (false); // 안드로이드 내장 줌 컨트롤 사용 X
         webSet.setAllowUniversalAccessFromFileURLs      (true) ; // file://URL이면 어느 오리진에 대해서도 Ajax로 요청을 보낼 수 있다.
@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         web.loadUrl("file:///android_asset/1001.html"); // 처음 로드할 페이지
-        setContentView(layout);
     }
 
     /* 물리 백버튼키 처리 */
