@@ -1,66 +1,53 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>페이지 링크</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <link rel="stylesheet" href="file:///android_asset/kcb-demo.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    <script src="common.js"></script>
+    <script src="js/common.js"></script>
     <script language = "javascript">
 
-    document.addEventListener("touchstart", this.onStart.bind(this), false);
-    document.addEventListener("touchend", this.onEnd.bind(this), false);
+  $(document).ready(function() {
+      common_setJsonDataInit();
+  });
 
-    function onStart(e) {
-        var idNum = e.target.getAttribute('id');
-        $('#' + idNum).css({'background-size': '70px 80px'});
-    }
-
-    function onEnd(e) {
-        var idNum = e.target.getAttribute('id');
-        $('#' + idNum).css({'background-size': '90px 100px'});
-    }
-
-    $(document).ready(function() {
-        common_setJsonDataInit();
-    });
-
-    </script>
+  </script>
 </head>
 <body>
-<form>
-    <div data-role="page" id="page">
-        <div>
-            <center><h1> SUNNY BANK </h1></center>
+<div class="wrap">
+    <div class="main">
+        <div class="gnb">
+            <button type="button" class="btn_first btn_animation"><span class="blind">My</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn_middle btn_animation"><span class="blind">SUNNY BANK</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
         </div>
-        <center>
-            <table>
-                <tr>
-                    <td><a class="button" id="button1" name="button1" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><br></a><center> <h5>예금가입</h5> </center></td>
-                    <td><a class="button" id="button2" name="button2" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><br></a><center> <h5>계좌조회</h5> </center></td>
-                    <td><a class="button" id="button3" name="button3" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><br></a><center> <h5>간편이체</h5> </center></td>
-                    <td><a class="button" id="button4" name="button4" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><br></a><center> <h5>앱출금/카드</h5> </center></td>
-                </tr>
-                <tr>
-                    <td><a class="button" id="button5" name="button5" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><br></a><center> <h5>해외송금</h5> </center></td>
-                    <td><a class="button" id="button6" name="button6" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><br></a><center> <h5>환전</h5> </center></td>
-                    <td><a onclick="common_movePage('2001.html');"/><input type="image" width="90px" height="100px"  src="file:///android_res/drawable/logo.jpg"> </a> <br> <center> <h5>대출</h5> </center></td>
-                    <td><a class="button" id="button7" name="button7" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [대출] 이미지를 클릭하여 서비스를 이용하시기 바랍니다.');" /><br></a><center> <h5>마이카</h5> </center></td>
-                </tr>
-            </table>
-        </center>
-        <div>
-            금융의 힘으로 세상을 이롭게 ~ 100% 모바일 금융 플랫폼 써니뱅크
+        <div class="tab">
+            <button type="button" class="btn btn_animation"><span class="blind">Sunny Lift</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">Mobile Bank</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">All In One Banking Services</span><span class="dummy_disabled"></span></button>
         </div>
-        <div>
-            <input type="button" value ="광고" onclick=""/>
+        <div class="main_menu">
+            <button type="button" class="btn btn_animation"><span class="blind">Deposit Entry</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">Account Inquiry</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">Simple Transfer</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">Withdrawal</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">Overseas remittance</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">Currency Exchange</span><span class="dummy_disabled"></span></button>
+            <button type="button" class="btn btn_animation" onclick="common_movePage('2001.html');"><span class="blind">Loan</span><span class="dummy_active"></span></button>
+            <button type="button" class="btn btn_animation"><span class="blind">Automobile Finance Services</span><span class="dummy_disabled"></span></button>
         </div>
-        <div >
-            <input type="button" value ="광고" onclick=""  />
-        </div>
-        <input type="button" value ="뒤로가기" onclick="common_goBack();" />
+
+        <button type="button" class="btn_banner1 btn_animation"><span class="blind">100% Mobile Banking Platform</span><span class="dummy_disabled"></span></button>
+
+        <button type="button" class="btn_banner2 btn_animation"><span class="blind">SH-S Dream Loan is available all year, 24 / 7. No documents needed.</span><span class="dummy_disabled"></span></button>
+
+        <button type="button" class="btn_banner3 btn_animation"><span class="blind">Newly Released Personalized IRP Service</span><span class="dummy_disabled"></span></button>
     </div>
-</form>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
 </body>
 </html>

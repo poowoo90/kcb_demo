@@ -76,9 +76,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onJsAlert(WebView view, String url, String message, final android.webkit.JsResult result)
             {
                 new AlertDialog.Builder(myApp)
-                        .setTitle("알림") // AlertDialog
+                        .setTitle("Warning") // AlertDialog
+                        .setIcon(R.drawable.warning_icon) //warning icon add
                         .setMessage(message)
-                        .setPositiveButton(android.R.string.ok,
+                        .setPositiveButton("OK",
                                 new AlertDialog.OnClickListener()
                                 {
                                     public void onClick(DialogInterface dialog, int which)
@@ -129,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     //.setTitle("Exit!")
-                    .setMessage("SUNNY BANK앱을 종료하시겠습니까?")
-                    .setPositiveButton("예", new DialogInterface.OnClickListener()
+                    .setMessage("Do you want to exit the application?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     })
-                    .setNegativeButton("아니오", null)
+                    .setNegativeButton("No", null)
                     .show();
 
         } else { // history 가 있는 경우
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
             if (web.canGoBack()) {
                 web.goBack();
             }
+
 
             web.clearHistory(); // history 삭제
 
