@@ -57,24 +57,24 @@ public class MyProgressDialog extends Dialog {
         textView2.setTypeface(textView2.getTypeface(), Typeface.BOLD);
 
         // Font 설정
-        String NotoSansCJKkr_Bold       = "NotoSansCJKkr_Bold.otf";
-        String NotoSansCJKkr_Medum      = "NotoSansCJKkr_Medium.otf";
-        String NotoSansCJKkr_Regular    = "NotoSansCJKkr_Regular.otf";
-        String Montserrat               = "Montserrat_SemiBold_0.ttf";
+//        String NotoSansCJKkr_Bold       = "NotoSansCJKkr_Bold.otf";
+//        String NotoSansCJKkr_Medum      = "NotoSansCJKkr_Medium.otf";
+//        String NotoSansCJKkr_Regular    = "NotoSansCJKkr_Regular.otf";
+//        String Montserrat               = "Montserrat_SemiBold_0.ttf";
 
-        Typeface typeNotoSansCJKkr_Bold     = null;
-        Typeface typeNotoSansCJKkr_Medum    = null;
-        Typeface typeNotoSansCJKkr_Regular  = null;
-        Typeface typeMontserrat       = null;
+//        Typeface typeNotoSansCJKkr_Bold     = null;
+//        Typeface typeNotoSansCJKkr_Medum    = null;
+//        Typeface typeNotoSansCJKkr_Regular  = null;
+//        Typeface typeMontserrat       = null;
 
 
-        typeNotoSansCJKkr_Bold      = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Bold);
-        typeNotoSansCJKkr_Medum     = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Medum);
-        typeNotoSansCJKkr_Regular   = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Regular);
-        typeMontserrat              = Typeface.createFromAsset(context.getAssets(), "fonts/" + Montserrat);
+//        typeNotoSansCJKkr_Bold      = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Bold);
+//        typeNotoSansCJKkr_Medum     = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Medum);
+//        typeNotoSansCJKkr_Regular   = Typeface.createFromAsset(context.getAssets(), "fonts/" + NotoSansCJKkr_Regular);
+//        typeMontserrat              = Typeface.createFromAsset(context.getAssets(), "fonts/" + Montserrat);
 
-        textView1.setTypeface(typeNotoSansCJKkr_Medum);
-        textView2.setTypeface(typeNotoSansCJKkr_Bold);
+//        textView1.setTypeface(typeNotoSansCJKkr_Medum);
+//        textView2.setTypeface(typeNotoSansCJKkr_Bold);
 
         linearLayout.addView(textView1);
         linearLayout.addView(textView2);
