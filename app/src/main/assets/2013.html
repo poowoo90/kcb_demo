@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    <script src="common.js"></script>
+    <script src="js/common.js"></script>
     <script language = "javascript">
 
     common_getJsonData();
@@ -24,11 +24,10 @@
         document.getElementById('phone2').value = userData.phone.substr(3,4);
         document.getElementById('phone3').value = userData.phone.substr(7,4);
         document.getElementById('officeNm').value = userData.officeNm;
-        document.getElementById('annualIncome').value = userData.annualIncome;
+        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome);
         document.getElementById('arrearsYN').value = userData.arrearsYN;
-        document.getElementById('arrearsAmt').value = userData.arrearsAmt;
+        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt);
     }
-
 
     function nextPage() {
 

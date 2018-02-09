@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebBackForwardList;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WebView web = (WebView) findViewById(R.id.webview); //웹뷰 선언
+        web = (WebView) findViewById(R.id.webview); //웹뷰 선언
 
         // 웹뷰 세팅
         WebSettings webSet = web.getSettings();                   // 웹뷰 설정

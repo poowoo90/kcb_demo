@@ -140,7 +140,7 @@ function common_goBack() {
 **/
 function common_getUserData(name) {
     //alert("name : " + name);
-    //name = name.toUpperCase();
+    name = name.toUpperCase();
     if(name == 'SUZAN') {
         return SUZAN;
     } else if(name == 'AMIE') {
@@ -156,6 +156,10 @@ function common_getUserData(name) {
     } else {
         return CAL;
     }
+}
+
+function common_numberWithCommas(x) {
+   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function common_delay(gap) {

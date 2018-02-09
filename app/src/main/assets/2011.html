@@ -22,18 +22,26 @@
 
   function nextPage() {
       var UsrName = document.querySelector('#UsrName').value;
-      var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;;
+      var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
+      var regexp = /^[0-9]*$/;
+      var phoneNum2 = document.getElementById('phone2').value;
+      var phoneNum3 = document.getElementById('phone3').value;
 
       if(UsrName == "") {
           alert("Please, Enter your name.");
           return false;
-       } else if( document.getElementById('phone2').value == "") {
+      } else if( document.getElementById('phone2').value == "") {
           alert("Please, Enter your cellphone number.");
           return false;
-       } else if ( document.getElementById('phone3').value == "") {
+      } else if ( document.getElementById('phone3').value == "") {
           alert("Please, Enter your cellphone number.");
           return false;
-       }
+      }
+
+      if(!regexp.test(phoneNum2) || !regexp.test(phoneNum3) ){
+          alert("Please, Only enter number.");
+          return false;
+      }
 
       var JsonData =
       {
@@ -82,11 +90,11 @@
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" maxlength="4" name="phone2" id="phone2" class="inp_text">
+							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone2" id="phone2" class="inp_text">
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" maxlength="4" name="phone3" id="phone3" class="inp_text">
+							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone3" id="phone3" class="inp_text">
 						</span>
                 </div>
             </div>
