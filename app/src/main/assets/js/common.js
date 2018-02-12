@@ -16,110 +16,117 @@
 **/
 
 var SUZAN = {
+			"name":"SUZAN",
 			"phone":"01037890032",
-			"loanAccount":"111222333333",
+			"loanAccount":"162-342-3829",
 			"conAmt":10000,
 			"CBAmt":0,
 			"NBAmt":10000,
 			"contractRate":3.0,
 			"CBRate":0,
 			"NBRate":3.0,
-			"officeNm":"기아자동차",
+			"officeNm":"KIA Motors",
 			"annualIncome":40000,
-			"arrearsYN":"N",
+			"arrearsYN":"N/A",
 			"arrearsAmt":0
 			};
 
 var AMIE  = {
+			"name":"AMIE",
 			"phone":"01027333486",
-			"loanAccount":"111222333333",
+			"loanAccount":"143-247-8259",
 			"conAmt":150000,
 			"CBAmt":100000,
 			"NBAmt":50000,
 			"contractRate":1.3,
 			"CBRate":2.5,
 			"NBRate":1.2,
-			"officeNm":"기아자동차",
-			"annualIncome":40000,
-			"arrearsYN":"N",
+			"officeNm":"",
+			"annualIncome":0,
+			"arrearsYN":"",
 			"arrearsAmt":0
 			};
 
 
 var TOM   = {
+			"name":"TOM",
 			"phone":"01011563932",
-			"loanAccount":"111222333333",
+			"loanAccount":"432-116-2896",
 			"conAmt":80000,
 			"CBAmt":60000,
 			"NBAmt":20000,
 			"contractRate":2.5,
 			"CBRate":3.5,
 			"NBRate":1.0,
-			"officeNm":"기아자동차",
-			"annualIncome":40000,
-			"arrearsYN":"N",
+			"officeNm":"",
+			"annualIncome":0,
+			"arrearsYN":"",
 			"arrearsAmt":0
 			};
 
 var BRIAN = {
+			"name":"BRIAN",
 			"phone":"01066324486",
-			"loanAccount":"111222333333",
+			"loanAccount":"145-442-1616",
 			"conAmt":15000,
 			"CBAmt":0,
 			"NBAmt":15000,
 			"contractRate":4.1,
 			"CBRate":0,
 			"NBRate":4.1,
-			"officeNm":"기아자동차",
-			"annualIncome":40000,
-			"arrearsYN":"N",
+			"officeNm":"",
+			"annualIncome":0,
+			"arrearsYN":"",
 			"arrearsAmt":0
 			};
 
 var JADE  = {
+			"name":"JADE",
 			"phone":"01078662469",
-			"loanAccount":"111222333333",
+			"loanAccount":"185-356-2789",
 			"conAmt":60000,
 			"CBAmt":0,
 			"NBAmt":60000,
 			"contractRate":2.1,
 			"CBRate":0,
 			"NBRate":2.1,
-			"officeNm":"기아자동차",
-			"annualIncome":40000,
-			"arrearsYN":"N",
+			"officeNm":"",
+			"annualIncome":0,
+			"arrearsYN":"",
 			"arrearsAmt":0
 			};
 
 
 var JOHN  = {
+			"name":"JOHN",
 			"phone":"01044223348",
-			"loanAccount":"111222333333",
+			"loanAccount":"332-690-1983",
 			"conAmt":5000,
 			"CBAmt":0,
 			"NBAmt":5000,
 			"contractRate":3.6,
 			"CBRate":0,
 			"NBRate":3.6,
-			"officeNm":"기아자동차",
-			"annualIncome":40000,
-			"arrearsYN":"N",
+			"officeNm":"",
+			"annualIncome":0,
+			"arrearsYN":"",
 			"arrearsAmt":0
 			};
 
-var CAL  = {
-			"phone":"01011112222",
-			"loanAccount":"111222333333",
-			"conAmt":100000,
-			"CBAmt":90000,
+var SAM  = {
+			"name":"SAM",
+			"phone":"01037894487",
+			"loanAccount":"166-222-1839",
+			"conAmt":30000,
+			"CBAmt":20000,
 			"NBAmt":10000,
-			"contractRate":3.0,
-			"CBRate":3.6,
-			"NBRate":0.6,
-			"officeNm":"기아자동차",
-			"annualIncome":40000,
-			"arrearsYN":"N",
-			"arrearsAmt":0
+			"contractRate":3.8,
+			"CBRate":4.0,
+			"NBRate":0.2,
+			"officeNm":"E-Mart",
+			"annualIncome":36000,
+			"arrearsYN":"Once",
+			"arrearsAmt":600
 			};
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
@@ -154,7 +161,7 @@ function common_getUserData(name) {
     } else if(name == 'JOHN') {
         return JOHN;
     } else {
-        return CAL;
+        return SAM;
     }
 }
 

@@ -1,104 +1,138 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-    common_getJsonData();
+  common_getJsonData();
 
-    /**
-     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
-     */
-    function onCreate(json) {
-        var jsonData = JSON.parse(json);
-        var userData = common_getUserData(jsonData.name);
+  /**
+   * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+   */
+  function onCreate(json) {
+      var jsonData = JSON.parse(json);
+      var userData = common_getUserData(jsonData.name);
 
-        document.getElementById('usrName').value = jsonData.name;
-        document.getElementById('phone1').value = userData.phone.substr(0,3);
-        document.getElementById('phone2').value = userData.phone.substr(3,4);
-        document.getElementById('phone3').value = userData.phone.substr(7,4);
-        document.getElementById('officeNm').value = userData.officeNm;
-        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome);
-        document.getElementById('arrearsYN').value = userData.arrearsYN;
-        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt);
-    }
+      document.getElementById('usrName').value = userData.name;
+      document.getElementById('phone1').value = userData.phone.substr(0,3);
+      document.getElementById('phone2').value = userData.phone.substr(3,4);
+      document.getElementById('phone3').value = userData.phone.substr(7,4);
+      document.getElementById('officeNm').value = userData.officeNm;
+      document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US$';
+      document.getElementById('arrearsYN').value = userData.arrearsYN;
+      document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt) + ' US$';
+  }
 
-    function nextPage() {
+  function nextPage() {
 
-        var usrName = document.getElementById('usrName').value;
+      var usrName = document.getElementById('usrName').value;
 
-        var JsonData =
-        {
-            "name" : usrName,
-            "backPage" : '2013.html',
-        };
-        common_movePage('2021.html', JsonData);
-    }
+      var JsonData =
+      {
+          "name" : usrName,
+          "backPage" : '2013.html',
+      };
+      common_movePage('2021.html', JsonData);
+  }
 
-    </script>
+  </script>
 </head>
-
-<body leftmargin='0' topmargin='0'>
-<form name='frm'>
-    <div data-role="page" id="page">
-        <div data-role="header" >
-            <h1>2013화면</h1>
+<body>
+<div class="wrap">
+    <div class="loan nav">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
         </div>
-        <div data-role="content">
-            <ul data-role="listview" >
-                <li data-role="list-divider">신용정보 입력</li>
-                <li><a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="common_goBack();" ></a></li>
-            </ul>
-        </div>
-        <p data-role="content">
-        <h2>고객정보</h2>
-        <table border="0">
-            <tr>
-                <td>성명</td>
-                <td colspan="5"><input type="text" maxlength="50" name="usrName" id="usrName" style='text-transform: uppercase;' disabled></td>
-            </tr>
-            <tr>
-                <td>휴대폰 번호</td>
-                <td><input type="text" maxlength="3" size="5" name="phone1" id="phone1" disabled></td>
-                <td>-</td>
-                <td><input type="text" maxlength="4" size="5" name="phone2" id="phone2" disabled></td>
-                <td>-</td>
-                <td><input type="text" maxlength="4" size="5" name="phone3" id="phone3" disabled></td>
-            </tr>
-        </table>
-        <h2>신용(Credit Bureau) 정보</h2>
-        <table border="0">
-            <tr>
-                <td>직장명</td>
-                <td><input type="text" name="officeNm" id="officeNm" maxlength="50" disabled></td>
-            </tr>
-            <tr>
-                <td>연소득</td>
-                <td><input type="text" name="annualIncome" id="annualIncome" maxlength="13" disabled></td>
-            </tr>
-            <tr>
-                <td>연체여부</td>
-                <td><input type="text" name="arrearsYN" id="arrearsYN" disabled></td>
-            </tr>
-            <tr>
-                <td>연체금액</td>
-                <td><input type="text" name="arrearsAmt" id="arrearsAmt" maxlength="13" disabled></td>
-            </tr>
-        </table>
-        <h1>신한 드림대출 불가</h1>
-        <p><h2>Blah Blah Blah</h2></p>
-        <input type="button" value="확인" onclick="common_cancel();"/>
 
-        <p><h1>통신정보 대출</h1></p>
-        <p><h2>Blah Blah Blah</h2></p>
-        <input type="button" value="바로가기" onclick="nextPage();"/>
+        <div class="step_status">
+            <h1 class="tit">Loan Qualification Inquiry<br>and application</h1>
+            <div class="num_area">
+                <span class="num checked">1</span>
+                <span class="num checked">2</span>
+                <span class="num current">3</span>
+            </div>
+        </div>
+
+        <div class="form first">
+            <h2 class="section_title">Client information</h2>
+            <div class="cell">
+                <label for="name" class="tit"><span class="inner">Name</span></label>
+                <div class="inp_area">
+                    <input type="text" maxlength="50" name="usrName" id="usrName" style='text-transform: uppercase;' class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="phone" class="tit"><span class="inner">Cell phone<br>number</span></label>
+                <div class="inp_area">
+                    <span class="inner inner_sel">
+                        <input type="text" maxlength="3" size="4" name="phone1" id="phone1" class="inp_select" readonly>
+                    </span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" maxlength="4" size="5" name="phone2" id="phone2" class="inp_text center" readonly>
+						</span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" maxlength="4" size="5" name="phone3" id="phone3" class="inp_text center" readonly>
+						</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Credit Bureau Information Inquiry</h2>
+            <div class="cell">
+                <label for="workplace" class="tit"><span class="inner">Name of<br>workplace</span></label>
+                <div class="inp_area">
+                    <input type="text" name="officeNm" id="officeNm" maxlength="50" class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income" class="tit"><span class="inner">Annual income</span></label>
+                <div class="inp_area">
+                    <input type="text" name="annualIncome" id="annualIncome" maxlength="13" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="overdue_history" class="tit"><span class="inner">Overdue History</span></label>
+                <div class="inp_area">
+                    <input type="text" name="arrearsYN" id="arrearsYN" class="inp_text center" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income2" class="tit"><span class="inner">Annual income</span></label>
+                <div class="inp_area">
+                    <input type="text" name="arrearsAmt" id="arrearsAmt" maxlength="13" class="inp_text right" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirm_section">
+            <h2 class="tit">Your CB information is unfit<br>for loan</h2>
+            <p class="desc">reason: Insufficient Annual income</p>
+
+            <div class="btn_area default">
+					<span class="inner">
+						<button type="submit" class="btn_confirm btn_animation" onclick="common_cancel();">Confirm<span class="dummy_active"></span></button>
+					</span>
+            </div>
+
+            <div class="banner">
+                <em>Telco Credit Loans</em>
+                <p>available to anyone in ownership of a mobile device, KT Telco service could offer better credit ratings</p>
+                <a href="#" class="btn_animation" onclick="nextPage();">view more<span class="dummy_disabled"></span></a>
+            </div>
         </div>
     </div>
-</form>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
 </body>
+</html>

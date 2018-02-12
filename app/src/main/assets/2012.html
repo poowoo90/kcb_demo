@@ -1,85 +1,117 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-    function nextPage() {
-        var sunny_agree  = document.getElementsByName('sunny_agree' );
-        var credit_agree = document.getElementsByName('credit_agree');
-        var info_agree   = document.getElementsByName('info_agree'  );
+  function nextPage() {
+      var sunny_agree  = document.getElementsByName('sunny_agree' );
+      var credit_agree = document.getElementsByName('credit_agree');
+      var info_agree   = document.getElementsByName('info_agree'  );
 
 
-        if(sunny_agree[0].checked == true || credit_agree[0].checked == true || info_agree[0].checked == true) {
-            alert("약관에 동의해주시기 바랍니다.");
-            return false;
-        }
+      if(sunny_agree[0].checked == true || credit_agree[0].checked == true || info_agree[0].checked == true) {
+          alert("Please Accept Terms & Conditions.");
+          return false;
+      }
 
-        common_movePage('2013.html');
-    }
+      common_movePage('2013.html');
+  }
 
-    </script>
+  </script>
 </head>
+<body>
+<div class="wrap">
+    <div class="loan nav">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
+        </div>
 
-<body leftmargin='0' topmargin='0'>
-<form name='frm'>
-    <div data-role="page" id="page">
-        <div data-role="header" >
-            <h1>2012 화면</h1>
+        <div class="step_status">
+            <h1 class="tit">Personal credit information<br>inquiry</h1>
+            <div class="num_area">
+                <span class="num checked">1</span>
+                <span class="num current">2</span>
+                <span class="num">3</span>
+            </div>
         </div>
-        <div data-role="content">
-            <ul data-role="listview" >
-                <li data-role="list-divider"> 개인신용정보조회 동의</li>
-                <li><a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="common_goBack();" ></a></li>
-            </ul>
+
+        <div class="agree_section">
+            <div class="item">
+                <div class="box">
+                    <em>required</em>
+                    <p>Sunny Bank terms & conditions and Loan service<br>terms & conditions</p>
+                    <a href="#" class="btn_more btn_animation">view more<span class="dummy_disabled"></span></a>
+                </div>
+                <p class="desc">Do you agree to the terms & conditions above ?</p>
+                <div class="check_area">
+						<span class="inner">
+							<input type="radio" id="agree_1_1" name="sunny_agree" class="blind">
+							<label for="agree_1_1">Decline</label>
+						</span>
+                    <span class="inner">
+							<input type="radio" id="agree_1_2" name="sunny_agree" class="blind" checked>
+							<label for="agree_1_2">Accept</label>
+						</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <em>required</em>
+                    <p>Personal credit information inquiry</p>
+                    <a href="#" class="btn_more btn_animation">view more<span class="dummy_disabled"></span></a>
+                </div>
+                <p class="desc">Do you agree to the conditions ?</p>
+                <div class="check_area">
+						<span class="inner">
+							<input type="radio" id="agree_2_1" name="credit_agree" class="blind">
+							<label for="agree_2_1">Decline</label>
+						</span>
+                    <span class="inner">
+							<input type="radio" id="agree_2_2" name="credit_agree" class="blind" checked>
+							<label for="agree_2_2">Accept</label>
+						</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <em>required</em>
+                    <p>Collecting & using personal credit information, Information Provision Agreement (The Credit Finance transactions) and client management guidelines</p>
+                    <a href="#" class="btn_more btn_animation">view more<span class="dummy_disabled"></span></a>
+                </div>
+                <p class="desc">Do you agree to the terms & conditions above ?</p>
+                <div class="check_area">
+						<span class="inner">
+							<input type="radio" id="agree_3_1" name="info_agree" class="blind">
+							<label for="agree_3_1">Decline</label>
+						</span>
+                    <span class="inner">
+							<input type="radio" id="agree_3_2" name="info_agree" class="blind" checked>
+							<label for="agree_3_2">Accept</label>
+						</span>
+                </div>
+            </div>
+            <p class="agree_noti">Services will be restricted without confirming to <br>terms & conditions.</p>
         </div>
-        <div data-role="content">
-            <table border="0">
-                <tr>
-                    <td>써니뱅크 이용약관</td>
-                    <td><input type="button" value="보기" disabled="disabled" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"> 위 약관 내용에 동의하십니까?</td>
-                </tr>
-                <tr>
-                    <td><input type="radio" name="sunny_agree" value="N"></td>
-                    <td><input type="radio" name="sunny_agree" value="Y" checked="checked"></td>
-                </tr>
-                <tr>
-                    <td>개인신용정보조회 동의서</td>
-                    <td><input type="button" value="보기" disabled="disabled" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"> 위 내용에 동의하십니까?</td>
-                </tr>
-                <tr>
-                    <td><input type="radio" name="credit_agree" value="N"></td>
-                    <td><input type="radio" name="credit_agree" value="Y" checked="checked"></td>
-                </tr>
-                <tr>
-                    <td>고객권리 안내문</td>
-                    <td><input type="button" value="보기" disabled="disabled" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"> 위 약관 내용에 동의하십니까?</td>
-                </tr>
-                <tr>
-                    <td><input type="radio" name="info_agree" value="N"></td>
-                    <td><input type="radio" name="info_agree" value="Y" checked="checked"></td>
-                </tr>
-            </table>
-        </div>
-        <div data-role="footer" >
-            <input type="button" value="취소" onclick="common_Cancel();"/>
-            <input type="button" value="확인" onclick="nextPage();">
+
+        <div class="btn_area default">
+				<span class="inner">
+					<button type="button" class="btn_cancel btn_animation" onclick="common_cancel();">Cancel<span class="dummy_active"></span></button>
+				</span>
+            <span class="inner">
+					<button type="submit" class="btn_confirm btn_animation" onclick="nextPage();">Confirm<span class="dummy_active"></span></button>
+				</span>
         </div>
     </div>
-</form>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
 </body>
+</html>

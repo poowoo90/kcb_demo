@@ -1,49 +1,44 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>페이지 링크</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-    $(document).ready(function() {
-        common_setJsonDataInit();
-    });
+  $(document).ready(function() {
+      common_setJsonDataInit();
+  });
 
-    </script>
+  </script>
 </head>
 <body>
-<div data-role="page" id="page">
-    <div>
-        <a data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  onclick="common_goBack();" ></a>
-        <center><h1> 대출 </h1></center>
+<div class="wrap">
+    <div class="loan step1">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
+        </div>
+
+        <button type="button" class="btn_management btn_animation"><span class="blind">The 10 Commandments of Credit Management</span><span class="dummy_disabled"></span></button>
+
+        <div class="product">
+            <a href="#" class="btn_animation" onclick="common_movePage('2011.html');"><span class="blind">CB Credit Loans</span><span class="dummy_active"></span></a>
+            <a href="#" class="btn_animation" onclick="common_movePage('2021.html');"><span class="blind">Telco Credit Loans</span><span class="dummy_active"></span></a>
+            <a href="#" class="btn_animation"><span class="blind">Automobile Loans</span><span class="dummy_disabled"></span></a>
+            <a href="#" class="btn_animation"><span class="blind">New Hope Loans</span><span class="dummy_disabled"></span></a>
+            <a href="#" class="btn_animation"><span class="blind">SH Pocket Loans</span><span class="dummy_disabled"></span></a>
+            <a href="#" class="btn_animation"><span class="blind">Worker Loans</span><span class="dummy_disabled"></span></a>
+        </div>
+
+        <button type="button" class="btn_guidelines btn_animation"><span class="blind">Membership Service Guidelines</span><span class="dummy_disabled"></span></button>
     </div>
-    <center>
-        <table>
-            <tr>
-                <td><a onclick="common_movePage('2011.html');" data-role="button" data-transition="slide">CB 정보대출</a></td>
-                <td><a onclick="common_movePage('2021.html');" data-role="button" data-transition="slide">통신정보 대출</a></td>
-            </tr>
-            <tr>
-                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">마이카대출</a></td>
-                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">새희망홀씨 대출</a></td>
-            </tr>
-            <tr>
-                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">신한포켓론</a></td>
-                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">직장인 대출</a></td>
-            </tr>
-            <tr>
-                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">부동산대출</a></td>
-                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">사잇돌 중금리 대출</a></td>
-            </tr>
-            <tr>
-                <td><a data-role="button" data-transition="slide" onclick="showAndroidToast('테스트 중으로 서비스 비활성화 상태입니다. [CB 정보대출] or [통신정보 대출]을 클릭하여 서비스를 이용하시기 바랍니다.');">대출전용 이체서비스</a></td>
-                <td>Comming Soon</td>
-            </tr>
-        </table>
-    </center>
-    <center><input type="button" value="회원혜택 안내" onclick=""></center>
 </div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
 </body>
+</html>

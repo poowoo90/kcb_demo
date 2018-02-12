@@ -7,4 +7,6 @@ $('.btn_animation').on('click', function() {
 		$this.find('.dummy_disabled').removeClass('ani');
 		$this.find('.dummy_active').removeClass('ani');
 	}, 1000);
+
+	return false;
 })

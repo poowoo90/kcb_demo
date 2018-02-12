@@ -54,9 +54,9 @@
 </head>
 <body>
 <div class="wrap">
-    <div class="loan step1">
+    <div class="loan nav">
         <div class="gnb">
-            <button type="button" class="btn_first btn_animation" onclick="window.history.back();"><span class="blind">Back</span><span class="dummy_active"></span></button>
+            <a href="#" class="btn_first btn_animation" onclick="window.history.back();"><span class="blind">Back</span><span class="dummy_active"></span></a>
             <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
         </div>
 
@@ -66,11 +66,10 @@
                 <span class="num current">1</span>
                 <span class="num">2</span>
                 <span class="num">3</span>
-                <span class="num">4</span>
             </div>
         </div>
 
-        <div class="form">
+        <div class="form first">
             <div class="cell">
                 <label for="name" class="tit"><span class="inner">Name</span></label>
                 <div class="inp_area">
@@ -90,11 +89,11 @@
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone2" id="phone2" class="inp_text">
+							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone2" id="phone2" class="inp_text center">
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone3" id="phone3" class="inp_text">
+							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone3" id="phone3" class="inp_text center">
 						</span>
                 </div>
             </div>
