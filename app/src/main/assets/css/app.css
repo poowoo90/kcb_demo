@@ -293,9 +293,8 @@ select {
 }
 
 .loan.step1 {
-	height: 1033px;
-	background: url(../img/step1.png) no-repeat;
-	background-size: 414px 1033px;
+	background: #f7f7f7 url(../img/step1.png) no-repeat;
+	background-size: 414px 290px;
 }
 
 .loan.step1 .btn_management {
@@ -316,6 +315,7 @@ select {
 }
 
 .loan.step1 .product {
+	overflow: hidden;
 	margin: 0 -1px;
 	padding: 250px 0 0;
 }
@@ -325,11 +325,82 @@ select {
 	float: left;
 	width: 184px;
 	height: 188px;
-	margin: 0px 0 11px 12px;
+	margin: 0 0 11px 12px;
+	padding: 25px 0;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-sizing: border-box;
+	background: #fff;
+	color: #4f4f4f;
+	text-align: center;
 }
 
 .loan.step1 .product a:nth-child(2n + 1) {
 	margin-left: 0;
+}
+
+.loan.step1 .product a em {
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.loan.step1 .product a em.active {
+	-webkit-animation-name: animation_product;
+	animation-name: animation_product;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+.loan.step1 .product a p {
+	margin-top: 10px;
+	line-height: 16px;
+	font-size: 11px;
+}
+
+.loan.step1 .product a .more {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 33px;
+	color: #ef8535;
+	text-decoration: underline;
+	text-align: center;
+}
+
+.loan.step1 .product a .dummy_active {
+	-webkit-animation-name: animation;
+	animation-name: animation;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+.loan.step1 .guidelines {
+	margin-top: 29px;
+	padding-bottom: 40px;
+	text-align: center;
+}
+
+.loan.step1 .guidelines p {
+	color: #4f4f4f;
+	font-size: 15px;
+}
+
+.loan.step1 .guidelines a {
+	position: relative;
+	display: inline-block;
+	height: 28px;
+	margin-top: 15px;
+	padding: 0 22px 0 31px;
+	border: 1px solid #979797;
+	border-radius: 14px;
+	background: #fff url(../img/ico_guideline.png) no-repeat 14px 50%;
+	background-size: 12px 11px;
+	color: #212121;
+	line-height: 28px;
+	text-align: left;
+	font-size: 13px;
 }
 
 .loan.nav {
@@ -646,11 +717,17 @@ select {
 
 .loan .confirm_section .banner a {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 10px;
+	right: 10px;
+	height: 26px;
+	padding: 0 10px;
+	border: 1px solid #cdcdcd;
+	border-radius: 7px;
+	background: #fff;
 	color: #ef8535;
-	text-decoration: underline;
 	font-size: 13px;
+	line-height: 26px;
+	text-decoration: none;
 }
 
 .loan .table_type {
@@ -777,6 +854,15 @@ select {
 	background: #ef8535;
 	color: #fff;
 	font-size: 15px;
+}
+
+@-webkit-keyframes animation_product {
+	0% {
+		opacity: 1;
+		color: #ef8535;
+	}
+	100% {
+	}
 }
 
 /*# sourceMappingURL=app.css.map */
