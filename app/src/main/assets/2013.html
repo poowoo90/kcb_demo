@@ -56,6 +56,8 @@
                 <span class="num checked">1</span>
                 <span class="num checked">2</span>
                 <span class="num current">3</span>
+                <span class="num">4</span>
+                <span class="num">5</span>
             </div>
         </div>
 
@@ -106,7 +108,7 @@
                 </div>
             </div>
             <div class="cell">
-                <label for="annual_income2" class="tit"><span class="inner">Annual income</span></label>
+                <label for="annual_income2" class="tit"><span class="inner">Amount of overdue</span></label>
                 <div class="inp_area">
                     <input type="text" name="arrearsAmt" id="arrearsAmt" maxlength="13" class="inp_text right" readonly>
                 </div>
@@ -122,11 +124,10 @@
 						<button type="submit" class="btn_confirm btn_animation" onclick="common_cancel();">Confirm<span class="dummy_active"></span></button>
 					</span>
             </div>
-
-            <div class="banner">
+            <div class="banner" onclick="nextPage();">
                 <em>Telco Credit Loans</em>
                 <p>available to anyone in ownership of a mobile device, KT Telco service could offer better credit ratings</p>
-                <a href="#" class="btn_animation" onclick="nextPage();">view more<span class="dummy_disabled"></span></a>
+                <a href="#" class="btn_animation">view more<span class="dummy_disabled"></span></a>
             </div>
         </div>
     </div>
