@@ -21,9 +21,9 @@
             //CB대출통해서 진입
             var userData = common_getUserData(jsonData.name);
             document.getElementById('UsrName').value = jsonData.name;
-            document.getElementById('phone').value = userData.phone.substr(0,3);
-            document.getElementById('phone2').value = userData.phone.substr(3,4);
-            document.getElementById('phone3').value = userData.phone.substr(7,4);
+            document.getElementById('phone').value = jsonData.phone.substr(0,3);
+            document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+            document.getElementById('phone3').value = jsonData.phone.substr(7,4);
         } else {
             //최초진입
             onInit();
@@ -39,7 +39,9 @@
 
     function nextPage() {
         var UsrName = document.querySelector('#UsrName').value;
-        var regexp = /^[0-9]*$/;
+        var regex1 = /^[0-9]*$/;
+        var regex2 = /[(0-9)]{4}/;
+        var regex3 = /^[a-zA-Z]+$/;
         var phoneNum1 = document.getElementById('phone').value;
         var phoneNum2 = document.getElementById('phone2').value;
         var phoneNum3 = document.getElementById('phone3').value;
@@ -48,11 +50,17 @@
         if(UsrName == "") {
             alert("Please, Enter your name.");
             return false;
+         } else if(!regex3.test(UsrName)) {
+            alert("Please, Name enter English only.");
+            return false;
          } else if( phoneNum2== "" || phoneNum3== "" ) {
             alert("Please, Enter your cellphone number.");
             return false;
-         } else if(!regexp.test(phoneNum2) || !regexp.test(phoneNum3) ){
-             alert("Please, Only enter number.");
+         } else if(!regex1.test(phoneNum2) || !regex1.test(phoneNum3) ){
+             alert("Please, Cellphone enter numbers only.");
+             return false;
+         }else if(!regex2.test(phoneNum2) || !regex2.test(phoneNum3) ){
+             alert("Please, Cellphone enter 4 digits numbers only.");
              return false;
          }
 
@@ -70,7 +78,7 @@
 <div class="wrap">
     <div class="loan nav" style="min-height:770px" >
         <div class="gnb">
-            <a href="#" class="btn_first btn_animation"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
             <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
         </div>
 
@@ -105,11 +113,11 @@
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="text" id="phone2" name="phone2"class="inp_text center">
+							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" id="phone2" name="phone2"class="inp_text center">
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="text" id="phone3" class="inp_text center">
+							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" id="phone3" class="inp_text center">
 						</span>
                 </div>
             </div>

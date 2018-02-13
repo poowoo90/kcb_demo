@@ -15,27 +15,30 @@
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
      */
      var conAmt;
+     var phone;
     function onCreate(json) {
 
         var jsonData = JSON.parse(json);
         var userData = common_getUserData(jsonData.name);
+        phone = jsonData.phone;
         document.getElementById('UsrName').value = jsonData.name;
-        document.getElementById('phone1').value = userData.phone.substr(0,3);
-        document.getElementById('phone2').value = userData.phone.substr(3,4);
-        document.getElementById('phone3').value = userData.phone.substr(7,4);
+        document.getElementById('phone1').value = phone.substr(0,3);
+        document.getElementById('phone2').value = phone.substr(3,4);
+        document.getElementById('phone3').value = phone.substr(7,4);
         document.getElementById('officeNm').value = userData.officeNm;  //직장명
         document.getElementById('loanAccount').value = userData.loanAccount; //입금계좌
-        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ 'US $'; //연소득
-        document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + 'US $'; //약정금액
+        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
+        document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + ' US $'; //약정금액
         conAmt= userData.conAmt;
-        document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ 'US $'; //신용정보평가 금액
-        document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ 'US $'; //통신정보평가 금액
+        document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
+        document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ ' US $'; //통신정보평가 금액
         document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
         document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
         document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
-        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ 'US $'; //연체금액
+        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
         document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
+
     }
 
     function nextPage() {
@@ -44,12 +47,13 @@
          var UsrReqPay     = Number(document.querySelector('#UsrReqPay').value);
         if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay) {
             document.querySelector('#UsrReqPay').value = "";
-            alert('Checking application amount');
+            alert('Check application amount');
             return false;
         }
         var JsonData =
         {
             "name" : UsrName,
+            "phone" : phone,
             "reqPay" : UsrReqPay,
         };
         common_movePage('2024.html', JsonData);
@@ -85,7 +89,7 @@
 <div class="wrap">
     <div class="loan nav">
         <div class="gnb">
-            <a href="#" class="btn_first btn_animation"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
             <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
         </div>
 
@@ -202,7 +206,7 @@
             <div class="cell">
                 <label for="application_amount" class="tit"><span class="inner">Application<br>amount</span></label>
                 <div class="inp_area">
-                    <input type="text" id="UsrReqPay2" name="UsrReqPay2" class="inp_text right" onkeyup="onlyNum(this);this.value=this.value.comma();">
+                    <input type="tel" id="UsrReqPay2" name="UsrReqPay2" class="inp_text right" onkeyup="onlyNum(this);this.value=this.value.comma();">
                     <input type="hidden" id="UsrReqPay" name="UsrReqPay" class="inp_text right">
                 </div>
             </div>

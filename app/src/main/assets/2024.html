@@ -15,32 +15,32 @@
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
      */
      var contractRate;
+     var UsrReqPay;
     function onCreate(json) {
         var jsonData = JSON.parse(json);
-        document.getElementById('UsrReqPay').value = common_numberWithCommas(jsonData.reqPay);
-
+        UsrReqPay=jsonData.reqPay;
+        document.getElementById('UsrReqPay').value = common_numberWithCommas(jsonData.reqPay)+ ' US $';
         var userData = common_getUserData(jsonData.name);
         document.getElementById('UsrName').value = jsonData.name;
-        document.getElementById('phone1').value = userData.phone.substr(0,3);
-        document.getElementById('phone2').value = userData.phone.substr(3,4);
-        document.getElementById('phone3').value = userData.phone.substr(7,4);
+        document.getElementById('phone1').value = jsonData.phone.substr(0,3);
+        document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+        document.getElementById('phone3').value = jsonData.phone.substr(7,4);
         document.getElementById('officeNm').value = userData.officeNm;  //직장명
         document.getElementById('loanAccount').value = userData.loanAccount; //입금계좌
-        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + 'US $'; //연소득
-        document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + 'US $'; //약정금액
-        document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt) + 'US $'; //신용정보평가 금액
-        document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt) + 'US $'; //통신정보평가 금액
+        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US $'; //연소득
+        document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + ' US $'; //약정금액
+        document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt) + ' US $'; //신용정보평가 금액
+        document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt) + ' US $'; //통신정보평가 금액
         document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
         contractRate=userData.contractRate;
         document.getElementById('CBRate').innerHTML = common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
         document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //신용정보평가 금리
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
-        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ 'US $'; //연체금액
+        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
         document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
     }
 
     function nextPage() {
-        var UsrReqPay = document.querySelector('#UsrReqPay').value; //약정금액
         var loanAccount = document.querySelector('#loanAccount').value;
         var loanPeriod= "12"; //대출기간
 
@@ -59,7 +59,7 @@
 <div class="wrap">
     <div class="loan nav">
         <div class="gnb">
-            <a href="#" class="btn_first btn_animation"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
             <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
         </div>
 
