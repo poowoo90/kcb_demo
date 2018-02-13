@@ -1,50 +1,50 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    <script src="common.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/common.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script language = "javascript">
-
     common_getJsonData();
+
 
     /**
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
      */
+     var conAmt;
     function onCreate(json) {
+
         var jsonData = JSON.parse(json);
         var userData = common_getUserData(jsonData.name);
-
         document.getElementById('UsrName').value = jsonData.name;
         document.getElementById('phone1').value = userData.phone.substr(0,3);
         document.getElementById('phone2').value = userData.phone.substr(3,4);
         document.getElementById('phone3').value = userData.phone.substr(7,4);
         document.getElementById('officeNm').value = userData.officeNm;  //직장명
         document.getElementById('loanAccount').value = userData.loanAccount; //입금계좌
-        document.getElementById('annualIncome').value = userData.annualIncome; //연소득
-        document.getElementById('conAmt').value = userData.conAmt; //약정금액
-        document.getElementById('CBAmt').value = userData.CBAmt; //신용정보평가 금액
-        document.getElementById('NBAmt').value = userData.NBAmt; //통신정보평가 금액
-        document.getElementById('contractRate').value = userData.contractRate; //약정금리
-        document.getElementById('CBRate').value = userData.CBRate; //신용정보평가 금리
-        document.getElementById('NBRate').value = userData.NBRate; //통신정보평가 금리
+        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ 'US $'; //연소득
+        document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + 'US $'; //약정금액
+        conAmt= userData.conAmt;
+        document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ 'US $'; //신용정보평가 금액
+        document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ 'US $'; //통신정보평가 금액
+        document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
+        document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+        document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
-        document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
+        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ 'US $'; //연체금액
+        document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
     }
 
     function nextPage() {
-        var UsrName     = document.querySelector('#UsrName').value;
-        var UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
-        var conAmt      = Number(document.querySelector('#conAmt').value);
 
+         var UsrName     = document.querySelector('#UsrName').value;
+         var UsrReqPay     = Number(document.querySelector('#UsrReqPay').value);
         if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay) {
             document.querySelector('#UsrReqPay').value = "";
-            alert('확인해 주세요');
+            alert('Checking application amount');
             return false;
         }
         var JsonData =
@@ -55,56 +55,189 @@
         common_movePage('2024.html', JsonData);
     }
 
+    String.prototype.comma = function() {
+
+        tmp = this.split('.');
+        var str = new Array();
+        var v = tmp[0].replace(/,/gi,'');
+         document.getElementById('UsrReqPay').value  = v;
+        for(var i=0; i<=v.length; i++) {
+            str[str.length] = v.charAt(v.length-i);
+            if(i%3==0 && i!=0 && i!=v.length) {
+                str[str.length] = '.';
+            }
+        }
+        str = str.reverse().join('').replace(/\./gi,',');
+        return (tmp.length==2) ? str + '.' + tmp[1] : str;
+    }
+
+    function onlyNum(obj) {
+        val = obj.value;
+        document.getElementById('UsrReqPay2').value  = val;
+        var re = /[^0-9\.\,\-]/gi;
+        obj.value = val.replace(re, '');
+    }
+
     </script>
 
 </head>
+<body onload="onCreate()">
+<div class="wrap">
+    <div class="loan nav">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
+        </div>
 
-<body leftmargin='0' topmargin='0'>
-<div data-role="page" id="page">
-    <div data-role="header" >
-        <h1>2023화면</h1>
-    </div>
-    <div data-role="content" style="margin-top:13%;">
-        <ul data-role="listview" >
-            <li data-role="list-divider">대출심사조회 및 신청</li>
-            <li><a data-transition="slide" onclick ="common_goBack();">이전 페이지</a></li>
-        </ul>
-    </div>
-    <div data-role="content">
-        성명       <input type="text" id="UsrName" name="UsrName">
-        휴대폰번호 <input type="text" id="phone1" name="phone1" readonly> -
-        <input type="tel" id="phone2" name="phone2" readonly> -
-        <input type="tel" id="phone3" name="phone3" readonly>
-    </div>
-    <div data-role="content">
-        신용(Credit Bureau) 정보
-    </div>
-    <div data-role="content">
-        직장명   <input type="text" id="officeNm"  name="officeNm"  readonly>
-        연소득   <input type="number" id="annualIncome" name="annualIncome" readonly>
-        연체여부 <input type="text" id="arrearsYN" name="arrearsYN" readonly>
-        연체금액 <input type="number" id="arrearsAmt" name="arrearsAmt" readonly>
-    </div>
-    <div data-role="content">
-        대출정보
-    </div>
-    <div data-role="content">
-        한도금액(만원) <input type="number" id="conAmt"  name="conAmt"  readonly>
-        신용정보평가금액   <input type="number" id="CBAmt" name="CBAmt" readonly>
-        통신정보평가금액 <input type="number" id="NBAmt" name="NBAmt" readonly>
-        약정금리     <input type="number" id="contractRate" name="contractRate" readonly>
-        신용정보평가금리 <input type="number" id="CBRate" name="CBRate" readonly>
-        통신정보평가금리 <input type="number" id="NBRate" name="NBRate" readonly>
-    </div>
-    <div data-role="content">
-        신청금액(만원) <input type="number" id="UsrReqPay"  name="UsrReqPay"  >
-        입금계좌       <input type="number" id="loanAccount"  name="loanAccount" readonly>
-    </div>
+        <div class="step_status">
+            <h1 class="tit">Confirm Loan Application</h1>
+            <div class="num_area">
+                <span class="num checked">1</span>
+                <span class="num checked">2</span>
+                <span class="num checked">3</span>
+                <span class="num current">4</span>
+                <span class="num">5</span>
+            </div>
+        </div>
 
-    <div data-role="footer" >
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b" onclick="common_cancel();">취소</a>
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
+        <div class="form first">
+            <h2 class="section_title">Client information</h2>
+            <div class="cell">
+                <label for="name" class="tit"><span class="inner">Name</span></label>
+                <div class="inp_area">
+                    <input type="text" id="UsrName" class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="phone" class="tit"><span class="inner">Cell phone<br>number</span></label>
+                <div class="inp_area">
+						<span class="inner inner_sel">
+						<span class="inner">
+							<input type="text" id="phone1" class="inp_text center" readonly>
+						</span>
+						</span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" id="phone2" class="inp_text center" readonly>
+						</span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" id="phone3" class="inp_text center" readonly>
+						</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Credit Bureau Information Inquiry</h2>
+            <div class="cell">
+                <label for="workplace" class="tit"><span class="inner">Name of<br>workplace</span></label>
+                <div class="inp_area">
+                    <input type="text" id="officeNm" class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income" class="tit"><span class="inner">Annual income</span></label>
+                <div class="inp_area">
+                    <input type="text" id="annualIncome" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="overdue_history" class="tit"><span class="inner">Overdue History</span></label>
+                <div class="inp_area">
+                    <input type="text" id="arrearsYN" class="inp_text center" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income2" class="tit"><span class="inner">Annual income</span></label>
+                <div class="inp_area">
+                    <input type="text" id="arrearsAmt" class="inp_text right" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Loan Information</h2>
+            <table class="table_type">
+                <colgroup>
+                    <col width="120">
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Total value</th>
+                    <th>CB info</th>
+                    <th>Telco info</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Minimum<br>Transaction<br>Amount</td>
+                    <td id="conAmt"></td>
+                    <td id="CBAmt"></td>
+                    <td id="NBAmt"></td>
+                </tr>
+                <tr>
+                    <td>contracted<br>interest rate</td>
+                    <td id="contractRate"></td>
+                    <td id="CBRate"></td>
+                    <td id="NBRate"></td>
+                </tr>
+                <tr>
+                    <td>reason for<br>decision</td>
+                    <td colspan="2" id="telReason"></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Loan Application</h2>
+            <div class="cell">
+                <label for="application_amount" class="tit"><span class="inner">Application<br>amount</span></label>
+                <div class="inp_area">
+                    <input type="text" id="UsrReqPay2" name="UsrReqPay2" class="inp_text right" onkeyup="onlyNum(this);this.value=this.value.comma();">
+                    <input type="hidden" id="UsrReqPay" name="UsrReqPay" class="inp_text right">
+                </div>
+            </div>
+            <div class="cell">
+                <label for="deposit_account" class="tit"><span class="inner">deposit account</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loanAccount" class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="loan_method" class="tit"><span class="inner">Loan method</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loan_method" class="inp_text" value="credit line" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="loan_term" class="tit"><span class="inner">Loan term</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loan_term" class="inp_text" value="12 months" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn_area default">
+				<span class="inner">
+					<button type="button" class="btn_cancel btn_animation" onclick="common_cancel();">Cancel<span class="dummy_active"></span></button>
+				</span>
+            <span class="inner">
+					<button type="submit" class="btn_confirm btn_animation"  onclick="nextPage();">Confirm<span class="dummy_active"></span></button>
+				</span>
+        </div>
     </div>
 </div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
 </body>
 </html>

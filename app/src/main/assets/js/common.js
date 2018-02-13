@@ -13,6 +13,7 @@
 연소득            : annualIncome
 연체여부          : arrearsYN
 연체금액          : arrearsAmt
+통신정보 가점사유 : telReason
 **/
 
 var SUZAN = {
@@ -28,7 +29,8 @@ var SUZAN = {
 			"officeNm":"KIA Motors",
 			"annualIncome":40000,
 			"arrearsYN":"N/A",
-			"arrearsAmt":0
+			"arrearsAmt":0,
+			"telReason":"responsible payment"
 			};
 
 var AMIE  = {
@@ -40,11 +42,12 @@ var AMIE  = {
 			"NBAmt":50000,
 			"contractRate":1.3,
 			"CBRate":2.5,
-			"NBRate":1.2,
+			"NBRate":"△1.2",
 			"officeNm":"",
 			"annualIncome":0,
 			"arrearsYN":"",
-			"arrearsAmt":0
+			"arrearsAmt":0,
+			"telReason":"No overdue"
 			};
 
 
@@ -57,11 +60,12 @@ var TOM   = {
 			"NBAmt":20000,
 			"contractRate":2.5,
 			"CBRate":3.5,
-			"NBRate":1.0,
+			"NBRate":"△1.0",
 			"officeNm":"",
 			"annualIncome":0,
 			"arrearsYN":"",
-			"arrearsAmt":0
+			"arrearsAmt":0,
+			"telReason":"Long-term signup in Telco service"
 			};
 
 var BRIAN = {
@@ -77,7 +81,8 @@ var BRIAN = {
 			"officeNm":"",
 			"annualIncome":0,
 			"arrearsYN":"",
-			"arrearsAmt":0
+			"arrearsAmt":0,
+			"telReason":"reasonable usage of micropayment"
 			};
 
 var JADE  = {
@@ -93,7 +98,8 @@ var JADE  = {
 			"officeNm":"",
 			"annualIncome":0,
 			"arrearsYN":"",
-			"arrearsAmt":0
+			"arrearsAmt":0,
+			"telReason":"in use of Family Package"
 			};
 
 
@@ -110,7 +116,8 @@ var JOHN  = {
 			"officeNm":"",
 			"annualIncome":0,
 			"arrearsYN":"",
-			"arrearsAmt":0
+			"arrearsAmt":0,
+			"telReason":"responsible payment"
 			};
 
 var SAM  = {
@@ -122,11 +129,12 @@ var SAM  = {
 			"NBAmt":10000,
 			"contractRate":3.8,
 			"CBRate":4.0,
-			"NBRate":0.2,
+			"NBRate":"△0.2",
 			"officeNm":"E-Mart",
 			"annualIncome":36000,
 			"arrearsYN":"Once",
-			"arrearsAmt":600
+			"arrearsAmt":600,
+			"telReason":"No overdue"
 			};
 
 //----------------------------------------------------------------------------------------------------------------------------------------//

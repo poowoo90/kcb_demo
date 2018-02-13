@@ -763,11 +763,14 @@ select {
 }
 
 .loan .complete_msg {
-	padding: 66px 0 46px;
+	padding: 175px 0 46px;
 	color: #212121;
 	line-height: 34px;
 	text-align: center;
 	font-size: 29px;
+	font-weight: bold;
+	background: url(../img/ico_complete.png) no-repeat 50% 51px;
+	background-size: 78px 78px;
 }
 
 .loan .check_area .inner {

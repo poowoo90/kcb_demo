@@ -1,13 +1,11 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    <script src="common.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/common.js"></script>
     <script language = "javascript">
     common_getJsonData();
 
@@ -17,42 +15,73 @@
     function onCreate(json) {
         var jsonData = JSON.parse(json);
         document.getElementById('UsrReqPay').value = jsonData.reqPay;
-        document.getElementById('contractRate').value = jsonData.contractRate;
+        document.getElementById('contractRate').value = jsonData.contractRate+'%';
         document.getElementById('loanAccount').value = jsonData.loanAccount;
-        document.getElementById('loanPeriod').value = jsonData.loanPeriod;
+        document.getElementById('loanPeriod').value = jsonData.loanPeriod + 'months';
     }
 
-   function nextPage() {
+    function nextPage() {
         common_movePage('2001.html');
     }
     </script>
 </head>
+<body onload='onCreate()'>
+<div class="wrap">
+    <div class="loan nav">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
+        </div>
 
-<body>
-<div data-role="page" id="page">
-    <div data-role="header" >
-        <h1>2025화면</h1>
-    </div>
-    <div data-role="content" style="margin-top:13%;">
-        <ul data-role="listview" >
-            <li data-role="list-divider">대출실행 결과</li>
-        </ul>
-    </div>
+        <div class="step_status">
+            <h1 class="tit">Loan execution result</h1>
+            <div class="num_area">
+                <span class="num checked">1</span>
+                <span class="num checked">2</span>
+                <span class="num checked">3</span>
+                <span class="num checked">4</span>
+                <span class="num current">5</span>
+            </div>
+        </div>
 
-    <div data-role="content">
-        약정금액  <input type="text" id="UsrReqPay"  name="UsrReqPay"  readonly>
-        약정금리  <input type="text" id="contractRate" name="contractRate" readonly>
-        입금계좌  <input type="text" id="loanAccount" name="loanAccount" readonly>
-        대출기간  <input type="text" id="loanPeriod" name="loanPeriod" readonly>
+        <p class="complete_msg">Your loaning<br>process<br>has been completed</p>
+
+        <div class="form first">
+            <div class="cell">
+                <label for="contracted_amount" class="tit"><span class="inner">Contracted<br>amount</span></label>
+                <div class="inp_area">
+                    <input type="text" id="UsrReqPay" class="inp_text right" value="40,000 US $" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="contracted_interest_rate" class="tit"><span class="inner">contracted<br>interest rate</span></label>
+                <div class="inp_area">
+                    <input type="text" id="contractRate" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="deposit_account" class="tit"><span class="inner">deposit account</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loanAccount" class="inp_text"  readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="loan_term" class="tit"><span class="inner">Loan term</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loanPeriod" class="inp_text" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn_area default">
+				<span class="inner">
+					<button type="submit" class="btn_confirm btn_animation" onclick="nextPage();">Confirm<span class="dummy_active"></span></button>
+				</span>
+        </div>
     </div>
-    <div data-role="content" style="align-content: center">
-        <h1>신한 Telco 드림대출 완료</h1>
-        <p>
-            고객님의 통신정보를 이용한 신한 Telco 드림대출 거래가<br>정상적으로 이루어졌습니다.
-        </p>
-    </div>
-  <div data-role="footer" >
-        <a data-role="button" data-transition="slide" data-direction="reverse" data-theme="b"  onclick="nextPage();">확인</a>
-    </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
 </body>
 </html>
