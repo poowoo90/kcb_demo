@@ -16,6 +16,9 @@
      */
      var conAmt;
      var phone;
+     var v;
+     var UsrReqPayNum;
+     var UsrReqPay;
     function onCreate(json) {
 
         var jsonData = JSON.parse(json);
@@ -39,17 +42,33 @@
         document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
         document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
 
+        if(jsonData.reqPay!=null){
+            UsrReqPayNum = jsonData.reqPay;
+        }
+
     }
 
     function nextPage() {
 
          var UsrName     = document.querySelector('#UsrName').value;
-         var UsrReqPay     = Number(document.querySelector('#UsrReqPay').value);
-        if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay) {
+         UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
+         if(UsrReqPayNum!= null){
+               UsrReqPay  = UsrReqPayNum;
+              if(v !=null && v != UsrReqPay){
+                UsrReqPay   = Number(v);
+              }
+         }else{
+            document.getElementById('UsrReqPay').value  = v;
+            UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
+         }
+
+        if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay || UsrReqPay < 50) {
             document.querySelector('#UsrReqPay').value = "";
-            alert('Check application amount');
+            alert('Please, Check application amount');
             return false;
         }
+
+
         var JsonData =
         {
             "name" : UsrName,
@@ -59,12 +78,13 @@
         common_movePage('2024.html', JsonData);
     }
 
+
     String.prototype.comma = function() {
 
         tmp = this.split('.');
         var str = new Array();
-        var v = tmp[0].replace(/,/gi,'');
-         document.getElementById('UsrReqPay').value  = v;
+        v= tmp[0].replace(/,/gi,'');
+
         for(var i=0; i<=v.length; i++) {
             str[str.length] = v.charAt(v.length-i);
             if(i%3==0 && i!=0 && i!=v.length) {
@@ -85,7 +105,7 @@
     </script>
 
 </head>
-<body onload="onCreate()">
+<body>
 <div class="wrap">
     <div class="loan nav">
         <div class="gnb">
@@ -98,8 +118,8 @@
             <div class="num_area">
                 <span class="num checked">1</span>
                 <span class="num checked">2</span>
-                <span class="num checked">3</span>
-                <span class="num current">4</span>
+                <span class="num current">3</span>
+                <span class="num">4</span>
                 <span class="num">5</span>
             </div>
         </div>
@@ -109,7 +129,7 @@
             <div class="cell">
                 <label for="name" class="tit"><span class="inner">Name</span></label>
                 <div class="inp_area">
-                    <input type="text" id="UsrName" class="inp_text" readonly>
+                    <input type="text" id="UsrName" class="inp_text" style='text-transform: uppercase;' readonly>
                 </div>
             </div>
             <div class="cell">
@@ -206,7 +226,7 @@
             <div class="cell">
                 <label for="application_amount" class="tit"><span class="inner">Application<br>amount</span></label>
                 <div class="inp_area">
-                    <input type="tel" id="UsrReqPay2" name="UsrReqPay2" class="inp_text right" onkeyup="onlyNum(this);this.value=this.value.comma();">
+                    <input type="tel" id="UsrReqPay2" name="UsrReqPay2" value="" class="inp_text right" onkeyup="onlyNum(this);this.value=this.value.comma();">
                     <input type="hidden" id="UsrReqPay" name="UsrReqPay" class="inp_text right">
                 </div>
             </div>
