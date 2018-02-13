@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
     <title>SUNNY BANK</title>
-    <link rel="stylesheet" href="css/app.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="css/app.css">
     <script src="js/common.js"></script>
     <script language = "javascript">
 
@@ -22,9 +21,9 @@
             //CB대출통해서 진입
             var userData = common_getUserData(jsonData.name);
             document.getElementById('UsrName').value = jsonData.name;
-            document.getElementById('phone').value = jsonData.phone.substr(0,3);
-            document.getElementById('phone2').value = jsonData.phone.substr(3,4);
-            document.getElementById('phone3').value = jsonData.phone.substr(7,4);
+            document.getElementById('phone').value = userData.phone.substr(0,3);
+            document.getElementById('phone2').value = userData.phone.substr(3,4);
+            document.getElementById('phone3').value = userData.phone.substr(7,4);
         } else {
             //최초진입
             onInit();
@@ -40,11 +39,14 @@
 
     function nextPage() {
         var UsrName = document.querySelector('#UsrName').value;
-        var regexp = /^[0-9]*$/;
+        var regex1 = /^[0-9]*$/;
+        var regex2 = /[(0-9)]{4}/;
+        var regex3 = /^[a-zA-Z]+$/;
         var phoneNum1 = document.getElementById('phone').value;
         var phoneNum2 = document.getElementById('phone2').value;
         var phoneNum3 = document.getElementById('phone3').value;
         var phone =phoneNum1+phoneNum2+phoneNum3;
+
 
         if(UsrName == "") {
             alert("Please, Enter your name.");
@@ -62,7 +64,6 @@
              alert("Please, Cellphone enter 4 digits numbers only.");
              return false;
          }
-
         var JsonData =
         {
             "name" : UsrName,
@@ -75,10 +76,9 @@
 </head>
 <body>
 <div class="wrap">
-    <div class="loan nav" style="min-height:770px">
+    <div class="loan nav" style="min-height:770px" >
         <div class="gnb">
-            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
-            <a href="#" class="btn_first btn_animation" onclick="window.history.back();"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <a href="#" class="btn_first btn_animation"><span class="blind">Back</span><span class="dummy_active"></span></a>
             <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
         </div>
 
@@ -97,7 +97,7 @@
             <div class="cell">
                 <label for="name" class="tit"><span class="inner">Name</span></label>
                 <div class="inp_area">
-                    <input type="text" style='text-transform: uppercase;' id="UsrName" class="inp_text">
+                    <input type="text" id="UsrName" class="inp_text">
                 </div>
             </div>
             <div class="cell">
@@ -113,11 +113,11 @@
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" id="phone2" name="phone2"class="inp_text center">
+							<input type="text" id="phone2" name="phone2"class="inp_text center">
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" id="phone3" class="inp_text center">
+							<input type="text" id="phone3" class="inp_text center">
 						</span>
                 </div>
             </div>
