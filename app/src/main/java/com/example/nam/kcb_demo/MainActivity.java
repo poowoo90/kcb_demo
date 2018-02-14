@@ -145,8 +145,12 @@ public class MainActivity extends AppCompatActivity {
 
         } else { // history 가 있는 경우
 
-            if (web.canGoBack()) {
-                web.goBack();
+            if(web.getUrl().equals("file:///android_asset/2025.html")) {
+                web.goBackOrForward(-(list.getCurrentIndex()) + 1);
+            } else {
+                if (web.canGoBack()) {
+                    web.goBack();
+                }
             }
 
 
@@ -221,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     String args = null;
                     if(jsonData != null) args = jsonData.toString();
+                    Log.d("JJKIM", "getJsonData = "+ args);
                     web.loadUrl("javascript:onCreate('" + args + "')"); // 해당 url의 자바스크립트 함수 호출
                 }
             });

@@ -35,18 +35,25 @@
       var phoneNum3 = document.getElementById('phone3').value;
 
       if(UsrName == "") {
-          alert("Please, Enter your name.");
+          alert("Please enter name.");
           return false;
-      } else if( phoneNum2.length != 4) {
-          alert("Please, Check your cellphone number.");
+      }
+
+      if(phoneNum2 == "" || phoneNum3 == ""){
+          alert("Please enter cellphone.");
           return false;
-      } else if ( phoneNum3.length != 4) {
-          alert("Please, Check your cellphone number.");
+      } else if( phoneNum2.length != 4 || phoneNum3.length != 4) {
+          alert("Please enter 4 digits numbers only for cellphone.");
+          return false;
+      }
+
+      if(regexp.test(UsrName)) {
+          alert("Please enter English or number only for name.");
           return false;
       }
 
       if(!regexp.test(phoneNum2) || !regexp.test(phoneNum3) ){
-          alert("Please, Only enter number.");
+          alert("Please enter numbers only for cellphone.");
           return false;
       }
 
