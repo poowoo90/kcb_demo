@@ -132,7 +132,7 @@ var SAM  = {
 			"NBRate":"△0.2",
 			"officeNm":"E-Mart",
 			"annualIncome":36000,
-			"arrearsYN":"Once",
+			"arrearsYN":"Y",
 			"arrearsAmt":600,
 			"telReason":"No overdue"
 			};

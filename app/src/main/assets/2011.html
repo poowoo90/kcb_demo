@@ -31,7 +31,9 @@
       var UsrName = document.querySelector('#UsrName').value;
       var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
       var regexp = /^[0-9]*$/;
-      var NameCheck = /[a-z]/gi;
+      var regex3 =  /^[A-Za-z0-9\.\-]+$/;
+      var regex4 = /^[\.\-]*$/;
+      var regex5 =  /^[0-9\.\-]+$/;
       var phoneNum2 = document.getElementById('phone2').value;
       var phoneNum3 = document.getElementById('phone3').value;
 
@@ -48,9 +50,9 @@
           return false;
       }
 
-      if(!NameCheck.test(UsrName)) {
-          alert("Please enter English or number only for name.");
-          return false;
+      if(regexp.test(UsrName)||!regex3.test(UsrName)|| regex4.test(UsrName)|| regex5.test(UsrName)) {
+         alert("Please check name");
+         return false;
       }
 
       if(!regexp.test(phoneNum2) || !regexp.test(phoneNum3) ){
