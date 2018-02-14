@@ -51,15 +51,18 @@
     function nextPage() {
 
          var UsrName     = document.querySelector('#UsrName').value;
-         UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
+
          if(UsrReqPayNum!= null){
                UsrReqPay  = UsrReqPayNum;
               if(v !=null && v != UsrReqPay){
                 UsrReqPay   = Number(v);
               }
          }else{
-            document.getElementById('UsrReqPay').value  = v;
-            UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
+            UsrReqPay = 0;
+            if(v !=null){
+                document.getElementById('UsrReqPay').value  = v;
+                UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
+            }
          }
 
         if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay || UsrReqPay < 50) {
