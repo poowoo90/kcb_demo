@@ -15,7 +15,7 @@
       $("input[name=UsrName]").keyup(function(event){
        if (!(event.keyCode >=37 && event.keyCode<=40)) {
         var inputVal = $(this).val();
-        $(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+        $(this).val(inputVal.replace(/[^a-z0-9"."-]/gi,''));
        }
       });
   });
@@ -31,6 +31,7 @@
       var UsrName = document.querySelector('#UsrName').value;
       var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
       var regexp = /^[0-9]*$/;
+      var NameCheck = /[a-z]/gi;
       var phoneNum2 = document.getElementById('phone2').value;
       var phoneNum3 = document.getElementById('phone3').value;
 
@@ -47,7 +48,7 @@
           return false;
       }
 
-      if(regexp.test(UsrName)) {
+      if(!NameCheck.test(UsrName)) {
           alert("Please enter English or number only for name.");
           return false;
       }
