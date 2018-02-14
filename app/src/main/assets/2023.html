@@ -51,6 +51,7 @@
     function nextPage() {
 
          var UsrName     = document.querySelector('#UsrName').value;
+         var regex = /^[0-9]*$/;
 
          if(UsrReqPayNum!= null){
                UsrReqPay  = UsrReqPayNum;
@@ -65,7 +66,7 @@
             }
          }
 
-        if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay || UsrReqPay < 50) {
+        if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay || UsrReqPay < 50 || regex.test(UsrReqPay)) {
             document.querySelector('#UsrReqPay').value = "";
             alert('Please, Check application amount');
             return false;
@@ -101,7 +102,7 @@
     function onlyNum(obj) {
         val = obj.value;
         document.getElementById('UsrReqPay2').value  = val;
-        var re = /[^0-9\.\,\-]/gi;
+        var re = /[^0-9]/gi;
         obj.value = val.replace(re, '');
     }
 
