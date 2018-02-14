@@ -50,19 +50,19 @@
 
 
         if(UsrName == "") {
-            alert("Please, Enter your name.");
+            alert("Please enter name.");
             return false;
          } else if(regex1.test(UsrName)||!regex3.test(UsrName)) {
-            alert("Please, Name enter English or English + numbers");
+            alert("Please enter English or number only for name");
             return false;
          } else if( phoneNum2== "" || phoneNum3== "" ) {
-            alert("Please, Enter your cellphone numbers.");
+            alert("Please enter cellphone.");
             return false;
          } else if(!regex1.test(phoneNum2) || !regex1.test(phoneNum3) ){
-             alert("Please, Cellphone enter numbers only.");
+             alert("Please enter numbers only for cellphone.");
              return false;
          }else if(!regex2.test(phoneNum2) || !regex2.test(phoneNum3) ){
-             alert("Please, Cellphone enter 4 digits numbers only.");
+             alert("Please enter 4 digits numbers only for cellphone.");
              return false;
          }
         var JsonData =
