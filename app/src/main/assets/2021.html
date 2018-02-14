@@ -9,9 +9,16 @@
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-    $(document).ready(function() {
-        common_getJsonData();
-    });
+      $(document).ready(function() {
+          common_getJsonData();
+          //한글입력 안되게 처리
+          $("input[name=UsrName]").keyup(function(event){
+           if (!(event.keyCode >=37 && event.keyCode<=40)) {
+            var inputVal = $(this).val();
+            $(this).val(inputVal.replace(/[^a-z0-9"."-]/gi,''));
+           }
+          });
+      });
 
     /**
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
@@ -42,7 +49,9 @@
         var UsrName = document.querySelector('#UsrName').value;
         var regex1 = /^[0-9]*$/;
         var regex2 = /[(0-9)]{4}/;
-        var regex3 =  /^[A-Za-z0-9]+$/;
+        var regex3 =  /^[A-Za-z0-9\.\-]+$/;
+        var regex4 = /^[\.\-]*$/;
+        var regex5 =  /^[0-9\.\-]+$/;
         var phoneNum1 = document.getElementById('phone').value;
         var phoneNum2 = document.getElementById('phone2').value;
         var phoneNum3 = document.getElementById('phone3').value;
@@ -50,11 +59,10 @@
 
 
         if(UsrName == "") {
-
             alert("Please enter name.");
             return false;
-         } else if(regex1.test(UsrName)||!regex3.test(UsrName)) {
-            alert("Please enter English or number only for name");
+         } else if(regex1.test(UsrName)||!regex3.test(UsrName)|| regex4.test(UsrName)|| regex5.test(UsrName)) {
+            alert("Please check name");
             return false;
          } else if( phoneNum2== "" || phoneNum3== "" ) {
             alert("Please enter cellphone.");
@@ -99,7 +107,7 @@
             <div class="cell">
                 <label for="name" class="tit"><span class="inner">Name</span></label>
                 <div class="inp_area">
-                    <input type="email" id="UsrName" maxlength="50" style='text-transform: uppercase;' class="inp_text">
+                    <input type="email" id="UsrName" name="UsrName" maxlength="50" style='text-transform: uppercase;' class="inp_text">
                 </div>
             </div>
             <div class="cell">
