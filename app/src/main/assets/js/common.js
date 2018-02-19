@@ -29,7 +29,7 @@ var SUZAN = {
 			"officeNm":"KIA Motors",
 			"annualIncome":40000,
 			"arrearsYN":"N/A",
-			"arrearsAmt":0,
+			"arrearsAmt":"0",
 			"telReason":"responsible payment"
 			};
 
