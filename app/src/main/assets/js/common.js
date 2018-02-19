@@ -43,9 +43,9 @@ var AMIE  = {
 			"contractRate":1.3,
 			"CBRate":2.5,
 			"NBRate":"△1.2",
-			"officeNm":"",
-			"annualIncome":0,
-			"arrearsYN":"",
+			"officeNm":"KIA Motors",
+			"annualIncome":40000,
+			"arrearsYN":"N/A",
 			"arrearsAmt":0,
 			"telReason":"No overdue"
 			};
@@ -61,9 +61,9 @@ var TOM   = {
 			"contractRate":2.5,
 			"CBRate":3.5,
 			"NBRate":"△1.0",
-			"officeNm":"",
-			"annualIncome":0,
-			"arrearsYN":"",
+			"officeNm":"KIA Motors",
+			"annualIncome":40000,
+			"arrearsYN":"N/A",
 			"arrearsAmt":0,
 			"telReason":"Long-term signup in Telco service"
 			};
@@ -78,9 +78,9 @@ var BRIAN = {
 			"contractRate":4.1,
 			"CBRate":0,
 			"NBRate":4.1,
-			"officeNm":"",
-			"annualIncome":0,
-			"arrearsYN":"",
+			"officeNm":"KIA Motors",
+			"annualIncome":40000,
+			"arrearsYN":"N/A",
 			"arrearsAmt":0,
 			"telReason":"reasonable usage of micropayment"
 			};
@@ -95,9 +95,9 @@ var JADE  = {
 			"contractRate":2.1,
 			"CBRate":0,
 			"NBRate":2.1,
-			"officeNm":"",
-			"annualIncome":0,
-			"arrearsYN":"",
+			"officeNm":"KIA Motors",
+			"annualIncome":40000,
+			"arrearsYN":"N/A",
 			"arrearsAmt":0,
 			"telReason":"in use of Family Package"
 			};
@@ -113,9 +113,9 @@ var JOHN  = {
 			"contractRate":3.6,
 			"CBRate":0,
 			"NBRate":3.6,
-			"officeNm":"",
-			"annualIncome":0,
-			"arrearsYN":"",
+			"officeNm":"KIA Motors",
+			"annualIncome":40000,
+			"arrearsYN":"N/A",
 			"arrearsAmt":0,
 			"telReason":"responsible payment"
 			};
