@@ -644,7 +644,7 @@ select {
 .loan .agree_section .item .desc {
 	margin-top: 20px;
 	color: #4f4f4f;
-	text-align: center;
+	text-align: left;
 	font-size: 15px;
 }
 
