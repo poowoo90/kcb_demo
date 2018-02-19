@@ -41,7 +41,7 @@
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
         document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
         document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
-        document.getElementById('UsrReqPay2').placeholder = '50~'+common_numberWithCommas(userData.conAmt); // 50~ 약정최대금액
+        document.getElementById('UsrReqPay2').placeholder = '50~'+common_numberWithCommas(userData.conAmt)+' US $'; // 50~ 약정최대금액
 
 
         if(jsonData.reqPay!=null){
@@ -184,7 +184,7 @@
                 </div>
             </div>
             <div class="cell">
-                <label for="annual_income2" class="tit"><span class="inner">Amount of overdue<</span></label>
+                <label for="annual_income2" class="tit"><span class="inner">Amount of overdue</span></label>
                 <div class="inp_area">
                     <input type="text" id="arrearsAmt" class="inp_text right" readonly>
                 </div>
@@ -247,16 +247,26 @@
                     <input type="text" id="loanAccount" class="inp_text" readonly>
                 </div>
             </div>
-            <div class="cell">
-                <label for="loan_method" class="tit"><span class="inner">Loan method</span></label>
+            <div class="cell only_text">
+                <span class="tit">Loan method</span>
                 <div class="inp_area">
-                    <input type="text" id="loan_method" class="inp_text" value="credit line" readonly>
+                    <div class="check_area">
+							<span class="inner">
+								<input type="radio" id="loan_method" name="loan_method" class="blind" checked>
+								<label for="loan_method">credit line (fluid limit loan)</label>
+							</span>
+                    </div>
                 </div>
             </div>
-            <div class="cell">
-                <label for="loan_term" class="tit"><span class="inner">Loan term</span></label>
+            <div class="cell only_text">
+                <span class="tit">Loan term</span>
                 <div class="inp_area">
-                    <input type="text" id="loan_term" class="inp_text" value="12 months" readonly>
+                    <div class="check_area">
+							<span class="inner">
+								<input type="radio" id="loan_term" name="loan_term" class="blind" checked>
+								<label for="loan_term">12 months</label>
+							</span>
+                    </div>
                 </div>
             </div>
         </div>
