@@ -23,9 +23,17 @@
       document.getElementById('phone2').value = jsonData.phone.substr(3,4);
       document.getElementById('phone3').value = jsonData.phone.substr(7,4);
       document.getElementById('officeNm').value = userData.officeNm;
-      document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US$';
+      if(userData.annualIncome == '') {
+        document.getElementById('annualIncome').value = userData.annualIncome;
+      } else {
+        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US$';
+      }
       document.getElementById('arrearsYN').value = userData.arrearsYN;
-      document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt) + ' US$';
+      if(userData.arrearsAmt == '') {
+        document.getElementById('arrearsAmt').value = userData.arrearsAmt;
+      } else {
+        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt) + ' US$';
+      }
   }
 
   function nextPage() {
@@ -72,7 +80,7 @@
                 </div>
             </div>
             <div class="cell">
-                <label for="phone" class="tit"><span class="inner">Cell phone<br>number</span></label>
+                <label for="phone" class="tit"><span class="inner">Cell Phone<br>Number</span></label>
                 <div class="inp_area">
                     <span class="inner inner_sel">
                         <input type="text" maxlength="3" size="4" name="phone1" id="phone1" class="inp_select" readonly>
@@ -119,7 +127,7 @@
 
         <div class="confirm_section">
             <h2 class="tit">Your CB information is unfit<br>for loan</h2>
-            <p class="desc">reason: Insufficient Annual income</p>
+            <p class="desc">(Reason: Insufficient Annual income)</p>
 
             <div class="btn_area default">
 					<span class="inner">
@@ -128,7 +136,7 @@
             </div>
             <div class="banner" onclick="nextPage();">
                 <em>Telco Credit Loans</em>
-                <p>available to anyone in ownership of a mobile device, KT Telco service could offer better credit ratings</p>
+                <p>Available to anyone in ownership of a mobile device, KT Telco service could offer better credit ratings</p>
                 <a href="#" class="btn_animation" onclick="nextPage();">view more<span class="dummy_disabled"></span></a>
             </div>
         </div>

@@ -18,7 +18,7 @@
         document.getElementById('UsrReqPay').value =  common_numberWithCommas(jsonData.reqPay) +' US $';
         document.getElementById('contractRate').value = jsonData.contractRate+'%';
         document.getElementById('loanAccount').value = jsonData.loanAccount;
-        document.getElementById('loanPeriod').value = jsonData.loanPeriod + 'months';
+        document.getElementById('loanPeriod').value = jsonData.loanPeriod + ' months';
     }
 
     </script>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="cell">
-                <label for="contracted_interest_rate" class="tit"><span class="inner">contracted<br>interest rate</span></label>
+                <label for="contracted_interest_rate" class="tit"><span class="inner">(contracted)<br>interest rate</span></label>
                 <div class="inp_area">
                     <input type="text" id="contractRate" class="inp_text right" readonly>
                 </div>

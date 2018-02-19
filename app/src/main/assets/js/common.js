@@ -21,10 +21,10 @@ var SUZAN = {
 			"phone":"01037890032",
 			"loanAccount":"162-342-3829",
 			"conAmt":10000,
-			"CBAmt":0,
+			"CBAmt":"-",
 			"NBAmt":10000,
 			"contractRate":3.0,
-			"CBRate":0,
+			"CBRate":"-",
 			"NBRate":3.0,
 			"officeNm":"KIA Motors",
 			"annualIncome":40000,
@@ -43,10 +43,10 @@ var AMIE  = {
 			"contractRate":1.3,
 			"CBRate":2.5,
 			"NBRate":"△1.2",
-			"officeNm":"KIA Motors",
-			"annualIncome":40000,
-			"arrearsYN":"N/A",
-			"arrearsAmt":0,
+			"officeNm":"",
+			"annualIncome": "",
+			"arrearsYN":"",
+			"arrearsAmt":"",
 			"telReason":"No overdue"
 			};
 
@@ -61,10 +61,10 @@ var TOM   = {
 			"contractRate":2.5,
 			"CBRate":3.5,
 			"NBRate":"△1.0",
-			"officeNm":"KIA Motors",
-			"annualIncome":40000,
-			"arrearsYN":"N/A",
-			"arrearsAmt":0,
+			"officeNm":"",
+			"annualIncome": "",
+			"arrearsYN":"",
+			"arrearsAmt":"",
 			"telReason":"Long-term signup in Telco service"
 			};
 
@@ -73,15 +73,15 @@ var BRIAN = {
 			"phone":"01066324486",
 			"loanAccount":"145-442-1616",
 			"conAmt":15000,
-			"CBAmt":0,
+			"CBAmt":"-",
 			"NBAmt":15000,
 			"contractRate":4.1,
-			"CBRate":0,
+			"CBRate":"-",
 			"NBRate":4.1,
-			"officeNm":"KIA Motors",
-			"annualIncome":40000,
-			"arrearsYN":"N/A",
-			"arrearsAmt":0,
+			"officeNm":"",
+			"annualIncome": "",
+			"arrearsYN":"",
+			"arrearsAmt":"",
 			"telReason":"reasonable usage of micropayment"
 			};
 
@@ -90,15 +90,15 @@ var JADE  = {
 			"phone":"01078662469",
 			"loanAccount":"185-356-2789",
 			"conAmt":60000,
-			"CBAmt":0,
+			"CBAmt":"-",
 			"NBAmt":60000,
 			"contractRate":2.1,
-			"CBRate":0,
+			"CBRate":"-",
 			"NBRate":2.1,
-			"officeNm":"KIA Motors",
-			"annualIncome":40000,
-			"arrearsYN":"N/A",
-			"arrearsAmt":0,
+			"officeNm":"",
+			"annualIncome": "",
+			"arrearsYN":"",
+			"arrearsAmt":"",
 			"telReason":"in use of Family Package"
 			};
 
@@ -108,15 +108,15 @@ var JOHN  = {
 			"phone":"01044223348",
 			"loanAccount":"332-690-1983",
 			"conAmt":5000,
-			"CBAmt":0,
+			"CBAmt":"-",
 			"NBAmt":5000,
 			"contractRate":3.6,
-			"CBRate":0,
+			"CBRate":"-",
 			"NBRate":3.6,
-			"officeNm":"KIA Motors",
-			"annualIncome":40000,
-			"arrearsYN":"N/A",
-			"arrearsAmt":0,
+			"officeNm":"",
+			"annualIncome": "",
+			"arrearsYN":"",
+			"arrearsAmt":"",
 			"telReason":"responsible payment"
 			};
 
@@ -132,7 +132,7 @@ var SAM  = {
 			"NBRate":"△0.2",
 			"officeNm":"E-Mart",
 			"annualIncome":36000,
-			"arrearsYN":"Y",
+			"arrearsYN":"Once",
 			"arrearsAmt":600,
 			"telReason":"No overdue"
 			};

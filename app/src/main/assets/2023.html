@@ -30,16 +30,32 @@
         document.getElementById('phone3').value = phone.substr(7,4);
         document.getElementById('officeNm').value = userData.officeNm;  //직장명
         document.getElementById('loanAccount').value = userData.loanAccount; //입금계좌
-        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
+        if(userData.annualIncome == '') {
+            document.getElementById('annualIncome').value = userData.annualIncome; //연소득
+        } else {
+            document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
+        }
         document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + ' US $'; //약정금액
         conAmt= userData.conAmt;
-        document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
+        if(userData.CBAmt == '-') {
+            document.getElementById('CBAmt').innerHTML = userData.CBAmt; //신용정보평가 금액
+        } else {
+            document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
+        }
         document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ ' US $'; //통신정보평가 금액
         document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
-        document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+        if(userData.CBRate == '-') {
+            document.getElementById('CBRate').innerHTML =userData.CBRate; //신용정보평가 금리
+        } else {
+            document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+        }
         document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
-        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
+        if(userData.arrearsAmt == '') {
+            document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
+        } else {
+            document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
+        }
         document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
         document.getElementById('UsrReqPay2').placeholder = '50~'+common_numberWithCommas(userData.conAmt)+' US $'; // 50~ 약정최대금액
 
