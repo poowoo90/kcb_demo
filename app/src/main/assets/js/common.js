@@ -156,8 +156,8 @@ function common_goBack() {
 function common_getUserData(name) {
     //alert("name : " + name);
     name = name.toUpperCase();
-    if(name == 'SUZAN') {
-        return SUZAN;
+    if(name == 'SUSAN') {
+        return SUSAN;
     } else if(name == 'AMIE') {
         return AMIE;
     } else if(name == 'TOM') {
