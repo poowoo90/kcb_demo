@@ -23,36 +23,59 @@
 
         var jsonData = JSON.parse(json);
         var userData = common_getUserData(jsonData.name);
+        var beforeStr = userData.loanAccount;
+        var afterStr = beforeStr.split(',');
         phone = jsonData.phone;
         document.getElementById('UsrName').value = jsonData.name;
         document.getElementById('phone1').value = phone.substr(0,3);
         document.getElementById('phone2').value = phone.substr(3,4);
         document.getElementById('phone3').value = phone.substr(7,4);
         document.getElementById('officeNm').value = userData.officeNm;  //직장명
-        document.getElementById('loanAccount').value = userData.loanAccount; //입금계좌
-        if(userData.annualIncome == '') {
+        document.getElementById('loanAccount').innerHTML=afterStr[0]; //입금계좌1
+        document.getElementById('loanAccount2').innerHTML=afterStr[1]; //입금계좌2
+        if(jsonData.selAccount!=null){
+              if(jsonData.selAccount==afterStr[0]){
+                document.getElementById("selAccount").options[0].selected = true;
+              }else{
+                document.getElementById("selAccount").options[1].selected = true;
+              }
+        }
+
+        if(userData.officeNm =="N/A") {
+            $("#officeNm").css("text-align","center");
+        }
+        if(userData.annualIncome =="N/A") {
             document.getElementById('annualIncome').value = userData.annualIncome; //연소득
+            $("#annualIncome").css("text-align","center");
         } else {
             document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
+            $("#annualIncome").css("text-align","right");
         }
         document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + ' US $'; //약정금액
         conAmt= userData.conAmt;
-        if(userData.CBAmt == '-') {
+        if(userData.CBAmt == 'N/A') {
             document.getElementById('CBAmt').innerHTML = userData.CBAmt; //신용정보평가 금액
         } else {
             document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
         }
         document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ ' US $'; //통신정보평가 금액
         document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
-        if(userData.CBRate == '-') {
+        if(userData.CBRate == 'N/A') {
             document.getElementById('CBRate').innerHTML =userData.CBRate; //신용정보평가 금리
         } else {
             document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
         }
         document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
-        if(userData.arrearsAmt == '') {
+        if(document.getElementById('arrearsYN').value =="N/A"){
+            $("#arrearsYN").css("text-align","center");
+        }else{
+            $("#arrearsYN").css("text-align","right");
+        }
+
+        if(userData.arrearsAmt == 'N/A') {
             document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
+             $("#arrearsAmt").css("text-align","center");
         } else {
             document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
         }
@@ -64,11 +87,19 @@
             UsrReqPayNum = jsonData.reqPay;
         }
 
+
+    }
+
+     function moveFocus(){
+        if(event.keyCode==13){
+            common_hideKeyboard();
+        }
     }
 
     function nextPage() {
 
          var UsrName     = document.querySelector('#UsrName').value;
+         var selAccount  = document.getElementById('selAccount').value;
          var regex = /^[0-9]*$/;
 
          if(UsrReqPayNum!= null){
@@ -96,6 +127,7 @@
             "name" : UsrName,
             "phone" : phone,
             "reqPay" : UsrReqPay,
+            "selAccount" :selAccount,
         };
         common_movePage('2024.html', JsonData);
     }
@@ -196,7 +228,7 @@
             <div class="cell">
                 <label for="overdue_history" class="tit"><span class="inner">Past due History</span></label>
                 <div class="inp_area">
-                    <input type="text" id="arrearsYN" class="inp_text center" readonly>
+                    <input type="text" id="arrearsYN" class="inp_text center"readonly>
                 </div>
             </div>
             <div class="cell">
@@ -229,13 +261,13 @@
                 <tbody>
                 <tr>
                     <td>Loan Limit</td>
-                    <td id="conAmt"></td>
+                    <td id="conAmt" style="color:#ed6c21;"></td>
                     <td id="CBAmt"></td>
                     <td id="NBAmt"></td>
                 </tr>
                 <tr>
                     <td>interest rate</td>
-                    <td id="contractRate"></td>
+                    <td id="contractRate" style="color:#ed6c21;"></td>
                     <td id="CBRate"></td>
                     <td id="NBRate"></td>
                 </tr>
@@ -253,7 +285,7 @@
             <div class="cell">
                 <label for="application_amount" class="tit"><span class="inner">Application<br>amount</span></label>
                 <div class="inp_area">
-                    <input type="tel" id="UsrReqPay2" name="UsrReqPay2" maxlength="15" value="" class="inp_text right" onkeyup="onlyNum(this);this.value=this.value.comma();">
+                    <input type="tel" id="UsrReqPay2" name="UsrReqPay2" maxlength="15" value="" class="inp_text right" onkeyup="onlyNum(this);this.value=this.value.comma();" onkeydown=moveFocus()>
                     <input type="hidden" id="UsrReqPay" name="UsrReqPay" class="inp_text right">
                 </div>
             </div>
@@ -261,9 +293,9 @@
             <div class="cell">
                 <label for="deposit_account" class="tit"><span class="inner">deposit account</span></label>
                 <div class="inp_area">
-                    <select id="loanAccount" class="inp_select">
-                        <option value="0">000-1111-1111</option>
-                        <option value="1">222-1111-1111</option>
+                    <select id="selAccount" class="inp_select">
+                        <option id="loanAccount"></option>
+                        <option id="loanAccount2"></option>
                     </select>
                 </div>
             </div>

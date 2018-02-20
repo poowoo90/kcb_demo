@@ -32,7 +32,7 @@
 
       function moveFocus(current, next){
         if(event.keyCode==13){
-            if(current == 'phone3') {
+            if(current == "phone3") {
                 nextPage();
             } else {
                 document.getElementById(next).focus();
@@ -143,11 +143,11 @@
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" maxlength="4" id="phone2" name="phone2" class="inp_text center" onkeydown=moveFocus("phone2","phone3")>
+							<input type="tel" maxlength="4" id="phone2" name="phone2" class="inp_text center">
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" maxlength="4" id="phone3" name="phone3" class="inp_text center" onkeydown=moveFocus("phone3","UsrName")>
+							<input type="tel" maxlength="4" id="phone3" name="phone3" class="inp_text center" onkeydown=moveFocus("phone3","phone2")>
 						</span>
                 </div>
             </div>
