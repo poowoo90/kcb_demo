@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/common.js"></script>
+
+    <script language = "javascript">
+
+    common_getJsonData();
+
+    /**
+     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+     */
+     var contractRate;
+     var UsrReqPay;
+    function onCreate(json) {
+        var jsonData = JSON.parse(json);
+        UsrReqPay=jsonData.reqPay;
+        document.getElementById('UsrReqPay').value = common_numberWithCommas(jsonData.reqPay)+ ' US $';
+        var userData = common_getUserData(jsonData.name);
+        document.getElementById('UsrName').value = jsonData.name;
+        document.getElementById('phone1').value = jsonData.phone.substr(0,3);
+        document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+        document.getElementById('phone3').value = jsonData.phone.substr(7,4);
+        if(userData.officeNm == 'N/A') {
+            document.getElementById('officeNm').className = "inp_text center";
+            document.getElementById('officeNm').value = userData.officeNm;  //직장명
+        } else {
+            document.getElementById('officeNm').value = userData.officeNm;  //직장명
+        }
+        document.getElementById('loanAccount').value = jsonData.loanAccount; //입금계좌
+        if(userData.annualIncome == 'N/A') {
+            document.getElementById('annualIncome').value = userData.annualIncome; //연소득
+            document.getElementById('annualIncome').className = "inp_text center";
+        } else {
+            document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
+        }
+        document.getElementById('CBAmt').value = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
+        document.getElementById('CBRate').value =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+        contractRate = userData.CBRate;
+        if(userData.arrearsYN == 'N/A') {
+            document.getElementById('arrearsYN').className = "inp_text center";
+        } else {
+            document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
+        }
+        if(userData.arrearsAmt == 'N/A') {
+            document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
+            document.getElementById('arrearsAmt').className = "inp_text center";
+        } else {
+            document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
+        }
+    }
+
+    function nextPage() {
+        var loanAccount = document.querySelector('#loanAccount').value;
+        var loanPeriod= "12"; //대출기간
+
+        var JsonData =
+        {
+            "reqPay" : UsrReqPay,
+            "contractRate" : contractRate,
+            "loanAccount" : loanAccount,
+            "loanPeriod" : loanPeriod
+        };
+        common_movePage('2015.html',JsonData);
+    }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="loan nav">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
+        </div>
+
+        <div class="step_status">
+            <h1 class="tit">Confirm Loan Application</h1>
+            <div class="num_area">
+                <span class="num checked">1</span>
+                <span class="num checked">2</span>
+                <span class="num checked">3</span>
+                <span class="num current">4</span>
+                <span class="num">5</span>
+            </div>
+        </div>
+
+        <div class="form first">
+            <h2 class="section_title">Client information</h2>
+            <div class="cell">
+                <label for="name" class="tit"><span class="inner">Name</span></label>
+                <div class="inp_area">
+                    <input type="text" id="UsrName" class="inp_text" style='text-transform: uppercase;' readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="phone" class="tit"><span class="inner">Cell phone<br>number</span></label>
+                <div class="inp_area">
+						<span class="inner inner_sel">
+						<span class="inner">
+							<input type="text" id="phone1" class="inp_text center" readonly>
+						</span>
+						</span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" id="phone2" class="inp_text center" readonly>
+						</span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" id="phone3" class="inp_text center" readonly>
+						</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Credit Bureau Information Inquiry</h2>
+            <div class="cell">
+                <label for="workplace" class="tit"><span class="inner">Name of<br>workplace</span></label>
+                <div class="inp_area">
+                    <input type="text" id="officeNm" class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income" class="tit"><span class="inner">Annual income</span></label>
+                <div class="inp_area">
+                    <input type="text" id="annualIncome" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="overdue_history" class="tit"><span class="inner">Overdue History</span></label>
+                <div class="inp_area">
+                    <input type="text" id="arrearsYN" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income2" class="tit"><span class="inner">Amount of overdue</span></label>
+                <div class="inp_area">
+                    <input type="text" id="arrearsAmt" class="inp_text right" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Loan Information</h2>
+            <div class="cell">
+                <label for="workplace" class="tit"><span class="inner">Maximum<br>Transaction<br>Amount</span></label>
+                <div class="inp_area">
+                    <input type="text" id="CBAmt" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income" class="tit"><span class="inner">(contracted)<br>interest rate</span></label>
+                <div class="inp_area">
+                    <input type="text" id="CBRate" class="inp_text right" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Loan Application</h2>
+            <div class="cell">
+                <label for="application_amount" class="tit"><span class="inner">Application<br>amount</span></label>
+                <div class="inp_area">
+                    <input type="text" id="UsrReqPay" style='text-transform: uppercase;' class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="deposit_account" class="tit"><span class="inner">Deposit account</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loanAccount" class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="loan_method" class="tit"><span class="inner">Loan method</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loan_method" class="inp_text" value="credit line" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="loan_term" class="tit"><span class="inner">Loan term</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loan_term" class="inp_text" value="12 months" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn_area default">
+				<span class="inner">
+					<button type="button" class="btn_cancel btn_animation" onclick="common_cancel();">Cancel<span class="dummy_active"></span></button>
+				</span>
+            <span class="inner">
+					<button type="submit" class="btn_confirm btn_animation"  onclick="nextPage();">Confirm<span class="dummy_active"></span></button>
+				</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
+</body>
+</html>

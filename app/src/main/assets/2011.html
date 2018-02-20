@@ -15,10 +15,29 @@
       $("input[name=UsrName]").keyup(function(event){
        if (!(event.keyCode >=37 && event.keyCode<=40)) {
         var inputVal = $(this).val();
-        $(this).val(inputVal.replace(/[^a-z0-9"."-]/gi,''));
+        $(this).val(inputVal.replace(/[^a-z0-9"."-\s]/gi,''));
+       }
+      });
+      //전화번호 4자리 입력시 Auto Tab
+      $("input[name=phone2]").keyup(function(event){
+       if (!(event.keyCode == 13)) {
+        var pLength = document.getElementById('phone2').value.length;
+        if( pLength == 4) {
+            document.getElementById('phone3').focus();
+        }
        }
       });
   });
+
+  function moveFocus(current, next){
+        if(event.keyCode==13){
+            if(current == 'phone3') {
+                nextPage();
+            } else {
+                document.getElementById(next).focus();
+            }
+        }
+    }
 
   function onInit() {
    	document.getElementById('UsrName').value = "";
@@ -31,9 +50,9 @@
       var UsrName = document.querySelector('#UsrName').value;
       var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
       var regexp = /^[0-9]*$/;
-      var regex3 =  /^[A-Za-z0-9\.\-]+$/;
-      var regex4 = /^[\.\-]*$/;
-      var regex5 =  /^[0-9\.\-]+$/;
+      var regex3 =  /^[A-Za-z0-9\.\-\s]+$/;
+      var regex4 = /^[\.\-\s]*$/;
+      var regex5 =  /^[0-9\.\-\s]+$/;
       var phoneNum2 = document.getElementById('phone2').value;
       var phoneNum3 = document.getElementById('phone3').value;
 
@@ -92,7 +111,7 @@
             <div class="cell">
                 <label for="name" class="tit"><span class="inner">Name</span></label>
                 <div class="inp_area">
-                    <input type="email" name="UsrName" id="UsrName" maxlength="50" style='text-transform: uppercase;' class="inp_text">
+                    <input type="email" name="UsrName" id="UsrName" maxlength="50" style='text-transform: uppercase;' class="inp_text" onkeydown=moveFocus("UsrName","phone2")>
                 </div>
             </div>
             <div class="cell">
@@ -108,11 +127,11 @@
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone2" id="phone2" class="inp_text center">
+							<input type="tel" maxlength="4" name="phone2" id="phone2" class="inp_text center">
 						</span>
                     <span class="dash">-</span>
                     <span class="inner">
-							<input type="tel" onkeydown="onlyNumber(this)" maxlength="4" name="phone3" id="phone3" class="inp_text center">
+							<input type="tel" maxlength="4" name="phone3" id="phone3" class="inp_text center" onkeydown=moveFocus("phone3","phone2")>
 						</span>
                 </div>
             </div>
