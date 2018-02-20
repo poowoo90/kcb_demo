@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else { // history 가 있는 경우
 
-            if(web.getUrl().equals("file:///android_asset/2025.html")) {
+            if(web.getUrl().equals("file:///android_asset/2025.html") || web.getUrl().equals("file:///android_asset/2015.html")) {
                 web.goBackOrForward(-(list.getCurrentIndex()) + 1);
             } else {
                 if (web.canGoBack()) {
