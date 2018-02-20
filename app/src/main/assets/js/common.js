@@ -19,16 +19,16 @@
 var SUZAN = {
 			"name":"SUZAN",
 			"phone":"01037890032",
-			"loanAccount":"162-342-3829",
+			"loanAccount":"162-34-23829,151-561-9419"
 			"conAmt":10000,
-			"CBAmt":"-",
+			"CBAmt":"N/A",
 			"NBAmt":10000,
 			"contractRate":3.0,
-			"CBRate":"-",
+			"CBRate":"N/A",
 			"NBRate":3.0,
-			"officeNm":"KIA Motors",
-			"annualIncome":40000,
-			"arrearsYN":"N/A",
+			"officeNm":"KT",
+			"annualIncome":30000,
+			"arrearsYN":"0",
 			"arrearsAmt":"0",
 			"telReason":"responsible payment"
 			};
@@ -36,69 +36,69 @@ var SUZAN = {
 var AMIE  = {
 			"name":"AMIE",
 			"phone":"01027333486",
-			"loanAccount":"143-247-8259",
+			"loanAccount":"143-247-8259,171-647-5254",
 			"conAmt":150000,
 			"CBAmt":100000,
 			"NBAmt":50000,
 			"contractRate":1.3,
 			"CBRate":2.5,
 			"NBRate":"△1.2",
-			"officeNm":"",
-			"annualIncome": "",
-			"arrearsYN":"",
-			"arrearsAmt":"",
-			"telReason":"No overdue"
+			"officeNm":"N/A",
+			"annualIncome": "N/A",
+			"arrearsYN":"0",
+			"arrearsAmt":"0",
+			"telReason":"No past due"
 			};
 
 
 var TOM   = {
 			"name":"TOM",
 			"phone":"01011563932",
-			"loanAccount":"432-116-2896",
+			"loanAccount":"432-116-2896, 132-216-2774",
 			"conAmt":80000,
 			"CBAmt":60000,
 			"NBAmt":20000,
 			"contractRate":2.5,
 			"CBRate":3.5,
 			"NBRate":"△1.0",
-			"officeNm":"",
-			"annualIncome": "",
-			"arrearsYN":"",
-			"arrearsAmt":"",
+			"officeNm":"N/A",
+			"annualIncome": "N/A",
+			"arrearsYN":"0",
+			"arrearsAmt":"0",
 			"telReason":"Long-term signup in Telco service"
 			};
 
 var BRIAN = {
 			"name":"BRIAN",
 			"phone":"01066324486",
-			"loanAccount":"145-442-1616",
+			"loanAccount":"145-442-1616, 145-167-2111",
 			"conAmt":15000,
-			"CBAmt":"-",
+			"CBAmt":"N/A",
 			"NBAmt":15000,
 			"contractRate":4.1,
-			"CBRate":"-",
+			"CBRate":"N/A",
 			"NBRate":4.1,
-			"officeNm":"",
-			"annualIncome": "",
-			"arrearsYN":"",
-			"arrearsAmt":"",
+			"officeNm":"N/A",
+			"annualIncome": "N/A",
+			"arrearsYN":"N/A",
+			"arrearsAmt":"N/A",
 			"telReason":"reasonable usage of micropayment"
 			};
 
 var JADE  = {
 			"name":"JADE",
 			"phone":"01078662469",
-			"loanAccount":"185-356-2789",
+			"loanAccount":"185-356-2789, 164-915-9284",
 			"conAmt":60000,
-			"CBAmt":"-",
+			"CBAmt":"N/A",
 			"NBAmt":60000,
 			"contractRate":2.1,
-			"CBRate":"-",
+			"CBRate":"N/A",
 			"NBRate":2.1,
-			"officeNm":"",
-			"annualIncome": "",
-			"arrearsYN":"",
-			"arrearsAmt":"",
+			"officeNm":"N/A",
+			"annualIncome": "N/A",
+			"arrearsYN":"N/A",
+			"arrearsAmt":"N/A",
 			"telReason":"in use of Family Package"
 			};
 
@@ -106,24 +106,24 @@ var JADE  = {
 var JOHN  = {
 			"name":"JOHN",
 			"phone":"01044223348",
-			"loanAccount":"332-690-1983",
+			"loanAccount":"332-690-1983, 132-615-1484",
 			"conAmt":5000,
-			"CBAmt":"-",
+			"CBAmt":"N/A",
 			"NBAmt":5000,
 			"contractRate":3.6,
-			"CBRate":"-",
+			"CBRate":"N/A",
 			"NBRate":3.6,
-			"officeNm":"",
-			"annualIncome": "",
-			"arrearsYN":"",
-			"arrearsAmt":"",
+			"officeNm":"N/A",
+			"annualIncome": "N/A",
+			"arrearsYN":"N/A",
+			"arrearsAmt":"N/A",
 			"telReason":"responsible payment"
 			};
 
 var SAM  = {
 			"name":"SAM",
 			"phone":"01037894487",
-			"loanAccount":"166-222-1839",
+			"loanAccount":"166-222-1839, 135-422-1844",
 			"conAmt":30000,
 			"CBAmt":20000,
 			"NBAmt":10000,
@@ -134,7 +134,7 @@ var SAM  = {
 			"annualIncome":36000,
 			"arrearsYN":"1",
 			"arrearsAmt":600,
-			"telReason":"No overdue"
+			"telReason":"No past due"
 			};
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
