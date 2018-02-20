@@ -16,7 +16,7 @@
 통신정보 가점사유 : telReason
 **/
 
-var SUZAN = {
+var SUSAN = {
 			"name":"SUZAN",
 			"phone":"01037890032",
 			"loanAccount":"162-34-23829,151-561-9419"
