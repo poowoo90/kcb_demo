@@ -581,8 +581,8 @@ select {
 	box-sizing: border-box;
 	color: #212121;
 	font-size: 15px;
-	background: #ddf3fe url(../img/ico_arrow.png) no-repeat 45px 22px;
-	background-size: 12px 7px;
+	background: #ddf3fe url(../img/ico_arrow.png) no-repeat 100% 22px;
+	background-size: 22px 7px;
 }
 
 .loan .form .cell .inp_select[readonly] {
@@ -679,7 +679,7 @@ select {
 }
 
 .loan .confirm_section .tit {
-	color: #212121;
+	color: #ef8535;
 	text-align: center;
 	line-height: 29px;
 	font-size: 23px;
@@ -693,41 +693,52 @@ select {
 	font-size: 15px;
 }
 
+.loan .confirm_section .ico {
+	display: block;
+	width: 60px;
+	height: 50px;
+	margin: 37px auto 30px;
+	background: url(../img/ico_computer.png) no-repeat;
+	background-size: 100% 100%;
+}
+
 .loan .confirm_section .banner {
 	position: relative;
 	margin-top: 27px;
-	padding: 15px;
-	border: 1px solid #dcdcdc;
+	padding: 24px 15px;
 	border-radius: 10px;
-	background: #f7f7f7;
+	background: #f6c450 url(../img/banner.png) no-repeat 100% 0;
+	background-size: 167px 191px;
 }
 
 .loan .confirm_section .banner em {
-	color: #212121;
-	font-size: 15px;
+	color: #000;
+	font-size: 19px;
 	font-weight: bold;
 }
 
 .loan .confirm_section .banner p {
-	margin-top: 15px;
-	color: #212121;
+	margin-top: 20px;
+	color: #000;
 	line-height: 20px;
 	font-size: 15px;
 }
 
 .loan .confirm_section .banner a {
-	position: absolute;
-	top: 10px;
-	right: 10px;
+	display: inline-block;
 	height: 26px;
+	margin-top: 15px;
 	padding: 0 10px;
-	border: 1px solid #cdcdcd;
 	border-radius: 7px;
 	background: #fff;
 	color: #ef8535;
 	font-size: 13px;
 	line-height: 26px;
 	text-decoration: none;
+}
+
+.loan .confirm_section .btn_area.default {
+	margin: 34px 0 3px;
 }
 
 .loan .table_type {
