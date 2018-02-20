@@ -30,7 +30,7 @@ var SUSAN = {
 			"annualIncome":30000,
 			"arrearsYN":"0",
 			"arrearsAmt":"0",
-			"telReason":"responsible payment"
+			"telReason":"Faithful Payer (Telecom service fare)"
 			};
 
 var AMIE  = {
@@ -47,7 +47,7 @@ var AMIE  = {
 			"annualIncome": "N/A",
 			"arrearsYN":"0",
 			"arrearsAmt":"0",
-			"telReason":"No Past due"
+			"telReason":"No Default (Telecom service fare)"
 			};
 
 
@@ -65,7 +65,7 @@ var TOM   = {
 			"annualIncome": "N/A",
 			"arrearsYN":"0",
 			"arrearsAmt":"0",
-			"telReason":"Long-term signup in Telco service"
+			"telReason":"Long-term membership For telecom service"
 			};
 
 var BRIAN = {
@@ -82,7 +82,7 @@ var BRIAN = {
 			"annualIncome": "N/A",
 			"arrearsYN":"N/A",
 			"arrearsAmt":"N/A",
-			"telReason":"reasonable usage of micropayment"
+			"telReason":"Active usage of Micro-payment service by telecom"
 			};
 
 var JADE  = {
@@ -99,7 +99,7 @@ var JADE  = {
 			"annualIncome": "N/A",
 			"arrearsYN":"N/A",
 			"arrearsAmt":"N/A",
-			"telReason":"in use of Family Package"
+			"telReason":"Usage of Family Package by telecom"
 			};
 
 
@@ -117,7 +117,7 @@ var JOHN  = {
 			"annualIncome": "N/A",
 			"arrearsYN":"N/A",
 			"arrearsAmt":"N/A",
-			"telReason":"responsible payment"
+			"telReason":"Faithful Payer (Telecom service fare)"
 			};
 
 var SAM  = {
@@ -134,7 +134,7 @@ var SAM  = {
 			"annualIncome":36000,
 			"arrearsYN":"1",
 			"arrearsAmt":600,
-			"telReason":"No Past due"
+			"telReason":"No Default (Telecom service fare)"
 			};
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
