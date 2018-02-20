@@ -6,6 +6,7 @@
     <title>SUNNY BANK</title>
     <link rel="stylesheet" href="css/app.css">
     <script src="js/common.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script language = "javascript">
     common_getJsonData();
@@ -40,7 +41,8 @@
                 document.getElementById("selAccount").options[1].selected = true;
               }
         }
-
+        alert(userData.CBAmt);
+        alert(userData.NBAmt);
         if(userData.officeNm =="N/A") {
             $("#officeNm").css("text-align","center");
         }
@@ -243,10 +245,10 @@
             <h2 class="section_title">Loan Information</h2>
             <table class="table_type">
                 <colgroup>
-                    <col width="120">
+                    <col width="100">
                     <col>
-                    <col>
-                    <col>
+                    <col width="93">
+                    <col width="93">
                 </colgroup>
 
                 <thead>
@@ -273,8 +275,7 @@
                 </tr>
                 <tr>
                     <td>Reason for<br>decision</td>
-                    <td colspan="2" id="telReason"></td>
-                    <td></td>
+                    <td colspan="3" id="telReason"></td>
                 </tr>
                 </tbody>
             </table>
