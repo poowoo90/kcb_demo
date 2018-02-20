@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/common.js"></script>
+    <script language = "javascript">
+
+  common_getJsonData();
+
+  /**
+   * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+   */
+  function onCreate(json) {
+      var jsonData = JSON.parse(json);
+      var userData = common_getUserData(jsonData.name);
+
+      document.getElementById('usrName').value = jsonData.name;
+      document.getElementById('phone1').value = jsonData.phone.substr(0,3);
+      document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+      document.getElementById('phone3').value = jsonData.phone.substr(7,4);
+      document.getElementById('officeNm').value = userData.officeNm;
+      if(userData.annualIncome == '') {
+        document.getElementById('annualIncome').value = userData.annualIncome;
+      } else {
+        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US$';
+      }
+      document.getElementById('arrearsYN').value = userData.arrearsYN;
+      if(userData.arrearsAmt == '') {
+        document.getElementById('arrearsAmt').value = userData.arrearsAmt;
+      } else {
+        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt) + ' US$';
+      }
+  }
+
+  function nextPage() {
+
+      var usrName = document.getElementById('usrName').value;
+      var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
+
+      var JsonData =
+      {
+          "name" : usrName,
+          "phone" : phone,
+          "backPage" : '2013.html',
+      };
+      common_movePage('2021.html', JsonData);
+  }
+
+  </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="loan nav">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation" onclick="common_goBack();"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
+        </div>
+
+        <div class="step_status">
+            <h1 class="tit">Loan execution result</h1>
+            <div class="num_area">
+                <span class="num checked">1</span>
+                <span class="num checked">2</span>
+                <span class="num checked">3</span>
+                <span class="num checked">4</span>
+                <span class="num current">5</span>
+            </div>
+        </div>
+
+        <div class="form first">
+            <h2 class="section_title">Client information</h2>
+            <div class="cell">
+                <label for="name" class="tit"><span class="inner">Name</span></label>
+                <div class="inp_area">
+                    <input type="text" maxlength="50" name="usrName" id="usrName" style='text-transform: uppercase;' class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="phone" class="tit"><span class="inner">Cell Phone<br>Number</span></label>
+                <div class="inp_area">
+                    <span class="inner inner_sel">
+                        <input type="text" maxlength="3" size="4" name="phone1" id="phone1" class="inp_select" readonly>
+                    </span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" maxlength="4" size="5" name="phone2" id="phone2" class="inp_text center" readonly>
+						</span>
+                    <span class="dash">-</span>
+                    <span class="inner">
+							<input type="text" maxlength="4" size="5" name="phone3" id="phone3" class="inp_text center" readonly>
+						</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <h2 class="section_title">Credit Bureau Information Inquiry</h2>
+            <div class="cell">
+                <label for="workplace" class="tit"><span class="inner">Name of<br>workplace</span></label>
+                <div class="inp_area">
+                    <input type="text" name="officeNm" id="officeNm" maxlength="50" class="inp_text" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income" class="tit"><span class="inner">Annual income</span></label>
+                <div class="inp_area">
+                    <input type="text" name="annualIncome" id="annualIncome" maxlength="13" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="overdue_history" class="tit"><span class="inner">Overdue History</span></label>
+                <div class="inp_area">
+                    <input type="text" name="arrearsYN" id="arrearsYN" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="annual_income2" class="tit"><span class="inner">Amount of overdue</span></label>
+                <div class="inp_area">
+                    <input type="text" name="arrearsAmt" id="arrearsAmt" maxlength="13" class="inp_text right" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirm_section">
+            <h2 class="tit">Your CB information is unfit<br>for loan</h2>
+            <p class="desc">(Reason: Insufficient Annual income)</p>
+
+            <div class="btn_area default">
+					<span class="inner">
+						<button type="submit" class="btn_confirm btn_animation" onclick="common_cancel();">Confirm<span class="dummy_active"></span></button>
+					</span>
+            </div>
+            <div class="banner" onclick="nextPage();">
+                <em>Telco Credit Loans</em>
+                <p>Available to anyone in ownership of a mobile device, KT Telco service could offer better credit ratings</p>
+                <a href="#" class="btn_animation" onclick="nextPage();">view more<span class="dummy_disabled"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
+</body>
+</html>
