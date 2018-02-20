@@ -130,7 +130,7 @@ var SAM  = {
 			"contractRate":3.8,
 			"CBRate":4.0,
 			"NBRate":"△0.2",
-			"officeNm":"E-Mart",
+			"officeNm":"KCB",
 			"annualIncome":36000,
 			"arrearsYN":"1",
 			"arrearsAmt":600,
