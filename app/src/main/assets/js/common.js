@@ -47,7 +47,7 @@ var AMIE  = {
 			"annualIncome": "N/A",
 			"arrearsYN":"0",
 			"arrearsAmt":"0",
-			"telReason":"No past due"
+			"telReason":"No Past due"
 			};
 
 
@@ -134,7 +134,7 @@ var SAM  = {
 			"annualIncome":36000,
 			"arrearsYN":"1",
 			"arrearsAmt":600,
-			"telReason":"No past due"
+			"telReason":"No Past due"
 			};
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
