@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
@@ -116,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         web.loadUrl("file:///android_asset/1001.html"); // 처음 로드할 페이지
+    }
+
+
+    /* 키보드 내리기 */
+    public void hideKeyboard(){
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     /* 물리 백버튼키 처리 */
@@ -260,6 +268,17 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     onLodingStart();
+                }
+            });
+        }
+
+        /* 키보드 숨기기 */
+        @JavascriptInterface
+        public void keyboardHide() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    hideKeyboard();
                 }
             });
         }

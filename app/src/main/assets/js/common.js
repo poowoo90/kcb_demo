@@ -235,6 +235,9 @@ function common_startLoding() {
     window.android.startLoding();
 }
 
+function common_hideKeyboard() {
+    window.android.keyboardHide();
+}
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
