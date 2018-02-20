@@ -45,7 +45,7 @@
      */
     function onCreate(json) {
         var jsonData = JSON.parse(json);
-        if (jsonData != null && jsonData.backPage != null && jsonData.backPage == '2013.html') {
+        if (jsonData != null && jsonData.backPage != null && (jsonData.backPage == '2013.html' || jsonData.backPage == '2016.html')) {
             //CB대출통해서 진입
             var userData = common_getUserData(jsonData.name);
             document.getElementById('UsrName').value = jsonData.name;
