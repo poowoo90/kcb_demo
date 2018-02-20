@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>SUNNY BANK</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/common.js"></script>
+    <script language = "javascript">
+    common_getJsonData();
+
+    /**
+     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+     */
+    function onCreate(json) {
+        var jsonData = JSON.parse(json);
+        document.getElementById('UsrReqPay').value =  common_numberWithCommas(jsonData.reqPay) +' US $';
+        document.getElementById('contractRate').value = jsonData.contractRate+'%';
+        document.getElementById('loanAccount').value = jsonData.loanAccount;
+        document.getElementById('loanPeriod').value = jsonData.loanPeriod + ' months';
+    }
+
+    </script>
+</head>
+<body onload='onCreate()'>
+<div class="wrap">
+    <div class="loan nav">
+        <div class="gnb">
+            <a href="#" class="btn_first btn_animation" onclick="common_cancel();"><span class="blind">Back</span><span class="dummy_active"></span></a>
+            <button type="button" class="btn_last btn_animation"><span class="blind">MENU</span><span class="dummy_disabled"></span></button>
+        </div>
+
+        <div class="step_status">
+            <h1 class="tit">Loan execution result</h1>
+            <div class="num_area">
+                <span class="num checked">1</span>
+                <span class="num checked">2</span>
+                <span class="num checked">3</span>
+                <span class="num checked">4</span>
+                <span class="num current">5</span>
+            </div>
+        </div>
+
+        <p class="complete_msg">Your loaning<br>process<br>has been completed</p>
+
+        <div class="form first">
+            <div class="cell">
+                <label for="contracted_amount" class="tit"><span class="inner">Contracted<br>amount</span></label>
+                <div class="inp_area">
+                    <input type="text" id="UsrReqPay" class="inp_text right" value="40,000 US $" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="contracted_interest_rate" class="tit"><span class="inner">(contracted)<br>interest rate</span></label>
+                <div class="inp_area">
+                    <input type="text" id="contractRate" class="inp_text right" readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="deposit_account" class="tit"><span class="inner">deposit account</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loanAccount" class="inp_text"  readonly>
+                </div>
+            </div>
+            <div class="cell">
+                <label for="loan_term" class="tit"><span class="inner">Loan term</span></label>
+                <div class="inp_area">
+                    <input type="text" id="loanPeriod" class="inp_text" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn_area default">
+				<span class="inner">
+					<button type="submit" class="btn_confirm btn_animation"  onclick="common_cancel();">Confirm<span class="dummy_active"></span></button>
+				</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
+</body>
+</html>
