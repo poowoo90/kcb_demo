@@ -17,9 +17,9 @@
 **/
 
 var SUSAN = {
-			"name":"SUZAN",
+			"name":"SUSAN",
 			"phone":"01037890032",
-			"loanAccount":"162-34-23829,151-561-9419"
+			"loanAccount":"162-34-23829,151-561-9419",
 			"conAmt":10000,
 			"CBAmt":"N/A",
 			"NBAmt":10000,
