@@ -63,7 +63,7 @@
 	    document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
 	    document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
 
-	    if(document.getElementById('arrearsYN').value =="N/A") {
+	    if(document.getElementById('arrearsYN').value =="N/A" || document.getElementById('arrearsYN').value =="NONE") {
 	    	$("#arrearsYN").css("text-align","center");
 	    } else {
 	    	$("#arrearsYN").css("text-align","right");

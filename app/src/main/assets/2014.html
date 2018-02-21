@@ -48,10 +48,9 @@
 		document.getElementById('CBRate').value =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
 		contractRate = userData.CBRate;
 
-		if(userData.arrearsYN == 'N/A') {
-			document.getElementById('arrearsYN').className = "inp_text center";
-		} else {
-			document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
+		document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
+		if(userData.arrearsYN == 'N/A' || userData.arrearsYN == 'NONE') {
+			$("#arrearsYN").css("text-align","center");
 		}
 
 		if(userData.arrearsAmt == 'N/A') {

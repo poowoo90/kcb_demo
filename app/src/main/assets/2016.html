@@ -34,10 +34,12 @@
 		} else {
 			document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US$';
 		}
-		if(userData.arrearsYN == 'N/A') {
-			document.getElementById('arrearsYN').className = "inp_text center";
-		}
+
 		document.getElementById('arrearsYN').value = userData.arrearsYN;
+		if(userData.arrearsYN == 'N/A' || userData.arrearsYN == 'NONE') {
+			$("#arrearsYN").css("text-align","center");
+		}
+
 
 		if(userData.arrearsAmt == 'N/A') {
 			document.getElementById('arrearsAmt').value = userData.arrearsAmt;
