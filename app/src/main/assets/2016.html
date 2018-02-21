@@ -9,56 +9,59 @@
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-  common_getJsonData();
+	common_getJsonData();
 
-  /**
-   * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
-   */
-  function onCreate(json) {
-      var jsonData = JSON.parse(json);
-      var userData = common_getUserData(jsonData.name);
+	/**
+	 * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+	 */
+	function onCreate(json) {
+		var jsonData = JSON.parse(json);
+		var userData = common_getUserData(jsonData.name);
 
-      document.getElementById('usrName').value = jsonData.name;
-      document.getElementById('phone1').value = jsonData.phone.substr(0,3);
-      document.getElementById('phone2').value = jsonData.phone.substr(3,4);
-      document.getElementById('phone3').value = jsonData.phone.substr(7,4);
-      if(userData.officeNm == 'N/A') {
-        document.getElementById('officeNm').className = "inp_text center";
-      }
-      document.getElementById('officeNm').value = userData.officeNm;
-      if(userData.annualIncome == 'N/A') {
-        document.getElementById('annualIncome').value = userData.annualIncome;
-        document.getElementById('annualIncome').className = "inp_text center";
-      } else {
-        document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US$';
-      }
-      if(userData.arrearsYN == 'N/A') {
-        document.getElementById('arrearsYN').className = "inp_text center";
-      }
-      document.getElementById('arrearsYN').value = userData.arrearsYN;
-      if(userData.arrearsAmt == 'N/A') {
-        document.getElementById('arrearsAmt').value = userData.arrearsAmt;
-        document.getElementById('arrearsAmt').className = "inp_text center";
-      } else {
-        document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt) + ' US$';
-      }
-  }
+		document.getElementById('usrName').value = jsonData.name;
+		document.getElementById('phone1').value = jsonData.phone.substr(0,3);
+		document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+		document.getElementById('phone3').value = jsonData.phone.substr(7,4);
 
-  function nextPage() {
+		if(userData.officeNm == 'N/A') {
+			document.getElementById('officeNm').className = "inp_text center";
+		}
 
-      var usrName = document.getElementById('usrName').value;
-      var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
+		document.getElementById('officeNm').value = userData.officeNm;
+		if(userData.annualIncome == 'N/A') {
+			document.getElementById('annualIncome').value = userData.annualIncome;
+			document.getElementById('annualIncome').className = "inp_text center";
+		} else {
+			document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome) + ' US$';
+		}
+		if(userData.arrearsYN == 'N/A') {
+			document.getElementById('arrearsYN').className = "inp_text center";
+		}
+		document.getElementById('arrearsYN').value = userData.arrearsYN;
 
-      var JsonData =
-      {
-          "name" : usrName,
-          "phone" : phone,
-          "backPage" : '2016.html',
-      };
-      common_movePage('2021.html', JsonData);
-  }
+		if(userData.arrearsAmt == 'N/A') {
+			document.getElementById('arrearsAmt').value = userData.arrearsAmt;
+			document.getElementById('arrearsAmt').className = "inp_text center";
+		} else {
+			document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt) + ' US$';
+		}
+	}
 
-  </script>
+	function nextPage() {
+
+		var usrName = document.getElementById('usrName').value;
+		var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
+
+		var JsonData =
+		{
+			"name" : usrName,
+			"phone" : phone,
+			"backPage" : '2016.html',
+		};
+		common_movePage('2021.html', JsonData);
+	}
+
+	</script>
 </head>
 <body>
 <div class="wrap">
@@ -126,7 +129,7 @@
                 </div>
             </div>
             <div class="cell">
-                <label for="annual_income2" class="tit"><span class="inner">Past due Amount</span></label>
+                <label for="annual_income2" class="tit"><span class="inner">Past due amount</span></label>
                 <div class="inp_area">
                     <input type="text" name="arrearsAmt" id="arrearsAmt" maxlength="13" class="inp_text right" readonly>
                 </div>

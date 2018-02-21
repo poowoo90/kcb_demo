@@ -9,34 +9,33 @@
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-  common_getJsonData();
+    common_getJsonData();
 
-  var name;
+    var name;
 
-  function onCreate(json) {
-    var jsonData = JSON.parse(json);
-    var userData = common_getUserData(jsonData.name);
-    name = userData.name;
-  }
-  function nextPage() {
-      var sunny_agree  = document.getElementsByName('sunny_agree' );
-      var credit_agree = document.getElementsByName('credit_agree');
-      var info_agree   = document.getElementsByName('info_agree'  );
+    function onCreate(json) {
+        var jsonData = JSON.parse(json);
+        var userData = common_getUserData(jsonData.name);
+        name = userData.name;
+    }
 
-
-      if(sunny_agree[0].checked == true || credit_agree[0].checked == true || info_agree[0].checked == true) {
-          alert("Please Accept Terms & Conditions.");
-          return false;
-      }
+    function nextPage() {
+        var sunny_agree  = document.getElementsByName('sunny_agree' );
+        var credit_agree = document.getElementsByName('credit_agree');
+        var info_agree   = document.getElementsByName('info_agree'  );
 
 
+        if(sunny_agree[0].checked == true || credit_agree[0].checked == true || info_agree[0].checked == true) {
+            alert("Please Accept Terms & Conditions.");
+            return false;
+        }
 
-      if(name == 'SUSAN' || name == 'BRIAN' || name == 'JADE' || name == 'JOHN') {
-        common_movePage('2016.html');
-      } else {
-        common_movePage('2013.html');
-      }
-  }
+        if(name == 'SUSAN' || name == 'BRIAN' || name == 'JADE' || name == 'JOHN') {
+            common_movePage('2016.html');
+        } else {
+            common_movePage('2013.html');
+        }
+    }
 
   </script>
 </head>

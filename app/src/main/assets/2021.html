@@ -9,98 +9,99 @@
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-      $(document).ready(function() {
-          common_getJsonData();
-                //한글입력 안되게 처리
-          $("input[name=UsrName]").keyup(function(event){
-           if (!(event.keyCode >=37 && event.keyCode<=40)) {
-            var inputVal = $(this).val();
-            $(this).val(inputVal.replace(/[^a-z0-9"."-\s]/gi,''));
-           }
-          });
+    $(document).ready(function() {
+	    common_getJsonData();
 
-          //전화번호 4자리 입력시 Auto Tab
-          $("input[name=phone2]").keyup(function(event){
-           if (!(event.keyCode == 13)) {
-            var pLength = document.getElementById('phone2').value.length;
-            if( pLength == 4) {
-                document.getElementById('phone3').focus();
-            }
-           }
-         });
-     });
+	    //한글입력 안되게 처리
+	    $("input[name=UsrName]").keyup(function(event) {
+		    if (!(event.keyCode >=37 && event.keyCode<=40)) {
+			    var inputVal = $(this).val();
+			    $(this).val(inputVal.replace(/[^a-z0-9"."-\s]/gi,''));
+		    }
+	    });
 
-      function moveFocus(current, next){
-        if(event.keyCode==13){
-            if(current == "phone3") {
-                nextPage();
-            } else {
-                document.getElementById(next).focus();
-            }
-        }
+	    //전화번호 4자리 입력시 Auto Tab
+	    $("input[name=phone2]").keyup(function(event) {
+		    if (!(event.keyCode == 13)) {
+		    	var pLength = document.getElementById('phone2').value.length;
+		    	if( pLength == 4) {
+		    	document.getElementById('phone3').focus();
+		    	}
+		    }
+	    });
+    });
+
+    function moveFocus(current, next) {
+    	if(event.keyCode==13) {
+    		if(current == "phone3") {
+    			nextPage();
+    		} else {
+    			document.getElementById(next).focus();
+    		}
+    	}
     }
 
     /**
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
      */
     function onCreate(json) {
-        var jsonData = JSON.parse(json);
-        if (jsonData != null && jsonData.backPage != null && (jsonData.backPage == '2013.html' || jsonData.backPage == '2016.html')) {
-            //CB대출통해서 진입
-            var userData = common_getUserData(jsonData.name);
-            document.getElementById('UsrName').value = jsonData.name;
-            document.getElementById('phone').value = jsonData.phone.substr(0,3);
-            document.getElementById('phone2').value = jsonData.phone.substr(3,4);
-            document.getElementById('phone3').value = jsonData.phone.substr(7,4);
-        } else {
-            //최초진입
-            onInit();
-        }
+	    var jsonData = JSON.parse(json);
+	    if (jsonData != null && jsonData.backPage != null && (jsonData.backPage == '2013.html' || jsonData.backPage == '2016.html')) {
+		    //CB대출통해서 진입
+		    var userData = common_getUserData(jsonData.name);
+		    document.getElementById('UsrName').value = jsonData.name;
+		    document.getElementById('phone').value = jsonData.phone.substr(0,3);
+		    document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+		    document.getElementById('phone3').value = jsonData.phone.substr(7,4);
+	    } else {
+		    //최초진입
+		    onInit();
+	    }
     }
 
     function onInit() {
-     	document.getElementById('UsrName').value = "";
-     	document.getElementById('phone2').value = "";
-     	document.getElementById('phone3').value = "";
-     	$("#phone1").val("010").trigger("change");
+	    document.getElementById('UsrName').value = "";
+	    document.getElementById('phone2').value = "";
+	    document.getElementById('phone3').value = "";
+	    $("#phone1").val("010").trigger("change");
     }
 
     function nextPage() {
-        var UsrName = document.querySelector('#UsrName').value;
-        var regex1 = /^[0-9]*$/;
-        var regex2 = /[(0-9)]{4}/;
-        var regex3 =  /^[A-Za-z0-9\.\-\s]+$/;
-        var regex4 = /^[\.\-\s]*$/;
-        var regex5 =  /^[0-9\.\-\s]+$/;
-        var phoneNum1 = document.getElementById('phone').value;
-        var phoneNum2 = document.getElementById('phone2').value;
-        var phoneNum3 = document.getElementById('phone3').value;
-        var phone =phoneNum1+phoneNum2+phoneNum3;
+	    var UsrName = document.querySelector('#UsrName').value;
+	    var regex1 = /^[0-9]*$/;
+	    var regex2 = /[(0-9)]{4}/;
+	    var regex3 =  /^[A-Za-z0-9\.\-\s]+$/;
+	    var regex4 = /^[\.\-\s]*$/;
+	    var regex5 =  /^[0-9\.\-\s]+$/;
+	    var phoneNum1 = document.getElementById('phone').value;
+	    var phoneNum2 = document.getElementById('phone2').value;
+	    var phoneNum3 = document.getElementById('phone3').value;
+	    var phone =phoneNum1+phoneNum2+phoneNum3;
 
+	    if(UsrName == "") {
+		    alert("Please enter name.");
+		    return false;
+	    } else if(regex1.test(UsrName)||!regex3.test(UsrName)|| regex4.test(UsrName)|| regex5.test(UsrName)) {
+	    	alert("Please check name");
+	    	return false;
+	    } else if( phoneNum2== "" || phoneNum3== "" ) {
+	    	alert("Please enter cellphone.");
+	    	return false;
+	    } else if(!regex1.test(phoneNum2) || !regex1.test(phoneNum3) ) {
+		    alert("Please enter numbers only for cellphone.");
+		    return false;
+	    } else if(!regex2.test(phoneNum2) || !regex2.test(phoneNum3) ) {
+		    alert("Please enter 4 digits numbers only for cellphone.");
+		    return false;
+	    }
 
-        if(UsrName == "") {
-            alert("Please enter name.");
-            return false;
-         } else if(regex1.test(UsrName)||!regex3.test(UsrName)|| regex4.test(UsrName)|| regex5.test(UsrName)) {
-            alert("Please check name");
-            return false;
-         } else if( phoneNum2== "" || phoneNum3== "" ) {
-            alert("Please enter cellphone.");
-            return false;
-         } else if(!regex1.test(phoneNum2) || !regex1.test(phoneNum3) ){
-             alert("Please enter numbers only for cellphone.");
-             return false;
-         }else if(!regex2.test(phoneNum2) || !regex2.test(phoneNum3) ){
-             alert("Please enter 4 digits numbers only for cellphone.");
-             return false;
-         }
-        var JsonData =
-        {
-            "name" : UsrName,
-            "phone" : phone
-        };
+	    var JsonData =
+	    {
+		    "name" : UsrName,
+		    "phone" : phone
+	    };
 
-        common_movePage('2022.html', JsonData);
+	    common_movePage('2022.html', JsonData);
     }
     </script>
 </head>

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/app.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/common.js"></script>
-
     <script language = "javascript">
 
     common_getJsonData();
@@ -15,73 +14,83 @@
     /**
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
      */
-     var contractRate;
-     var UsrReqPay;
-    function onCreate(json) {
-        var jsonData = JSON.parse(json);
-        UsrReqPay=jsonData.reqPay;
-        document.getElementById('UsrReqPay').value = common_numberWithCommas(jsonData.reqPay)+ ' US $';
-        var userData = common_getUserData(jsonData.name);
-        document.getElementById('UsrName').value = jsonData.name;
-        document.getElementById('phone1').value = jsonData.phone.substr(0,3);
-        document.getElementById('phone2').value = jsonData.phone.substr(3,4);
-        document.getElementById('phone3').value = jsonData.phone.substr(7,4);
-        document.getElementById('officeNm').value = userData.officeNm;  //직장명
-        document.getElementById('loanAccount').value = jsonData.selAccount; //입금계좌
-        if(userData.officeNm =="N/A") {
-            $("#officeNm").css("text-align","center");
-        }
-        if(userData.annualIncome =="N/A") {
-            document.getElementById('annualIncome').value = userData.annualIncome; //연소득
-            $("#annualIncome").css("text-align","center");
-        } else {
-            document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
-            $("#annualIncome").css("text-align","right");
-        }
-        document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + ' US $'; //약정금액
-        conAmt= userData.conAmt;
-        if(userData.CBAmt == 'N/A') {
-            document.getElementById('CBAmt').innerHTML = userData.CBAmt; //신용정보평가 금액
-        } else {
-            document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
-        }
-        document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ ' US $'; //통신정보평가 금액
-        document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
-        contractRate=userData.contractRate;
-        if(userData.CBRate == 'N/A') {
-            document.getElementById('CBRate').innerHTML =userData.CBRate; //신용정보평가 금리
-        } else {
-            document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
-        }
-        document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
-        document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
-        if(document.getElementById('arrearsYN').value =="N/A"){
-            $("#arrearsYN").css("text-align","center");
-        }else{
-            $("#arrearsYN").css("text-align","right");
-        }
+    var contractRate;
+    var UsrReqPay;
 
-        if(userData.arrearsAmt == 'N/A') {
-            document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
-             $("#arrearsAmt").css("text-align","center");
-        } else {
-            document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
-        }
-        document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
+    function onCreate(json) {
+	    var jsonData = JSON.parse(json);
+	    UsrReqPay=jsonData.reqPay;
+	    document.getElementById('UsrReqPay').value = common_numberWithCommas(jsonData.reqPay)+ ' US $';
+	    var userData = common_getUserData(jsonData.name);
+	    document.getElementById('UsrName').value = jsonData.name;
+	    document.getElementById('phone1').value = jsonData.phone.substr(0,3);
+	    document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+	    document.getElementById('phone3').value = jsonData.phone.substr(7,4);
+	    document.getElementById('officeNm').value = userData.officeNm;  //직장명
+	    document.getElementById('loanAccount').value = jsonData.selAccount; //입금계좌
+
+	    if(userData.officeNm =="N/A") {
+	    	$("#officeNm").css("text-align","center");
+	    }
+
+	    if(userData.annualIncome =="N/A") {
+	    	document.getElementById('annualIncome').value = userData.annualIncome; //연소득
+	    	$("#annualIncome").css("text-align","center");
+	    } else {
+		    document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
+		    $("#annualIncome").css("text-align","right");
+	    }
+
+	    document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + ' US $'; //약정금액
+	    conAmt= userData.conAmt;
+
+	    if(userData.CBAmt == 'N/A') {
+	    	document.getElementById('CBAmt').innerHTML = userData.CBAmt; //신용정보평가 금액
+	    } else {
+	    	document.getElementById('CBAmt').innerHTML = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
+	    }
+
+	    document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ ' US $'; //통신정보평가 금액
+	    document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
+	    contractRate=userData.contractRate;
+
+	    if(userData.CBRate == 'N/A') {
+		    document.getElementById('CBRate').innerHTML =userData.CBRate; //신용정보평가 금리
+	    } else {
+		    document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+	    }
+
+	    document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
+	    document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
+
+	    if(document.getElementById('arrearsYN').value =="N/A") {
+	    	$("#arrearsYN").css("text-align","center");
+	    } else {
+	    	$("#arrearsYN").css("text-align","right");
+	    }
+
+	    if(userData.arrearsAmt == 'N/A') {
+	    	document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
+	    	$("#arrearsAmt").css("text-align","center");
+	    } else {
+	    	document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
+	    }
+
+	    document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
     }
 
     function nextPage() {
-        var loanAccount = document.querySelector('#loanAccount').value;
-        var loanPeriod= "12"; //대출기간
+	    var loanAccount = document.querySelector('#loanAccount').value;
+	    var loanPeriod= "12"; //대출기간
 
-        var JsonData =
-        {
-            "reqPay" : UsrReqPay,
-            "contractRate" : contractRate,
-            "loanAccount" : loanAccount,
-            "loanPeriod" : loanPeriod
-        };
-        common_movePage('2025.html',JsonData);
+	    var JsonData =
+	    {
+		    "reqPay" : UsrReqPay,
+		    "contractRate" : contractRate,
+		    "loanAccount" : loanAccount,
+		    "loanPeriod" : loanPeriod
+	    };
+	    common_movePage('2025.html',JsonData);
     }
     </script>
 </head>
@@ -153,7 +162,7 @@
                 </div>
             </div>
             <div class="cell">
-                <label for="annual_income2" class="tit"><span class="inner">Past due Amount</span></label>
+                <label for="annual_income2" class="tit"><span class="inner">Past due amount</span></label>
                 <div class="inp_area">
                     <input type="text" id="arrearsAmt" class="inp_text right" readonly>
                 </div>

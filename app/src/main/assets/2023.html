@@ -11,46 +11,51 @@
     <script language = "javascript">
     common_getJsonData();
 
-
     /**
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
      */
-     var conAmt;
-     var phone;
-     var v;
-     var UsrReqPayNum;
-     var UsrReqPay;
-    function onCreate(json) {
+	var conAmt;
+	var phone;
+	var v;
+	var UsrReqPayNum;
+	var UsrReqPay;
 
-        var jsonData = JSON.parse(json);
-        var userData = common_getUserData(jsonData.name);
-        var beforeStr = userData.loanAccount;
-        var afterStr = beforeStr.split(',');
-        phone = jsonData.phone;
-        document.getElementById('UsrName').value = jsonData.name;
-        document.getElementById('phone1').value = phone.substr(0,3);
-        document.getElementById('phone2').value = phone.substr(3,4);
-        document.getElementById('phone3').value = phone.substr(7,4);
-        document.getElementById('officeNm').value = userData.officeNm;  //직장명
-        document.getElementById('loanAccount').innerHTML=afterStr[0]; //입금계좌1
-        document.getElementById('loanAccount2').innerHTML=afterStr[1]; //입금계좌2
-        if(jsonData.selAccount!=null){
-              if(jsonData.selAccount==afterStr[0]){
-                document.getElementById("selAccount").options[0].selected = true;
-              }else{
-                document.getElementById("selAccount").options[1].selected = true;
-              }
-        }
+
+	function onCreate(json) {
+
+		var jsonData = JSON.parse(json);
+		var userData = common_getUserData(jsonData.name);
+		var beforeStr = userData.loanAccount;
+		var afterStr = beforeStr.split(',');
+		phone = jsonData.phone;
+		document.getElementById('UsrName').value = jsonData.name;
+		document.getElementById('phone1').value = phone.substr(0,3);
+		document.getElementById('phone2').value = phone.substr(3,4);
+		document.getElementById('phone3').value = phone.substr(7,4);
+		document.getElementById('officeNm').value = userData.officeNm;  //직장명
+		document.getElementById('loanAccount').innerHTML=afterStr[0]; 	//입금계좌1
+		document.getElementById('loanAccount2').innerHTML=afterStr[1]; 	//입금계좌2
+
+        if(jsonData.selAccount!=null) {
+			if(jsonData.selAccount==afterStr[0]){
+				document.getElementById("selAccount").options[0].selected = true;
+			} else {
+				document.getElementById("selAccount").options[1].selected = true;
+			}
+		}
+
         if(userData.officeNm =="N/A") {
-            $("#officeNm").css("text-align","center");
+			$("#officeNm").css("text-align","center");
         }
+
         if(userData.annualIncome =="N/A") {
-            document.getElementById('annualIncome').value = userData.annualIncome; //연소득
-            $("#annualIncome").css("text-align","center");
+			document.getElementById('annualIncome').value = userData.annualIncome; //연소득
+			$("#annualIncome").css("text-align","center");
         } else {
             document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
             $("#annualIncome").css("text-align","right");
         }
+
         document.getElementById('conAmt').innerHTML = common_numberWithCommas(userData.conAmt) + ' US $'; //약정금액
         conAmt= userData.conAmt;
         if(userData.CBAmt == 'N/A') {
@@ -60,11 +65,13 @@
         }
         document.getElementById('NBAmt').innerHTML = common_numberWithCommas(userData.NBAmt)+ ' US $'; //통신정보평가 금액
         document.getElementById('contractRate').innerHTML = common_numberWithCommas(userData.contractRate) + '%'; //약정금리
+
         if(userData.CBRate == 'N/A') {
             document.getElementById('CBRate').innerHTML =userData.CBRate; //신용정보평가 금리
         } else {
             document.getElementById('CBRate').innerHTML =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
         }
+
         document.getElementById('NBRate').innerHTML = common_numberWithCommas(userData.NBRate) + '%'; //통신정보평가 금리
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
         if(document.getElementById('arrearsYN').value =="N/A"){
@@ -82,45 +89,43 @@
         document.getElementById('telReason').innerHTML = userData.telReason; //통신 가산 사유
         document.getElementById('UsrReqPay2').placeholder = '50~'+common_numberWithCommas(userData.conAmt)+' US $'; // 50~ 약정최대금액
 
-
-        if(jsonData.reqPay!=null){
-            UsrReqPayNum = jsonData.reqPay;
-        }
-
-
+        if(jsonData.reqPay!=null) {
+			UsrReqPayNum = jsonData.reqPay;
+		}
     }
 
-     function moveFocus(){
-        if(event.keyCode==13){
-            common_hideKeyboard();
-        }
+	function moveFocus() {
+		if(event.keyCode==13){
+			common_hideKeyboard();
+		}
     }
 
     function nextPage() {
 
-         var UsrName     = document.querySelector('#UsrName').value;
-         var selAccount  = document.getElementById('selAccount').value;
-         var regex = /^[0-9]*$/;
+		var UsrName     = document.querySelector('#UsrName').value;
+		var selAccount  = document.getElementById('selAccount').value;
+		var regex = /^[0-9]*$/;
 
-         if(UsrReqPayNum!= null){
-               UsrReqPay  = UsrReqPayNum;
-              if(v !=null && v != UsrReqPay){
-                UsrReqPay   = Number(v);
+		if(UsrReqPayNum!= null) {
+			UsrReqPay  = UsrReqPayNum;
+
+			if(v !=null && v != UsrReqPay) {
+				UsrReqPay   = Number(v);
               }
-         }else{
-            UsrReqPay = 0;
-            if(v !=null){
+
+         } else {
+			UsrReqPay = 0;
+            if(v !=null) {
                 document.getElementById('UsrReqPay').value  = v;
                 UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
-            }
-         }
+			}
+		}
 
-        if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay || UsrReqPay < 50 || !regex.test(UsrReqPay)) {
-            document.querySelector('#UsrReqPay').value = "";
-            alert('Please, Check application amount');
-            return false;
-        }
-
+		if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || conAmt < UsrReqPay || UsrReqPay < 50 || !regex.test(UsrReqPay)) {
+			document.querySelector('#UsrReqPay').value = "";
+			alert('Please, Check application amount');
+			return false;
+		}
 
         var JsonData =
         {
@@ -131,7 +136,6 @@
         };
         common_movePage('2024.html', JsonData);
     }
-
 
     String.prototype.comma = function() {
 
@@ -156,7 +160,7 @@
         obj.value = val.replace(re, '');
     }
 
-    </script>
+	</script>
     <style>
         input:focus::-webkit-input-placeholder { /* WebKit browsers */
           color:transparent;

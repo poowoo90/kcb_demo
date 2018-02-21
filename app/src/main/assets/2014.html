@@ -10,64 +10,71 @@
 
     <script language = "javascript">
 
-    common_getJsonData();
+	common_getJsonData();
 
-    /**
-     * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
-     */
-     var contractRate;
-     var UsrReqPay;
-    function onCreate(json) {
-        var jsonData = JSON.parse(json);
-        UsrReqPay=jsonData.reqPay;
-        document.getElementById('UsrReqPay').value = common_numberWithCommas(jsonData.reqPay)+ ' US $';
-        var userData = common_getUserData(jsonData.name);
-        document.getElementById('UsrName').value = jsonData.name;
-        document.getElementById('phone1').value = jsonData.phone.substr(0,3);
-        document.getElementById('phone2').value = jsonData.phone.substr(3,4);
-        document.getElementById('phone3').value = jsonData.phone.substr(7,4);
-        if(userData.officeNm == 'N/A') {
-            document.getElementById('officeNm').className = "inp_text center";
-            document.getElementById('officeNm').value = userData.officeNm;  //직장명
-        } else {
-            document.getElementById('officeNm').value = userData.officeNm;  //직장명
-        }
-        document.getElementById('loanAccount').value = jsonData.loanAccount; //입금계좌
-        if(userData.annualIncome == 'N/A') {
-            document.getElementById('annualIncome').value = userData.annualIncome; //연소득
-            document.getElementById('annualIncome').className = "inp_text center";
-        } else {
-            document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
-        }
-        document.getElementById('CBAmt').value = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
-        document.getElementById('CBRate').value =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
-        contractRate = userData.CBRate;
-        if(userData.arrearsYN == 'N/A') {
-            document.getElementById('arrearsYN').className = "inp_text center";
-        } else {
-            document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
-        }
-        if(userData.arrearsAmt == 'N/A') {
-            document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
-            document.getElementById('arrearsAmt').className = "inp_text center";
-        } else {
-            document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
-        }
-    }
+	/**
+	 * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
+	 */
+	var contractRate;
+	var UsrReqPay;
 
-    function nextPage() {
-        var loanAccount = document.querySelector('#loanAccount').value;
-        var loanPeriod= "12"; //대출기간
+	function onCreate(json) {
+		var jsonData = JSON.parse(json);
+		UsrReqPay=jsonData.reqPay;
+		document.getElementById('UsrReqPay').value = common_numberWithCommas(jsonData.reqPay)+ ' US $';
 
-        var JsonData =
-        {
-            "reqPay" : UsrReqPay,
-            "contractRate" : contractRate,
-            "loanAccount" : loanAccount,
-            "loanPeriod" : loanPeriod
-        };
-        common_movePage('2015.html',JsonData);
-    }
+		var userData = common_getUserData(jsonData.name);
+		document.getElementById('UsrName').value = jsonData.name;
+		document.getElementById('phone1').value = jsonData.phone.substr(0,3);
+		document.getElementById('phone2').value = jsonData.phone.substr(3,4);
+		document.getElementById('phone3').value = jsonData.phone.substr(7,4);
+
+		if(userData.officeNm == 'N/A') {
+			document.getElementById('officeNm').className = "inp_text center";
+			document.getElementById('officeNm').value = userData.officeNm;  //직장명
+		} else {
+			document.getElementById('officeNm').value = userData.officeNm;  //직장명
+		}
+		document.getElementById('loanAccount').value = jsonData.loanAccount; //입금계좌
+
+		if(userData.annualIncome == 'N/A') {
+			document.getElementById('annualIncome').value = userData.annualIncome; //연소득
+			document.getElementById('annualIncome').className = "inp_text center";
+		} else {
+			document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
+		}
+
+		document.getElementById('CBAmt').value = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
+		document.getElementById('CBRate').value =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+		contractRate = userData.CBRate;
+
+		if(userData.arrearsYN == 'N/A') {
+			document.getElementById('arrearsYN').className = "inp_text center";
+		} else {
+			document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
+		}
+
+		if(userData.arrearsAmt == 'N/A') {
+			document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
+			document.getElementById('arrearsAmt').className = "inp_text center";
+		} else {
+			document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
+		}
+	}
+
+	function nextPage() {
+		var loanAccount = document.querySelector('#loanAccount').value;
+		var loanPeriod= "12"; //대출기간
+
+		var JsonData =
+		{
+			"reqPay" : UsrReqPay,
+			"contractRate" : contractRate,
+			"loanAccount" : loanAccount,
+			"loanPeriod" : loanPeriod
+		};
+		common_movePage('2015.html',JsonData);
+	}
     </script>
 </head>
 <body>

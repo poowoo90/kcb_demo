@@ -11,15 +11,15 @@
     <script language = "javascript">
     common_getJsonData();
 
-
     /**
      * 기본함수 이전 페이지에서 넘긴 결과 data 정보를 받아온다.
      */
-     var CBAmt;
-     var phone;
-     var v;
-     var UsrReqPayNum;
-     var UsrReqPay;
+    var CBAmt;
+    var phone;
+    var v;
+    var UsrReqPayNum;
+    var UsrReqPay;
+
     function onCreate(json) {
 
         var jsonData = JSON.parse(json);
@@ -29,112 +29,118 @@
         document.getElementById('phone1').value = phone.substr(0,3);
         document.getElementById('phone2').value = phone.substr(3,4);
         document.getElementById('phone3').value = phone.substr(7,4);
+
         if(userData.officeNm == 'N/A') {
             document.getElementById('officeNm').value = userData.officeNm;  //직장명
             document.getElementById('officeNm').className = "inp_text center";
         } else {
             document.getElementById('officeNm').value = userData.officeNm;  //직장명
         }
-        var loanAccountArray = userData.loanAccount.split(',');
-            $('#loanAccount').empty();
 
-            for(var count = 0; count < loanAccountArray.length; count++){
-                var option = $("<option>"+loanAccountArray[count]+"</option>");
-                $('#loanAccount').append(option);
-            }
+        var loanAccountArray = userData.loanAccount.split(',');
+        $('#loanAccount').empty();
+
+        for(var count = 0; count < loanAccountArray.length; count++) {
+            var option = $("<option>"+loanAccountArray[count]+"</option>");
+            $('#loanAccount').append(option);
+        }
+
         if(jsonData.loanAccount != null) {
             $('#loanAccount').val(jsonData.loanAccount).trigger("change");
         }
+
         if(userData.annualIncome == 'N/A') {
             document.getElementById('annualIncome').value = userData.annualIncome; //연소득
             document.getElementById('annualIncome').className = "inp_text center";
         } else {
             document.getElementById('annualIncome').value = common_numberWithCommas(userData.annualIncome)+ ' US $'; //연소득
         }
+
         CBAmt= userData.CBAmt;
         document.getElementById('CBAmt').value = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
         document.getElementById('CBRate').value =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+
         if(userData.arrearsYN == 'N/A') {
             document.getElementById('arrearsYN').className = "inp_text center";
         } else {
             document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
         }
+
         if(userData.arrearsAmt == 'N/A') {
             document.getElementById('arrearsAmt').value = userData.arrearsAmt; //연체금액
             document.getElementById('arrearsAmt').className = "inp_text center";
         } else {
             document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt)+ ' US $'; //연체금액
         }
+
         document.getElementById('UsrReqPay2').placeholder = '50~'+common_numberWithCommas(userData.CBAmt)+' US $'; // 50~ 약정최대금액
 
-
-        if(jsonData.reqPay!=null){
+        if(jsonData.reqPay!=null) {
             UsrReqPayNum = jsonData.reqPay;
         }
-
     }
 
-    function moveFocus(){
-        if(event.keyCode==13){
+    function moveFocus() {
+        if(event.keyCode==13) {
             common_hideKeyboard();
         }
     }
 
     function moveTelco() {
 
-      var usrName = document.getElementById('UsrName').value;
-      var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
-      var loanAccount = document.querySelector('#loanAccount').value
+        var usrName = document.getElementById('UsrName').value;
+        var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
+        var loanAccount = document.querySelector('#loanAccount').value
 
-      if(UsrReqPayNum!= null){
-               UsrReqPay  = UsrReqPayNum;
-              if(v !=null && v != UsrReqPay){
+        if(UsrReqPayNum!= null) {
+            UsrReqPay  = UsrReqPayNum;
+            if(v !=null && v != UsrReqPay) {
                 UsrReqPay   = Number(v);
-              }
-         }else{
-            UsrReqPay = 0;
-            if(v !=null){
-                document.getElementById('UsrReqPay').value  = v;
-                UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
             }
-         }
+        } else {
+            UsrReqPay = 0;
+            if(v !=null) {
+                document.getElementById('UsrReqPay').value  = v;
+                UsrReqPay = Number(document.querySelector('#UsrReqPay').value);
+            }
+        }
 
-      var JsonData =
-      {
-          "name" : usrName,
-          "phone" : phone,
-          "backPage" : '2013.html',
-          "reqPay" : UsrReqPay,
-          "loanAccount" : loanAccount
-      };
-      common_movePage('2021.html', JsonData);
+        var JsonData =
+        {
+            "name" : usrName,
+            "phone" : phone,
+            "backPage" : '2013.html',
+            "reqPay" : UsrReqPay,
+            "loanAccount" : loanAccount
+        };
+
+        common_movePage('2021.html', JsonData);
     }
 
     function nextPage() {
 
-         var UsrName     = document.querySelector('#UsrName').value;
-         var loanAccount = document.querySelector('#loanAccount').value
-         var regex = /^[0-9]*$/;
+        var UsrName     = document.querySelector('#UsrName').value;
+        var loanAccount = document.querySelector('#loanAccount').value
+        var regex = /^[0-9]*$/;
 
-         if(UsrReqPayNum!= null){
-               UsrReqPay  = UsrReqPayNum;
-              if(v !=null && v != UsrReqPay){
+        if(UsrReqPayNum!= null) {
+            UsrReqPay  = UsrReqPayNum;
+            if(v !=null && v != UsrReqPay) {
                 UsrReqPay   = Number(v);
-              }
-         }else{
+            }
+        } else {
             UsrReqPay = 0;
             if(v !=null){
                 document.getElementById('UsrReqPay').value  = v;
                 UsrReqPay   = Number(document.querySelector('#UsrReqPay').value);
             }
-         }
+        }
 
         if(UsrReqPay == null || UsrReqPay == '' || UsrReqPay == 0 || CBAmt < UsrReqPay || UsrReqPay < 50 || !regex.test(UsrReqPay)) {
             document.querySelector('#UsrReqPay').value = "";
             alert('Please, Check application amount');
             return false;
         }
-
 
         var JsonData =
         {
@@ -146,9 +152,7 @@
         common_movePage('2014.html', JsonData);
     }
 
-
     String.prototype.comma = function() {
-
         tmp = this.split('.');
         var str = new Array();
         v= tmp[0].replace(/,/gi,'');
@@ -171,9 +175,11 @@
     }
 
     </script>
+
     <style>
-        input:focus::-webkit-input-placeholder { /* WebKit browsers */
-          color:transparent;
+        input:focus::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color:transparent;
         }
     </style>
 

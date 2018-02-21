@@ -9,27 +9,27 @@
     <script src="js/common.js"></script>
     <script language = "javascript">
 
-  $(document).ready(function() {
-      onInit();
-      //한글입력 안되게 처리
-      $("input[name=UsrName]").keyup(function(event){
-       if (!(event.keyCode >=37 && event.keyCode<=40)) {
-        var inputVal = $(this).val();
-        $(this).val(inputVal.replace(/[^a-z0-9"."-\s]/gi,''));
-       }
-      });
-      //전화번호 4자리 입력시 Auto Tab
-      $("input[name=phone2]").keyup(function(event){
-       if (!(event.keyCode == 13)) {
-        var pLength = document.getElementById('phone2').value.length;
-        if( pLength == 4) {
-            document.getElementById('phone3').focus();
-        }
-       }
-      });
-  });
+    $(document).ready(function() {
+        onInit();
+        //한글입력 안되게 처리
+        $("input[name=UsrName]").keyup(function(event){
+            if (!(event.keyCode >=37 && event.keyCode<=40)) {
+                var inputVal = $(this).val();
+                $(this).val(inputVal.replace(/[^a-z0-9"."-\s]/gi,''));
+            }
+        });
+        //전화번호 4자리 입력시 Auto Tab
+        $("input[name=phone2]").keyup(function(event){
+            if (!(event.keyCode == 13)) {
+                var pLength = document.getElementById('phone2').value.length;
+                if( pLength == 4) {
+                    document.getElementById('phone3').focus();
+                }
+            }
+        });
+    });
 
-  function moveFocus(current, next){
+    function moveFocus(current, next) {
         if(event.keyCode==13){
             if(current == 'phone3') {
                 nextPage();
@@ -39,52 +39,53 @@
         }
     }
 
-  function onInit() {
-   	document.getElementById('UsrName').value = "";
-   	document.getElementById('phone2').value = "";
-   	document.getElementById('phone3').value = "";
-   	$("#phone1").val("010").trigger("change");
-  }
+    function onInit() {
+        document.getElementById('UsrName').value = "";
+        document.getElementById('phone2').value = "";
+        document.getElementById('phone3').value = "";
+        $("#phone1").val("010").trigger("change");
+    }
 
-  function nextPage() {
-      var UsrName = document.querySelector('#UsrName').value;
-      var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
-      var regexp = /^[0-9]*$/;
-      var regex3 =  /^[A-Za-z0-9\.\-\s]+$/;
-      var regex4 = /^[\.\-\s]*$/;
-      var regex5 =  /^[0-9\.\-\s]+$/;
-      var phoneNum2 = document.getElementById('phone2').value;
-      var phoneNum3 = document.getElementById('phone3').value;
+    function nextPage() {
+        var UsrName = document.querySelector('#UsrName').value;
+        var phone = document.querySelector('#phone1').value + document.querySelector('#phone2').value + document.querySelector('#phone3').value;
+        var regexp = /^[0-9]*$/;
+        var regex3 =  /^[A-Za-z0-9\.\-\s]+$/;
+        var regex4 = /^[\.\-\s]*$/;
+        var regex5 =  /^[0-9\.\-\s]+$/;
+        var phoneNum2 = document.getElementById('phone2').value;
+        var phoneNum3 = document.getElementById('phone3').value;
 
-      if(UsrName == "") {
-          alert("Please enter name.");
-          return false;
-      }
+        if(UsrName == "") {
+            alert("Please enter name.");
+            return false;
+        }
 
-      if(phoneNum2 == "" || phoneNum3 == ""){
-          alert("Please enter cellphone.");
-          return false;
-      } else if( phoneNum2.length != 4 || phoneNum3.length != 4) {
-          alert("Please enter 4 digits numbers only for cellphone.");
-          return false;
-      }
+        if(phoneNum2 == "" || phoneNum3 == ""){
+            alert("Please enter cellphone.");
+            return false;
+        } else if( phoneNum2.length != 4 || phoneNum3.length != 4) {
+            alert("Please enter 4 digits numbers only for cellphone.");
+            return false;
+        }
 
-      if(regexp.test(UsrName)||!regex3.test(UsrName)|| regex4.test(UsrName)|| regex5.test(UsrName)) {
-         alert("Please check name");
-         return false;
-      }
+        if(regexp.test(UsrName)||!regex3.test(UsrName)|| regex4.test(UsrName)|| regex5.test(UsrName)) {
+            alert("Please check name");
+            return false;
+        }
 
-      if(!regexp.test(phoneNum2) || !regexp.test(phoneNum3) ){
-          alert("Please enter numbers only for cellphone.");
-          return false;
-      }
+        if(!regexp.test(phoneNum2) || !regexp.test(phoneNum3) ){
+            alert("Please enter numbers only for cellphone.");
+            return false;
+        }
 
-      var JsonData =
-      {
-          "name" : UsrName,
-          "phone" : phone
-      };
-      common_movePage('2012.html', JsonData);
+        var JsonData =
+        {
+            "name" : UsrName,
+            "phone" : phone
+        };
+
+        common_movePage('2012.html', JsonData);
   }
   </script>
 </head>
