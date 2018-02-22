@@ -28,8 +28,8 @@ var SUSAN = {
 			"NBRate":3.0,
 			"officeNm":"KT",
 			"annualIncome":30000,
-			"arrearsYN":"NONE",
-			"arrearsAmt":"0",
+			"arrearsYN":"1",
+			"arrearsAmt":110,
 			"telReason":"Faithful payer (Telecom service fare)"
 			};
 
@@ -124,12 +124,12 @@ var SAM  = {
 			"name":"SAM",
 			"phone":"01037894487",
 			"loanAccount":"166-222-1839, 135-422-1844",
-			"conAmt":30000,
-			"CBAmt":20000,
+			"conAmt":10000,
+			"CBAmt":"N/A",
 			"NBAmt":10000,
 			"contractRate":3.8,
-			"CBRate":4.0,
-			"NBRate":"△0.2",
+			"CBRate":"N/A",
+			"NBRate":3.8,
 			"officeNm":"KCB",
 			"annualIncome":35000,
 			"arrearsYN":"1",

@@ -57,8 +57,19 @@
         }
 
         CBAmt= userData.CBAmt;
-        document.getElementById('CBAmt').value = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
-        document.getElementById('CBRate').value =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+        if(userData.CBAmt == 'N/A') {
+            document.getElementById('CBAmt').value = userData.CBAmt;
+            $("#CBAmt").css("text-align","center");
+        } else {
+            document.getElementById('CBAmt').value = common_numberWithCommas(userData.CBAmt)+ ' US $'; //신용정보평가 금액
+        }
+
+        if(userData.CBRate == 'N/A') {
+            document.getElementById('CBRate').value = userData.CBRate;
+            $("#CBRate").css("text-align","center");
+        } else {
+            document.getElementById('CBRate').value =common_numberWithCommas(userData.CBRate) + '%'; //신용정보평가 금리
+        }
 
         document.getElementById('arrearsYN').value = userData.arrearsYN; //연체여부
         if(userData.arrearsYN == 'N/A' || userData.arrearsYN == 'NONE') {
