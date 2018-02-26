@@ -27,7 +27,7 @@ var SUSAN = {
 			"CBRate":"N/A",
 			"NBRate":3.0,
 			"officeNm":"KT",
-			"annualIncome":30000,
+			"annualIncome":20000,
 			"arrearsYN":"1",
 			"arrearsAmt":110,
 			"telReason":"Faithful payer (Telecom service fare)"
@@ -42,7 +42,7 @@ var AMIE  = {
 			"NBAmt":20000,
 			"contractRate":1.3,
 			"CBRate":2.5,
-			"NBRate":"△1.2",
+			"NBRate":"▽ 1.2",
 			"officeNm":"N/A",
 			"annualIncome": 50000,
 			"arrearsYN":"NONE",
@@ -60,7 +60,7 @@ var TOM   = {
 			"NBAmt":20000,
 			"contractRate":2.5,
 			"CBRate":3.5,
-			"NBRate":"△1.0",
+			"NBRate":"▽ 1.0",
 			"officeNm":"N/A",
 			"annualIncome": 30000,
 			"arrearsYN":"NONE",
@@ -132,9 +132,9 @@ var SAM  = {
 			"NBRate":3.8,
 			"officeNm":"KCB",
 			"annualIncome":35000,
-			"arrearsYN":"1",
+			"arrearsYN":"2",
 			"arrearsAmt":600,
-			"telReason":"No default (Telecom service fare)"
+			"telReason":"Faithful payer (Telecom service fare)"
 			};
 
 //----------------------------------------------------------------------------------------------------------------------------------------//

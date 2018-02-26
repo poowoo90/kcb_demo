@@ -23,6 +23,26 @@
 		document.getElementById('phone2').value = jsonData.phone.substr(3,4);
 		document.getElementById('phone3').value = jsonData.phone.substr(7,4);
 
+        var nameUpper = jsonData.name.toUpperCase();
+        if(nameUpper == "JADE") {
+            $("#reason_2").css("display", "block");
+
+            $("#reason_1").css("display", "none");
+            $("#reason_3").css("display", "none");
+
+        } else if (nameUpper == "SUSAN" || nameUpper == "JOHN" || nameUpper == "BRIAN") {
+            $("#reason_1").css("display", "block");
+
+            $("#reason_2").css("display", "none");
+            $("#reason_3").css("display", "none");
+
+        } else {
+            $("#reason_3").css("display", "block");
+
+            $("#reason_1").css("display", "none");
+            $("#reason_2").css("display", "none");
+        }
+
 		if(userData.officeNm == 'N/A') {
 			document.getElementById('officeNm').className = "inp_text center";
 		}
@@ -47,6 +67,7 @@
 		} else {
 			document.getElementById('arrearsAmt').value = common_numberWithCommas(userData.arrearsAmt) + ' US$';
 		}
+
 	}
 
 	function nextPage() {
@@ -125,7 +146,7 @@
                 </div>
             </div>
             <div class="cell">
-                <label for="overdue_history" class="tit"><span class="inner">Past due History</span></label>
+                <label for="overdue_history" class="tit"><span class="inner">Past due history</span></label>
                 <div class="inp_area">
                     <input type="text" name="arrearsYN" id="arrearsYN" class="inp_text right" readonly>
                 </div>
@@ -140,7 +161,9 @@
 
         <div class="confirm_section">
             <h2 class="tit">Not eligible for loan approved</h2>
-            <p class="desc">(Reason: Insufficient Annual income)</p>
+            <p class="desc" id="reason_1">(Reason: Insufficient Annual income)</p>
+            <p class="desc" id="reason_2" style="display:none">(Reason: Too short credit history)</p>
+            <p class="desc" id="reason_3" style="display:none">(Reason: Past due history)</p>
 
             <span class="ico"></span>
 
